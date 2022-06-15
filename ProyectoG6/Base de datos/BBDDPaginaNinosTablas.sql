@@ -4,6 +4,21 @@ CREATE DATABASE BBDDNinosDEMO;
 
 USE BBDDNinosDEMO;
 
+/*CREATE TABLE  UsuarioAsignatura(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+id_asignatura int,
+id_usuario int
+
+);*/
+
+CREATE TABLE  EtapaJuego(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+id_etapas int,
+id_juego int
+
+);
+
+
 CREATE TABLE  roles(
 id_roles int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 nombre_rol varchar(30),
@@ -22,8 +37,8 @@ id_etapas int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 nombre_etapa varchar(50),
 descripcion varchar(50),
 id_contenido int,
-id_juegos int,
-id_pregunta int
+id_pregunta_etapa int,
+id_usuario int
 );
 
 CREATE TABLE asignaturas(
@@ -40,25 +55,40 @@ descripcion varchar(50),
 id_modulo int
 );
 
-CREATE TABLE preguntas(
-id_preguntas int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+CREATE TABLE preguntas_etapa(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 descripcion varchar(50),
-id_respuestas int
+id_respuesta_etapa int,
+id_validacion int
 );
 
-CREATE TABLE respuestas(
-id_respuestas int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+CREATE TABLE preguntas_juego(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 descripcion varchar(50),
-id_pregunta int,
+id_respuesta_juego int,
+id_validacion int
+);
+
+
+CREATE TABLE respuestas_etapa(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+descripcion varchar(50),
 validacion int
 );
+
+
+CREATE TABLE respuestas_juego(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+descripcion varchar(50),
+validacion int
+);
+
 
 CREATE TABLE juegos(
 id_juegos int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 nombre varchar(50),
 descripcion varchar(50),
-id_etapas int,
-id_pregunta int
+id_pregunta_juego int
 );
 
 CREATE TABLE  usuarios(
@@ -78,6 +108,27 @@ id_validacion int PRIMARY KEY NOT NULL,
 descripcion varchar (20)
 );
 
+CREATE TABLE validacion2(
+id_validacion int PRIMARY KEY NOT NULL,
+descripcion varchar (20)
+);
+
+CREATE TABLE  EtapaUsuario(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+id_etapas int,
+id_usuario int
+
+);
+
+/*CREATE TABLE  JuegoUsuario(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+id_juego int,
+id_usuario int
+
+);
+
+
+
 
 /*CREACION DE LLAVES FORANEAS Y RELACIONES*/
 
@@ -87,23 +138,17 @@ ALTER TABLE usuarios ADD CONSTRAINT FK_rolID FOREIGN KEY (id_roles) REFERENCES r
 /*RELACION ENTRE TABLA ETAPAS CON TABLA CONTENIDOS*/
 ALTER TABLE etapas ADD CONSTRAINT FK_contenido2ID FOREIGN KEY (id_contenido) REFERENCES contenidos(id_contenido);
 
-/*RELACION ENTRE TABLA JUEGOS CON TABLA ETAPAS*/
-ALTER TABLE juegos ADD CONSTRAINT FK_etapaID FOREIGN KEY (id_etapas) REFERENCES etapas(id_etapas);
+/*RELACION ENTRE TABLA etapas CON TABLA preguntas de etapa*/
+ALTER TABLE etapas ADD CONSTRAINT FK_preguntaetapaID FOREIGN KEY (id_pregunta_etapa) REFERENCES preguntas_etapa(id);
 
-/*RELACION ENTRE TABLA PREGUNTAS CON TABLA RESPUESTAS*/
-ALTER TABLE preguntas ADD CONSTRAINT FK_respuestaID FOREIGN KEY (id_respuestas) REFERENCES respuestas(id_respuestas);
+/*RELACION ENTRE TABLA preguntas de etapa CON TABLA de respuestas de etapa*/
+ALTER TABLE preguntas_etapa ADD CONSTRAINT FK_respuestaetapaID FOREIGN KEY (id_respuesta_etapa) REFERENCES respuestas_etapa(id);
 
 /*RELACION ENTRE TABLA etapas CON TABLA juegos*/
-ALTER TABLE etapas ADD CONSTRAINT FK_juegosID FOREIGN KEY (id_juegos) REFERENCES juegos(id_juegos);
+ALTER TABLE juegos ADD CONSTRAINT FK_preguntajuegoID FOREIGN KEY (id_pregunta_juego) REFERENCES preguntas_juego(id);
 
-/*RELACION ENTRE TABLA juegos CON TABLA preguntas*/
-ALTER TABLE juegos ADD CONSTRAINT FK_preguntasID FOREIGN KEY (id_pregunta) REFERENCES preguntas(id_preguntas);
-
-/*RELACION ENTRE TABLA respuestas CON TABLA validacion*/
-ALTER TABLE respuestas ADD CONSTRAINT FK_validacionID FOREIGN KEY (validacion) REFERENCES validacion(id_validacion);
-
-/*RELACION ENTRE TABLA etapas CON TABLA preguntas*/
-ALTER TABLE etapas ADD CONSTRAINT FK_preguntas2ID FOREIGN KEY (id_pregunta) REFERENCES preguntas(id_preguntas);
+/*RELACION ENTRE TABLA juegos CON TABLA pregunta_juego*/
+ALTER TABLE preguntas_juego ADD CONSTRAINT FK_respuestajuegoID FOREIGN KEY (id_respuesta_juego) REFERENCES respuestas_juego(id);
 
 /*RELACION ENTRE TABLA asignatura CON TABLA modulos*/
 ALTER TABLE asignaturas ADD CONSTRAINT FK_moduloID FOREIGN KEY (id_modulo) REFERENCES modulos(id_modulo);
@@ -111,8 +156,18 @@ ALTER TABLE asignaturas ADD CONSTRAINT FK_moduloID FOREIGN KEY (id_modulo) REFER
 /*RELACION ENTRE TABLA modulos CON TABLA contenidos*/
 ALTER TABLE modulos ADD CONSTRAINT FK_contenidoID FOREIGN KEY (id_contenido) REFERENCES contenidos(id_contenido);
 
-/*RELACION ENTRE TABLA asignaturas CON TABLA usuarios*/
-ALTER TABLE asignaturas ADD CONSTRAINT FK_usuarioID FOREIGN KEY (id_usuario) REFERENCES usuarios(id);
+/*TABLA DE RELACIONES asignaturas CON usuarios*/
+ALTER TABLE EtapaUsuario ADD CONSTRAINT FK_usuarioID FOREIGN KEY (id_usuario) REFERENCES usuarios(id);
+ALTER TABLE EtapaUsuario ADD CONSTRAINT FK_etapaID FOREIGN KEY (id_etapas) REFERENCES etapas(id_etapas);
+
+/*TABLA DE RELACIONES etapas CON juegos*/
+
+ALTER TABLE EtapaJuego ADD CONSTRAINT FK_EtapaID FOREIGN KEY (id_etapas) REFERENCES etapas(id_etapas);
+ALTER TABLE EtapaJuego ADD CONSTRAINT FK_JuegoID FOREIGN KEY (id_juego) REFERENCES juegos(id_juegos);
+
+/*TABLA DE RELACIONES preguntas de juego y etapa CON SUS RESPECTIVAS validaciones*/
+ALTER TABLE preguntas_juego ADD CONSTRAINT FK_ValidacionID FOREIGN KEY (id_validacion) REFERENCES validacion(id_validacion);
+ALTER TABLE preguntas_etapa ADD CONSTRAINT FK_Validacion2ID FOREIGN KEY (id_validacion) REFERENCES validacion2(id_validacion);
 
 
 
