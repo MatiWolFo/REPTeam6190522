@@ -158,11 +158,11 @@ ALTER TABLE modulos ADD CONSTRAINT FK_contenidoID FOREIGN KEY (id_contenido) REF
 
 /*TABLA DE RELACIONES asignaturas CON usuarios*/
 ALTER TABLE EtapaUsuario ADD CONSTRAINT FK_usuarioID FOREIGN KEY (id_usuario) REFERENCES usuarios(id);
-ALTER TABLE EtapaUsuario ADD CONSTRAINT FK_etapaID FOREIGN KEY (id_etapas) REFERENCES etapas(id_etapas);
+ALTER TABLE EtapaUsuario ADD CONSTRAINT FK_etapa2ID FOREIGN KEY (id_etapas) REFERENCES etapas(id_etapas);
 
 /*TABLA DE RELACIONES etapas CON juegos*/
 
-ALTER TABLE EtapaJuego ADD CONSTRAINT FK_EtapaID FOREIGN KEY (id_etapas) REFERENCES etapas(id_etapas);
+ALTER TABLE EtapaJuego ADD CONSTRAINT FK_etapaID FOREIGN KEY (id_etapas) REFERENCES etapas(id_etapas);
 ALTER TABLE EtapaJuego ADD CONSTRAINT FK_JuegoID FOREIGN KEY (id_juego) REFERENCES juegos(id_juegos);
 
 /*TABLA DE RELACIONES preguntas de juego y etapa CON SUS RESPECTIVAS validaciones*/
