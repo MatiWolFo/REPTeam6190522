@@ -1,36 +1,30 @@
 package com.generationg6.models;
-/*CREATE TABLE etapas(
-id_etapas int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+/*
+CREATE TABLE etapas(
+id_etapa int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 nombre_etapa varchar(50),
-descripcion varchar(50),
+descripcion_etapa varchar(100),
 id_contenido int,
-id_pregunta_etapa int,
-id_usuario int
-);*/
+id_validacion_respuesta_etapa int
+); */
 
 public class Etapas {
 
 private int id_etapas;
 private String nombre_etapa;
-private String descripcion;
+private String descripcion_etapa;
 private int id_contenido;
-private int id_pregunta_etapa;
-private int id_usuario;
+private int id_validacion_respuesta_etapa;
 
-public Etapas() {
+public Etapas(int id_etapas, String nombre_etapa, String descripcion_etapa, int id_contenido,
+		int id_validacion_respuesta_etapa) {
 	super();
+	this.id_etapas = id_etapas;
+	this.nombre_etapa = nombre_etapa;
+	this.descripcion_etapa = descripcion_etapa;
+	this.id_contenido = id_contenido;
+	this.id_validacion_respuesta_etapa = id_validacion_respuesta_etapa;
 }
-
-public Etapas (int id_etapas, String nombre_etapa, String descripcion, int id_contenido, int id_pregunta_etapa, int id_usuario) {
-super();
-this.id_etapas = id_etapas;
-this.nombre_etapa = nombre_etapa;
-this.descripcion = descripcion;
-this.id_contenido= id_contenido;
-this.id_pregunta_etapa= id_pregunta_etapa;
-this.id_usuario= id_usuario;
-}
-
 public int getId_etapas() {
 	return id_etapas;
 }
@@ -43,31 +37,24 @@ public String getNombre_etapa() {
 public void setNombre_etapa(String nombre_etapa) {
 	this.nombre_etapa = nombre_etapa;
 }
-public String getDescripcion() {
-	return descripcion;
+public String getDescripcion_etapa() {
+	return descripcion_etapa;
 }
-public void setDescripcion(String descripcion) {
-	this.descripcion = descripcion;
-}	
+public void setDescripcion_etapa(String descripcion_etapa) {
+	this.descripcion_etapa = descripcion_etapa;
+}
 public int getId_contenido() {
 	return id_contenido;
 }
 public void setId_contenido(int id_contenido) {
 	this.id_contenido = id_contenido;
 }
-public int getId_pregunta_etapa() {
-	return id_pregunta_etapa;
+public int getId_validacion_respuesta_etapa() {
+	return id_validacion_respuesta_etapa;
 }
-public void setId_pregunta_etapa(int id_pregunta_etapa) {
-	this.id_pregunta_etapa = id_pregunta_etapa;
+public void setId_validacion_respuesta_etapa(int id_validacion_respuesta_etapa) {
+	this.id_validacion_respuesta_etapa = id_validacion_respuesta_etapa;
 }
-public int getId_usuario() {
-	return id_usuario;
-}
-public void setId_usuario(int id_usuario) {
-	this.id_usuario = id_usuario;
-}
-
 
 
 }
