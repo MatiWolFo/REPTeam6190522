@@ -1,10 +1,16 @@
-# REPTeam6190522
-Hola Equipo 6
 ## CONTROL DE CAMBIOS
+<<<<<<< HEAD
 
 ### Fecha 17/06/22
 - Agregado UML de prototipo, Mich
 
+=======
+<<<<<<< HEAD
+### FECHA 14/06/22
+- Cambios rama Diana
+## END COMMENTS
+=======
+>>>>>>> Diana7riachuelos
 ### Fecha 17/06/22
 - Agregada imagen de DB, MaR.
 ### Fecha 16/06/22
@@ -24,3 +30,4 @@ Hola Equipo 6
 - Commit MICHAEL a su carpeta
 
 ## END COMMENTS
+>>>>>>> main
