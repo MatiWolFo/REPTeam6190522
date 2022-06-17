@@ -22,6 +22,11 @@ public class Usuarios {
 	private String nombreusuario;
 	private String password; 
 	private int id_rol_usuario;
+
+	public Usuarios() {
+		super();
+	}
+
 	public Usuarios(int id_usuario, String nombre, String apellido, int edad, String email, String nombreusuario,
 			String password, int id_rol_usuario) {
 		super();

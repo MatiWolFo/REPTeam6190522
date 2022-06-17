@@ -16,6 +16,10 @@ private String descripcion_etapa;
 private int id_contenido;
 private int id_validacion_respuesta_etapa;
 
+public Etapas() {
+	super();
+}
+
 public Etapas(int id_etapas, String nombre_etapa, String descripcion_etapa, int id_contenido,
 		int id_validacion_respuesta_etapa) {
 	super();

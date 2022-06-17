@@ -12,6 +12,9 @@ private int id_pregunta_etapa;
 private String nombre_pregunta_etapa;
 private String descripcion_pregunta_etapa;
 
+public preguntas_etapas() {
+	super();
+}
 
 public preguntas_etapas(int id_pregunta_etapa, String nombre_pregunta_etapa, String descripcion_pregunta_etapa,
 		int id_modulo) {

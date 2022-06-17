@@ -13,6 +13,11 @@ public class preguntas_juego {
 	private int id_preguntas_juego;
 	private String nombre_pregunta_juego;
 	private String descripcion_pregunta_juego;
+
+	public preguntas_juego() {
+		super();
+	}
+
 	public preguntas_juego(int id_preguntas_juego, String nombre_pregunta_juego, String descripcion_pregunta_juego) {
 		super();
 		this.id_preguntas_juego = id_preguntas_juego;

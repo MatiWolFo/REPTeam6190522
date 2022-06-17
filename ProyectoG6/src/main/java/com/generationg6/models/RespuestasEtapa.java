@@ -10,6 +10,11 @@ public class RespuestasEtapa {
 
 	private int id_respuestas_etapa;
 	private String descripcion_respuesta_etapa;
+
+	public RespuestasEtapa() {
+		super();
+	}
+
 	
 	public RespuestasEtapa(int id_respuestas_etapa, String descripcion_respuesta_etapa) {
 		super();
