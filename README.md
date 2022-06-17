@@ -1,6 +1,10 @@
 # REPTeam6190522
 Hola Equipo 6
 ## CONTROL DE CAMBIOS
+
+### Fecha 17/06/22
+- Agregado UML de prototipo, Mich
+
 ### Fecha 17/06/22
 - Agregada imagen de DB, MaR.
 ### Fecha 16/06/22
