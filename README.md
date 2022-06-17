@@ -1,8 +1,11 @@
 # REPTeam6190522
 Hola Equipo 6
 ## CONTROL DE CAMBIOS
+<<<<<<< HEAD
 ### Fecha 17/06/22
 - Agregada imagen de DB
+=======
+>>>>>>> 50a4907b37dbfac25ab420690069a084bea0e6d6
 ### Fecha 16/06/22
 - PROYECTOG6 con clases y script diagrama DB agregados a main
 ### Fecha 16/06/22
