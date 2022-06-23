@@ -6,11 +6,15 @@ descripcion_asignatura varchar(100)
 ); */
 
 public class Asignatura {
+	
 
 	private int id_asignatura;
 	private String nombre_asignatura;
 	private int descripcion_asignatura;
-	
+
+	public Asignatura() {
+		super();
+	}
 	public Asignatura(int id_asignatura, String nombre_asignatura, int descripcion_asignatura) {
 		super();
 		this.id_asignatura = id_asignatura;
@@ -41,5 +45,6 @@ public class Asignatura {
 	public void setDescripcion_asignatura(int descripcion_asignatura) {
 		this.descripcion_asignatura = descripcion_asignatura;
 	}
-	
+
+
 }

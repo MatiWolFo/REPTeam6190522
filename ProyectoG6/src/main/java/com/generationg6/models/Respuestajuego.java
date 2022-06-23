@@ -9,6 +9,12 @@ descripcion_respuesta_juego varchar(100)
 public class Respuestajuego {
 	private int id_respuesta_juego;
 	private String descripcion_respuesta_juego;
+	
+	public Respuestajuego() {
+		super();
+	}
+
+
 	public Respuestajuego(int id_respuesta_juego, String descripcion_respuesta_juego) {
 		super();
 		this.id_respuesta_juego = id_respuesta_juego;
