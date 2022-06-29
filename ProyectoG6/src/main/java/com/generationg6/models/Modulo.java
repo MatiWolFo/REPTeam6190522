@@ -2,7 +2,9 @@ package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,43 +13,50 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "preguntas_etapas")
-public class RespuestaJuego {
+@Table(name = "modulos")
+public class Modulo {
 
 	/* OBJETO Y ATRIBUTO */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String respuesta;
+	private String nombre;
 	private String descripcion;
 	/* COLUMNAS CREATED N UPDATED */
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
-	
-	/* VARIAS RESPUESTAS TIENEN 1 PREGUNTA MANY TO ONE */
+
+	/* 1 MODULO TIENE VARIOS CONTENIDOS ONE TO MANY */
+	@OneToMany(mappedBy = "modulo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+	private List<Contenido> listaContenidos;
+
+	/* VARIOS MODULOS TIENEN 1 ASIGNATURA MANY TO ONE */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "pregunta_juego_id")
+	@JoinColumn(name = "asignatura_id")
 	/* ATRIBUTO FK COLABORATIVO */
-	private PreguntaJuego preguntaJuego;
+	private Asignatura asignatura;
 
 	/* CONSTRUCTORES */
-	public RespuestaJuego() {
+	public Modulo() {
 		super();
 	}
 
-	public RespuestaJuego(Long id, String respuesta, String descripcion, PreguntaJuego preguntaJuego) {
+	public Modulo(Long id, String nombre, String descripcion, List<Contenido> listaContenidos, Asignatura asignatura) {
 		super();
 		this.id = id;
-		this.respuesta = respuesta;
+		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.preguntaJuego = preguntaJuego;
+		this.listaContenidos = listaContenidos;
+		this.asignatura = asignatura;
 	}
 
 	/* GETTERS N SETTERS */
@@ -59,12 +68,12 @@ public class RespuestaJuego {
 		this.id = id;
 	}
 
-	public String getRespuesta() {
-		return respuesta;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setRespuesta(String respuesta) {
-		this.respuesta = respuesta;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getDescripcion() {
@@ -75,14 +84,22 @@ public class RespuestaJuego {
 		this.descripcion = descripcion;
 	}
 
-	public PreguntaJuego getPreguntaJuego() {
-		return preguntaJuego;
+	public List<Contenido> getListaContenidos() {
+		return listaContenidos;
 	}
 
-	public void setPreguntaJuego(PreguntaJuego preguntaJuego) {
-		this.preguntaJuego = preguntaJuego;
+	public void setListaContenidos(List<Contenido> listaContenidos) {
+		this.listaContenidos = listaContenidos;
 	}
-	
+
+	public Asignatura getAsignatura() {
+		return asignatura;
+	}
+
+	public void setAsignatura(Asignatura asignatura) {
+		this.asignatura = asignatura;
+	}
+
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
 	@PrePersist
 	protected void onCreate() {
@@ -93,5 +110,4 @@ public class RespuestaJuego {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	
 }

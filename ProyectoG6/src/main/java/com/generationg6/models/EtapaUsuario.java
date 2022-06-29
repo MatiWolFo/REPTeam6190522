@@ -15,72 +15,63 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+/* INTERTABLE ETAPA USUARIO*/
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "preguntas_etapas")
-public class RespuestaJuego {
-
-	/* OBJETO Y ATRIBUTO */
+@Table(name = "etapas_usuarios")
+public class EtapaUsuario {
+	
+	/*ATRIBUTOS*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String respuesta;
-	private String descripcion;
 	/* COLUMNAS CREATED N UPDATED */
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
 	
-	/* VARIAS RESPUESTAS TIENEN 1 PREGUNTA MANY TO ONE */
+	/*MANYTOMANY = 2 MANYTOONE*/
+	/*MANYTOONE ETAPA*/
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "pregunta_juego_id")
-	/* ATRIBUTO FK COLABORATIVO */
-	private PreguntaJuego preguntaJuego;
+	@JoinColumn(name = "etapa_id")
+	/* ATRIBUTO COLABORATIVO */
+	private Etapa etapa;
 
+	/*MANYTOONE USUARIO*/
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario_id")
+	/* ATRIBUTO COLABORATIVO */
+	private Usuario usuario;
+	
 	/* CONSTRUCTORES */
-	public RespuestaJuego() {
+	public EtapaUsuario() {
 		super();
 	}
-
-	public RespuestaJuego(Long id, String respuesta, String descripcion, PreguntaJuego preguntaJuego) {
+	public EtapaUsuario(Long id, Etapa etapa, Usuario usuario) {
 		super();
 		this.id = id;
-		this.respuesta = respuesta;
-		this.descripcion = descripcion;
-		this.preguntaJuego = preguntaJuego;
+		this.etapa = etapa;
+		this.usuario = usuario;
 	}
-
+	
 	/* GETTERS N SETTERS */
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getRespuesta() {
-		return respuesta;
+	public Etapa getEtapa() {
+		return etapa;
 	}
-
-	public void setRespuesta(String respuesta) {
-		this.respuesta = respuesta;
+	public void setEtapa(Etapa etapa) {
+		this.etapa = etapa;
 	}
-
-	public String getDescripcion() {
-		return descripcion;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public PreguntaJuego getPreguntaJuego() {
-		return preguntaJuego;
-	}
-
-	public void setPreguntaJuego(PreguntaJuego preguntaJuego) {
-		this.preguntaJuego = preguntaJuego;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
@@ -93,5 +84,4 @@ public class RespuestaJuego {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	
 }

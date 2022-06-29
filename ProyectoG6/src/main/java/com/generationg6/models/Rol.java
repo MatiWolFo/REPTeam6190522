@@ -2,52 +2,52 @@ package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "preguntas_etapas")
-public class RespuestaJuego {
-
+@Table(name = "roles")
+public class Rol {
 	/* OBJETO Y ATRIBUTO */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String respuesta;
+	private String nombre;
 	private String descripcion;
 	/* COLUMNAS CREATED N UPDATED */
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
-	
-	/* VARIAS RESPUESTAS TIENEN 1 PREGUNTA MANY TO ONE */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "pregunta_juego_id")
-	/* ATRIBUTO FK COLABORATIVO */
-	private PreguntaJuego preguntaJuego;
+
+	/* 1 ROL TIENE VARIOS USUARIOS ONE TO MANY */
+	@OneToMany(mappedBy = "rol", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+	private List<Usuario> listaUsuarios;
 
 	/* CONSTRUCTORES */
-	public RespuestaJuego() {
+	public Rol() {
 		super();
 	}
 
-	public RespuestaJuego(Long id, String respuesta, String descripcion, PreguntaJuego preguntaJuego) {
+	public Rol(Long id, String nombre, String descripcion, List<Usuario> listaUsuarios) {
 		super();
 		this.id = id;
-		this.respuesta = respuesta;
+		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.preguntaJuego = preguntaJuego;
+		this.listaUsuarios = listaUsuarios;
 	}
 
 	/* GETTERS N SETTERS */
@@ -59,12 +59,12 @@ public class RespuestaJuego {
 		this.id = id;
 	}
 
-	public String getRespuesta() {
-		return respuesta;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setRespuesta(String respuesta) {
-		this.respuesta = respuesta;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getDescripcion() {
@@ -75,14 +75,14 @@ public class RespuestaJuego {
 		this.descripcion = descripcion;
 	}
 
-	public PreguntaJuego getPreguntaJuego() {
-		return preguntaJuego;
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
 	}
 
-	public void setPreguntaJuego(PreguntaJuego preguntaJuego) {
-		this.preguntaJuego = preguntaJuego;
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
-	
+
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
 	@PrePersist
 	protected void onCreate() {
@@ -93,5 +93,5 @@ public class RespuestaJuego {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	
+
 }

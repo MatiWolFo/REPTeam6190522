@@ -17,8 +17,8 @@ import javax.persistence.Table;
 
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "preguntas_etapas")
-public class RespuestaJuego {
+@Table(name = "respuestas_etapas")
+public class RespuestaEtapa {
 
 	/* OBJETO Y ATRIBUTO */
 	@Id
@@ -33,23 +33,23 @@ public class RespuestaJuego {
 	
 	/* VARIAS RESPUESTAS TIENEN 1 PREGUNTA MANY TO ONE */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "pregunta_juego_id")
+	@JoinColumn(name = "pregunta_etapa_id")
 	/* ATRIBUTO FK COLABORATIVO */
-	private PreguntaJuego preguntaJuego;
+	private PreguntaEtapa preguntaEtapa;
 
 	/* CONSTRUCTORES */
-	public RespuestaJuego() {
+	public RespuestaEtapa() {
 		super();
 	}
 
-	public RespuestaJuego(Long id, String respuesta, String descripcion, PreguntaJuego preguntaJuego) {
+	public RespuestaEtapa(Long id, String respuesta, String descripcion, PreguntaEtapa preguntaEtapa) {
 		super();
 		this.id = id;
 		this.respuesta = respuesta;
 		this.descripcion = descripcion;
-		this.preguntaJuego = preguntaJuego;
+		this.preguntaEtapa = preguntaEtapa;
 	}
-
+	
 	/* GETTERS N SETTERS */
 	public Long getId() {
 		return id;
@@ -75,12 +75,12 @@ public class RespuestaJuego {
 		this.descripcion = descripcion;
 	}
 
-	public PreguntaJuego getPreguntaJuego() {
-		return preguntaJuego;
+	public PreguntaEtapa getPreguntaEtapa() {
+		return preguntaEtapa;
 	}
 
-	public void setPreguntaJuego(PreguntaJuego preguntaJuego) {
-		this.preguntaJuego = preguntaJuego;
+	public void setPreguntaEtapa(PreguntaEtapa preguntaEtapa) {
+		this.preguntaEtapa = preguntaEtapa;
 	}
 	
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
