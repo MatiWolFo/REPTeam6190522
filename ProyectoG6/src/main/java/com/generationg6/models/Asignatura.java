@@ -5,17 +5,21 @@ nombre_asignatura varchar(50),
 descripcion_asignatura varchar(100)
 ); */
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Asignatura {
-	
 
 	private int id_asignatura;
 	private String nombre_asignatura;
-	private int descripcion_asignatura;
+	private String descripcion_asignatura;
+
+	private List<Modulos> listaModulos;
 
 	public Asignatura() {
 		super();
 	}
-	public Asignatura(int id_asignatura, String nombre_asignatura, int descripcion_asignatura) {
+	public Asignatura(int id_asignatura, String nombre_asignatura, String descripcion_asignatura) {
 		super();
 		this.id_asignatura = id_asignatura;
 		this.nombre_asignatura = nombre_asignatura;
@@ -38,13 +42,19 @@ public class Asignatura {
 		this.nombre_asignatura = nombre_asignatura;
 	}
 
-	public int getDescripcion_asignatura() {
+	public String getDescripcion_asignatura() {
 		return descripcion_asignatura;
 	}
 
-	public void setDescripcion_asignatura(int descripcion_asignatura) {
+	public void setDescripcion_asignatura(String descripcion_asignatura) {
 		this.descripcion_asignatura = descripcion_asignatura;
 	}
 
+	public List<Modulos> getListaModulos() {
+		return listaModulos;
+	}
 
+	public void setListaModulos(List<Modulos> listaModulos) {
+		this.listaModulos = listaModulos;
+	}
 }

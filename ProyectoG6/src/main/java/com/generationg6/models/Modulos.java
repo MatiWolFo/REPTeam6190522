@@ -7,11 +7,15 @@ package com.generationg6.models;
 		);
 */
 
+import java.util.List;
+
 public class Modulos {
 private int id_modulo;
 private String nombre_modulo;
 private String descripcion_modulo;
 private int id_asignatura;
+
+private List<Contenido> listaContenido;
 
 public Modulos() {
 	super();
@@ -50,5 +54,11 @@ public void setId_asignatura(int id_asignatura) {
 	this.id_asignatura = id_asignatura;
 }
 
-	
+	public List<Contenido> getListaContenido() {
+		return listaContenido;
+	}
+
+	public void setListaContenido(List<Contenido> listaContenido) {
+		this.listaContenido = listaContenido;
+	}
 }

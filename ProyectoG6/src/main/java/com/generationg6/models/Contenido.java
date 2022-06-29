@@ -7,11 +7,15 @@ descripcion_contenido varchar(100),
 id_modulo int
 );*/
 
+import java.util.List;
+
 public class Contenido {
 	private int id_contenido;
 	private String nombre_contenido;
 	private String descripcion_contenido;
 	private int id_modulo;
+
+	private List<Etapas> listaEtapas;
 	
 	public Contenido() {
 		super();
@@ -51,6 +55,17 @@ public class Contenido {
 			this.id_modulo = id_modulo;
 		}
 
+	public int getId_contenido() {
+		return id_contenido;
 	}
+
+	public List<Etapas> getListaEtapas() {
+		return listaEtapas;
+	}
+
+	public void setListaEtapas(List<Etapas> listaEtapas) {
+		this.listaEtapas = listaEtapas;
+	}
+}
 	
 
