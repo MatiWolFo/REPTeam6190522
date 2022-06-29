@@ -1,6 +1,8 @@
 # REPTeam6190522
 Hola Equipo 6
 ## CONTROL DE CAMBIOS
+### Fecha 28/06/22
+- Relaciones agregadas a clases
 ### Fecha 16/06/22
 - PROYECTOG6 con clases y script diagrama DB agregados a main
 ### Fecha 16/06/22
