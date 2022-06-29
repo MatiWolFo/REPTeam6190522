@@ -52,13 +52,63 @@ public class Juego {
 	@OneToMany(mappedBy = "juego", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
 	private List<PreguntaJuego> listaPreguntaJuegos;
-	
-	
-	
+
 	/* CONSTRUCTORES */
-	
+	public Juego() {
+		super();
+	}
+
+	public Juego(Long id, String nombre, String descripcion, List<Etapa> etapas,
+			List<PreguntaJuego> listaPreguntaJuegos) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.etapas = etapas;
+		this.listaPreguntaJuegos = listaPreguntaJuegos;
+	}
+
 	/* GETTERS N SETTERS */
-	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public List<Etapa> getEtapas() {
+		return etapas;
+	}
+
+	public void setEtapas(List<Etapa> etapas) {
+		this.etapas = etapas;
+	}
+
+	public List<PreguntaJuego> getListaPreguntaJuegos() {
+		return listaPreguntaJuegos;
+	}
+
+	public void setListaPreguntaJuegos(List<PreguntaJuego> listaPreguntaJuegos) {
+		this.listaPreguntaJuegos = listaPreguntaJuegos;
+	}
+
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
 	@PrePersist
 	protected void onCreate() {
