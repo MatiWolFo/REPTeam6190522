@@ -37,7 +37,7 @@ public class Juego {
 	private Date updatedAt;
 	
 	/* MANYTOMANY ETAPAJUEGO */
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			/* EL NOMBRE ENTITY DE LA INTERTABLE */
 			name = "etapas_juegos",
@@ -58,14 +58,11 @@ public class Juego {
 		super();
 	}
 
-	public Juego(Long id, String nombre, String descripcion, List<Etapa> etapas,
-			List<PreguntaJuego> listaPreguntaJuegos) {
+	public Juego(Long id, String nombre, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.etapas = etapas;
-		this.listaPreguntaJuegos = listaPreguntaJuegos;
 	}
 
 	/* GETTERS N SETTERS */

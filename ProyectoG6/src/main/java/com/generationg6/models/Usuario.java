@@ -4,6 +4,7 @@ package com.generationg6.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -43,9 +45,19 @@ public class Usuario {
 	@JoinColumn(name = "rol_id")
 	/* ATRIBUTO FK COLABORATIVO */
 	private Rol rol;
-
+	
+	/* 1 USUARIO TIENE VARIAS RESPUESTAS DE ETAPAS */
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+	private List<RespuestaEtapa> listaRespuestaEtapas;
+	
+	/* 1 USUARIO TIENE VARIAS RESPUESTAS DE JUEGOS */
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+	private List<RespuestaJuego> listaRespuestaJuegos;
+	
 	/* MANYTOMANY ETAPAUSUARIO */
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			/* EL NOMBRE ENTITY DE LA INTERTABLE */
 			name = "etapas_usuarios",
@@ -62,7 +74,7 @@ public class Usuario {
 	}
 
 	public Usuario(Long id, String nombre, String apellido, Integer edad, String email, String username,
-			String password, Rol rol, List<Etapa> etapas) {
+			String password) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -71,8 +83,6 @@ public class Usuario {
 		this.email = email;
 		this.username = username;
 		this.password = password;
-		this.rol = rol;
-		this.etapas = etapas;
 	}
 
 	/* GETTERS N SETTERS */
@@ -146,6 +156,22 @@ public class Usuario {
 
 	public void setEtapas(List<Etapa> etapas) {
 		this.etapas = etapas;
+	}
+
+	public List<RespuestaEtapa> getListaRespuestaEtapas() {
+		return listaRespuestaEtapas;
+	}
+
+	public void setListaRespuestaEtapas(List<RespuestaEtapa> listaRespuestaEtapas) {
+		this.listaRespuestaEtapas = listaRespuestaEtapas;
+	}
+
+	public List<RespuestaJuego> getListaRespuestaJuegos() {
+		return listaRespuestaJuegos;
+	}
+
+	public void setListaRespuestaJuegos(List<RespuestaJuego> listaRespuestaJuegos) {
+		this.listaRespuestaJuegos = listaRespuestaJuegos;
 	}
 
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */

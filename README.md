@@ -1,6 +1,9 @@
 # REPTeam6190522
 Hola Equipo 6
 ## CONTROL DE CAMBIOS
+### Fecha 29/06/22
+- UPDATED relaciones, repositorios
+- ADDED script, diagrama, services
 ### Fecha 28/06/22
 - Relaciones y repositorios agregados a clases
 ### Fecha 16/06/22

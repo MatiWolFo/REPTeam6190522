@@ -48,11 +48,9 @@ public class EtapaJuego {
 		super();
 	}
 
-	public EtapaJuego(Long id, Etapa etapa, Juego juego) {
+	public EtapaJuego(Long id) {
 		super();
 		this.id = id;
-		this.etapa = etapa;
-		this.juego = juego;
 	}
 	
 	/* GETTERS N SETTERS */

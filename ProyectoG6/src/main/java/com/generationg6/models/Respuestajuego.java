@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "preguntas_etapas")
+@Table(name = "respuestas_juegos")
 public class RespuestaJuego {
 
 	/* OBJETO Y ATRIBUTO */
@@ -36,18 +36,23 @@ public class RespuestaJuego {
 	@JoinColumn(name = "pregunta_juego_id")
 	/* ATRIBUTO FK COLABORATIVO */
 	private PreguntaJuego preguntaJuego;
+	
+	/* VARIAS RESPUESTAS TIENEN 1 USUARIO MANY TO ONE */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuarioa_id")
+	/* ATRIBUTO FK COLABORATIVO */
+	private Usuario usuario;
 
 	/* CONSTRUCTORES */
 	public RespuestaJuego() {
 		super();
 	}
 
-	public RespuestaJuego(Long id, String respuesta, String descripcion, PreguntaJuego preguntaJuego) {
+	public RespuestaJuego(Long id, String respuesta, String descripcion) {
 		super();
 		this.id = id;
 		this.respuesta = respuesta;
 		this.descripcion = descripcion;
-		this.preguntaJuego = preguntaJuego;
 	}
 
 	/* GETTERS N SETTERS */
@@ -83,6 +88,14 @@ public class RespuestaJuego {
 		this.preguntaJuego = preguntaJuego;
 	}
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
 	@PrePersist
 	protected void onCreate() {

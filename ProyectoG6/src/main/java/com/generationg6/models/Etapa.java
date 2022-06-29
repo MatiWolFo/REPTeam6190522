@@ -39,7 +39,7 @@ public class Etapa {
 	
 	
 	/* MANYTOMANY ETAPAUSUARIO */
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			/* EL NOMBRE ENTITY DE LA INTERTABLE */
 			name = "etapas_usuarios",
@@ -51,7 +51,7 @@ public class Etapa {
 	private List<Usuario> usuarios;
 	
 	/* MANYTOMANY ETAPAJUEGO */
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			/* EL NOMBRE ENTITY DE LA INTERTABLE */
 			name = "etapas_juegos",
@@ -78,16 +78,11 @@ public class Etapa {
 		super();
 	}
 
-	public Etapa(Long id, String nombre, String descripcion, List<Usuario> usuarios, List<Juego> juegos,
-			Contenido contenido, List<PreguntaEtapa> listaPreguntaEtapas) {
+	public Etapa(Long id, String nombre, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.usuarios = usuarios;
-		this.juegos = juegos;
-		this.contenido = contenido;
-		this.listaPreguntaEtapas = listaPreguntaEtapas;
 	}
 	
 	/* GETTERS N SETTERS */

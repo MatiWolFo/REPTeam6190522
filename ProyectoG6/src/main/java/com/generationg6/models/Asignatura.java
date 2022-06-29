@@ -42,12 +42,11 @@ public class Asignatura {
 		super();
 	}
 
-	public Asignatura(Long id, String nombre, String descripcion, List<Modulo> listaModulos) {
+	public Asignatura(Long id, String nombre, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.listaModulos = listaModulos;
 	}
 	
 	/* GETTERS N SETTERS */

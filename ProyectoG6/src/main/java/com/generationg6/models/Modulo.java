@@ -50,13 +50,11 @@ public class Modulo {
 		super();
 	}
 
-	public Modulo(Long id, String nombre, String descripcion, List<Contenido> listaContenidos, Asignatura asignatura) {
+	public Modulo(Long id, String nombre, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.listaContenidos = listaContenidos;
-		this.asignatura = asignatura;
 	}
 
 	/* GETTERS N SETTERS */
