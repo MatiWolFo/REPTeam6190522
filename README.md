@@ -1,6 +1,8 @@
 # REPTeam6190522
 Hola Equipo 6
 ## CONTROL DE CAMBIOS
+### Fecha 28/06/22
+- Relaciones agregadas a clases
 ### Fecha 17/06/22
 - Agregada imagen de DB
 ### Fecha 16/06/22
