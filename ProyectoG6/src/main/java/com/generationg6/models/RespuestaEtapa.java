@@ -36,18 +36,23 @@ public class RespuestaEtapa {
 	@JoinColumn(name = "pregunta_etapa_id")
 	/* ATRIBUTO FK COLABORATIVO */
 	private PreguntaEtapa preguntaEtapa;
+	
+	/* VARIAS RESPUESTAS TIENEN 1 USUARIO MANY TO ONE */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario_id")
+	/* ATRIBUTO FK COLABORATIVO */
+	private Usuario usuario;
 
 	/* CONSTRUCTORES */
 	public RespuestaEtapa() {
 		super();
 	}
 
-	public RespuestaEtapa(Long id, String respuesta, String descripcion, PreguntaEtapa preguntaEtapa) {
+	public RespuestaEtapa(Long id, String respuesta, String descripcion) {
 		super();
 		this.id = id;
 		this.respuesta = respuesta;
 		this.descripcion = descripcion;
-		this.preguntaEtapa = preguntaEtapa;
 	}
 	
 	/* GETTERS N SETTERS */
@@ -83,6 +88,14 @@ public class RespuestaEtapa {
 		this.preguntaEtapa = preguntaEtapa;
 	}
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
 	@PrePersist
 	protected void onCreate() {

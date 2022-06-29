@@ -2,6 +2,9 @@
 Hola Equipo 6
 ## CONTROL DE CAMBIOS
 ### Fecha 28/06/22
+- UPDATED relaciones, repositorios
+- ADDED services, diagrama ver2
+### Fecha 28/06/22
 - Relaciones y repositorios agregados a clases
 ### Fecha 17/06/22
 - Agregada imagen de DB

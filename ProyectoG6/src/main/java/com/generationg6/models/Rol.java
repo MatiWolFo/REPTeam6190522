@@ -42,12 +42,11 @@ public class Rol {
 		super();
 	}
 
-	public Rol(Long id, String nombre, String descripcion, List<Usuario> listaUsuarios) {
+	public Rol(Long id, String nombre, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.listaUsuarios = listaUsuarios;
 	}
 
 	/* GETTERS N SETTERS */

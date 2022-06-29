@@ -49,14 +49,11 @@ public class PreguntaJuego {
 		super();
 	}
 
-	public PreguntaJuego(Long id, String pregunta, String descripcion, Juego juego,
-			List<RespuestaJuego> listaRespuestaJuegos) {
+	public PreguntaJuego(Long id, String pregunta, String descripcion) {
 		super();
 		this.id = id;
 		this.pregunta = pregunta;
 		this.descripcion = descripcion;
-		this.juego = juego;
-		this.listaRespuestaJuegos = listaRespuestaJuegos;
 	}
 
 	/* GETTERS N SETTERS */

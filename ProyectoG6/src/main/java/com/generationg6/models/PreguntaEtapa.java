@@ -50,14 +50,11 @@ public class PreguntaEtapa {
 		super();
 	}
 
-	public PreguntaEtapa(Long id, String pregunta, String descripcion, Etapa etapa,
-			List<RespuestaEtapa> listaRespuestaEtapas) {
+	public PreguntaEtapa(Long id, String pregunta, String descripcion) {
 		super();
 		this.id = id;
 		this.pregunta = pregunta;
 		this.descripcion = descripcion;
-		this.etapa = etapa;
-		this.listaRespuestaEtapas = listaRespuestaEtapas;
 	}
 
 	/* GETTERS N SETTERS */

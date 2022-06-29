@@ -47,11 +47,9 @@ public class EtapaUsuario {
 	public EtapaUsuario() {
 		super();
 	}
-	public EtapaUsuario(Long id, Etapa etapa, Usuario usuario) {
+	public EtapaUsuario(Long id) {
 		super();
 		this.id = id;
-		this.etapa = etapa;
-		this.usuario = usuario;
 	}
 	
 	/* GETTERS N SETTERS */
