@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*BORRA LA DATABASE SI ES QUE EXISTE*/
 drop database if exists generationG6kidsdnd;
 
@@ -7,6 +6,11 @@ create database generationG6kidsdnd;
 
 /*LA SELECCIONA PARA USARLA*/
 use generationG6kidsdnd;
+
+create table etapa_pregunta_etapa(
+    id_etapa int  NOT NULL ,
+    id_pregunta_etapa int NOT NULL
+);
 
 /*CREACION DE TABLAS CON SUS ATRIBUTOS*/
 CREATE TABLE rolesUsuarios(
@@ -294,7 +298,9 @@ ALTER TABLE usuarios ADD CONSTRAINT FK_rol1ID FOREIGN KEY (id_rol_usuario) REFER
 /*RELACION ENTRE TABLA ETAPAS CON TABLA CONTENIDOS*/
 ALTER TABLE etapas ADD CONSTRAINT FK_contenido1ID FOREIGN KEY (id_contenido) REFERENCES contenidos(id_contenido);
 /*RELACION ENTRE TABLA etapas CON TABLA preguntas de etapa*/
-ALTER TABLE etapas ADD CONSTRAINT FK_validacionEtapa1ID FOREIGN KEY (id_validacion_respuesta_etapa) REFERENCES validacionRespuestasEtapas(id_validacion_respuesta_etapa);
+
+ALTER TABLE etapa_pregunta_etapa add constraint FK_id_etapa_etapa_pregunta_etapa Foreign Key (id_etapa) references etapas(id_etapa);
+ALTER TABLE etapa_pregunta_etapa add constraint FK_id_pregunta_etapa_etapa_pregunta_etapa Foreign Key (id_pregunta_etapa) references preguntasetapas(id_pregunta_etapa);
 /*RELACION ENTRE TABLA contenidos CON TABLA modulos*/
 ALTER TABLE contenidos ADD CONSTRAINT FK_modulo1ID FOREIGN KEY (id_modulo) REFERENCES modulos(id_modulo);
 /*RELACION ENTRE TABLA preguntas de etapa CON TABLA de respuestas de etapa, COMENTADA POR mati.
