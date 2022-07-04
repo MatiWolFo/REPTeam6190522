@@ -1,0 +1,159 @@
+/*Estilos generales */
+
+* {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #21a6ff;
+    color: aliceblue;
+}
+
+main {
+    margin: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #21a6ff;
+}
+
+.img {
+    margin: 1px;
+    width: 50%;
+}
+
+h1 {
+    font-size: 5em;
+    margin: 25px;
+}
+
+
+/*Nav bar*/
+
+.kd {
+    display: flex;
+    flex-direction: row;
+    border-radius: 50px;
+}
+
+.k {
+    color: rgb(255, 0, 0);
+    margin-top: 37px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.i {
+    color: yellow;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.d {
+    color: blue;
+    margin-top: 45px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.s {
+    color: rgb(2, 254, 2);
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.D1 {
+    color: rgb(136, 0, 154);
+    margin-left: 50px;
+    margin-top: 50px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.y {
+    color: yellow;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.D2 {
+    color: rgb(250, 137, 8);
+    margin-top: 35px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.nompag {
+    display: flex;
+    flex-direction: row;
+}
+
+footer {
+    text-align: center;
+}
+
+.img-tw,
+.img-ig,
+.img-fb {
+    margin: 80px 10px 0px;
+    width: 3%;
+}
+
+
+/*Estilos index*/
+
+
+/*por ahora está vacío*/
+
+
+/*Estilo Nosotros*/
+
+.MiR,
+.PR,
+.MaR,
+.DM,
+.AV {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.ID {
+    width: 25%;
+    border-radius: 1000px;
+}
+
+.name {
+    margin-top: 50px;
+    color: yellow;
+}
+
+
+/*Contacto*/
+
+.tabla table {
+    list-style-type: square;
+    font-size: 1em;
+    font-weight: 50;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+/*Estilos Registro*/
+
+.registro {
+    display: flex;
+    flex-direction: row;
+}
+
+.img-est {
+    width: 50%;
+}
+
+.img-profe {
+    width: 50%;
+}
+
+.img-padre {
+    width: 72%;
+}
+
+
+/*estilos codigo*/
+
+.codino {
+    display: flex;
+    flex-direction: row;
+}
