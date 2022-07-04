@@ -1,6 +1,5 @@
 package com.generationg6.models;
 
-/* IMPORTAR LIBRERIAS */
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -18,37 +19,43 @@ import javax.persistence.Table;
 
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "asignaturas")
-public class Asignatura {
+@Table(name = "preguntas_juegos")
+public class PreguntaJuego {
 
 	/* OBJETO Y ATRIBUTO */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nombre;
+	private String pregunta;
 	private String descripcion;
 	/* COLUMNAS CREATED N UPDATED */
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
-	
-	/* 1 ASIGNATURA TIENE VARIOS MODULOS ONE TO MANY */
-	@OneToMany(mappedBy = "asignatura", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+	/* VARIAS PREGUNTAS TIENEN 1 JUEGO MANY TO ONE */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "juego_id")
+	/* ATRIBUTO FK COLABORATIVO */
+	private Juego juego;
+
+	/* 1 PREGUNTA TIENE VARIAS RESPUESTAS ONE TO MANY */
+	@OneToMany(mappedBy = "preguntaJuego", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<Modulo> listaModulos;
-	
+	private List<RespuestaJuego> listaRespuestaJuegos;
+
 	/* CONSTRUCTORES */
-	public Asignatura() {
+	public PreguntaJuego() {
 		super();
 	}
 
-	public Asignatura(Long id, String nombre, String descripcion) {
+	public PreguntaJuego(Long id, String pregunta, String descripcion) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
+		this.pregunta = pregunta;
 		this.descripcion = descripcion;
 	}
-	
+
 	/* GETTERS N SETTERS */
 	public Long getId() {
 		return id;
@@ -58,12 +65,12 @@ public class Asignatura {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getPregunta() {
+		return pregunta;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setPregunta(String pregunta) {
+		this.pregunta = pregunta;
 	}
 
 	public String getDescripcion() {
@@ -74,12 +81,20 @@ public class Asignatura {
 		this.descripcion = descripcion;
 	}
 
-	public List<Modulo> getListaModulos() {
-		return listaModulos;
+	public Juego getJuego() {
+		return juego;
 	}
 
-	public void setListaModulos(List<Modulo> listaModulos) {
-		this.listaModulos = listaModulos;
+	public void setJuego(Juego juego) {
+		this.juego = juego;
+	}
+
+	public List<RespuestaJuego> getListaRespuestaJuegos() {
+		return listaRespuestaJuegos;
+	}
+
+	public void setListaRespuestaJuegos(List<RespuestaJuego> listaRespuestaJuegos) {
+		this.listaRespuestaJuegos = listaRespuestaJuegos;
 	}
 
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
@@ -92,5 +107,4 @@ public class Asignatura {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	
 }

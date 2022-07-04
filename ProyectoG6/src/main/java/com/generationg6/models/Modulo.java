@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -18,8 +20,8 @@ import javax.persistence.Table;
 
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "asignaturas")
-public class Asignatura {
+@Table(name = "modulos")
+public class Modulo {
 
 	/* OBJETO Y ATRIBUTO */
 	@Id
@@ -31,24 +33,30 @@ public class Asignatura {
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
-	
-	/* 1 ASIGNATURA TIENE VARIOS MODULOS ONE TO MANY */
-	@OneToMany(mappedBy = "asignatura", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+	/* 1 MODULO TIENE VARIOS CONTENIDOS ONE TO MANY */
+	@OneToMany(mappedBy = "modulo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<Modulo> listaModulos;
-	
+	private List<Contenido> listaContenidos;
+
+	/* VARIOS MODULOS TIENEN 1 ASIGNATURA MANY TO ONE */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "asignatura_id")
+	/* ATRIBUTO FK COLABORATIVO */
+	private Asignatura asignatura;
+
 	/* CONSTRUCTORES */
-	public Asignatura() {
+	public Modulo() {
 		super();
 	}
 
-	public Asignatura(Long id, String nombre, String descripcion) {
+	public Modulo(Long id, String nombre, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
-	
+
 	/* GETTERS N SETTERS */
 	public Long getId() {
 		return id;
@@ -74,12 +82,20 @@ public class Asignatura {
 		this.descripcion = descripcion;
 	}
 
-	public List<Modulo> getListaModulos() {
-		return listaModulos;
+	public List<Contenido> getListaContenidos() {
+		return listaContenidos;
 	}
 
-	public void setListaModulos(List<Modulo> listaModulos) {
-		this.listaModulos = listaModulos;
+	public void setListaContenidos(List<Contenido> listaContenidos) {
+		this.listaContenidos = listaContenidos;
+	}
+
+	public Asignatura getAsignatura() {
+		return asignatura;
+	}
+
+	public void setAsignatura(Asignatura asignatura) {
+		this.asignatura = asignatura;
 	}
 
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
@@ -92,5 +108,4 @@ public class Asignatura {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	
 }

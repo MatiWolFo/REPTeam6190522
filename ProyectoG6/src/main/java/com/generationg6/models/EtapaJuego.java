@@ -1,50 +1,91 @@
 package com.generationg6.models;
 
-/*CREATE TABLE  EtapaJuego(
-id_etapa_juego int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-id_etapas int,
-id_juego int
-);*/
+/* IMPORTAR LIBRERIAS */
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+
+/* INTERTABLE ETAPA USUARIO*/
+/* CREAR ENTIDAD */
+@Entity
+@Table(name = "etapas_juegos")
 public class EtapaJuego {
+	
+	/*ATRIBUTOS*/
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	/* COLUMNAS CREATED N UPDATED */
+	@Column(updatable = false)
+	private Date createdAt;
+	private Date updatedAt;
+	
+	/*MANYTOMANY = 2 MANYTOONE*/
+	/*MANYTOONE ETAPA*/
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "etapa_id")
+	/* ATRIBUTO COLABORATIVO */
+	private Etapa etapa;
 
-	private int id_etapa_juego;
-	private int id_etapas;
-	private int id_juego;
-
+	/*MANYTOONE USUARIO*/
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "juego_id")
+	/* ATRIBUTO COLABORATIVO */
+	private Juego juego;
+	
+	/* CONSTRUCTORES */
 	public EtapaJuego() {
 		super();
 	}
 
-	
-	public EtapaJuego(int id_etapa_juego, int id_etapas, int id_juego) {
+	public EtapaJuego(Long id) {
 		super();
-
-		this.id_etapa_juego = id_etapa_juego;
-		this.id_etapas = id_etapas;
-		this.id_juego = id_juego;
-	}
-
-	public int getId_etapa_juego() {
-		return id_etapa_juego;
-	}
-	public void setId_etapa_juego(int id_etapa_juego) {
-		this.id_etapa_juego = id_etapa_juego;
+		this.id = id;
 	}
 	
-	public int getId_etapa() {
-		return id_etapas;
-	}
-	public void setId_etapa(int id_etapa) {
-		this.id_etapas = id_etapa;
-	}
-	
-	public int getId_juego() {
-		return id_juego;
-	}
-	public void setId_juego(int id_juego) {
-		this.id_juego = id_juego;
-	}
-	
+	/* GETTERS N SETTERS */
+	public Long getId() {
+		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Etapa getEtapa() {
+		return etapa;
+	}
+
+	public void setEtapa(Etapa etapa) {
+		this.etapa = etapa;
+	}
+
+	public Juego getJuego() {
+		return juego;
+	}
+
+	public void setJuego(Juego juego) {
+		this.juego = juego;
+	}
+
+	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
+}

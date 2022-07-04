@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -18,9 +19,8 @@ import javax.persistence.Table;
 
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "asignaturas")
-public class Asignatura {
-
+@Table(name = "roles")
+public class Rol {
 	/* OBJETO Y ATRIBUTO */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,24 +31,24 @@ public class Asignatura {
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
-	
-	/* 1 ASIGNATURA TIENE VARIOS MODULOS ONE TO MANY */
-	@OneToMany(mappedBy = "asignatura", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+	/* 1 ROL TIENE VARIOS USUARIOS ONE TO MANY */
+	@OneToMany(mappedBy = "rol", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<Modulo> listaModulos;
-	
+	private List<Usuario> listaUsuarios;
+
 	/* CONSTRUCTORES */
-	public Asignatura() {
+	public Rol() {
 		super();
 	}
 
-	public Asignatura(Long id, String nombre, String descripcion) {
+	public Rol(Long id, String nombre, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
-	
+
 	/* GETTERS N SETTERS */
 	public Long getId() {
 		return id;
@@ -74,12 +74,12 @@ public class Asignatura {
 		this.descripcion = descripcion;
 	}
 
-	public List<Modulo> getListaModulos() {
-		return listaModulos;
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
 	}
 
-	public void setListaModulos(List<Modulo> listaModulos) {
-		this.listaModulos = listaModulos;
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
 
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
@@ -92,5 +92,5 @@ public class Asignatura {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	
+
 }
