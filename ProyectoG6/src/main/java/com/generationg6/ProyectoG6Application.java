@@ -9,4 +9,5 @@ public class ProyectoG6Application {
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoG6Application.class, args);
 	}
+
 }
