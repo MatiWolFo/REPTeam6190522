@@ -2,33 +2,46 @@ package com.generationg6.models;
 
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="usuarios")
-
-
-
 public class Usuario {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
+
     private String nombre;
+
     private String apellido;
+
     private Integer edad;
+
     private String rut;
+
     private String email;
+
     private String username;
+
     private String password;
 
+@OneToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "id_rol", referencedColumnName = "id")
+private Roles rol;
+//Este rol corresponde a "rol" del .jsp
 
+
+    @Column(updatable = false)
+    private Date updatedAt;
+    private Date createdAt;
 
     public Usuario() {
         super();
     }
 
-    public Usuario(Long id, String nombre, String apellido, Integer edad, String rut,
-                   String email, String username, String password, Integer id_rol_usuario) {
+    public Usuario(Long id, String nombre, String apellido, Integer edad, String rut, String email, String username, String password) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -44,8 +57,8 @@ public class Usuario {
         return id;
     }
 
-    public void setId(Long id_usuario) {
-        this.id = id_usuario;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -104,5 +117,20 @@ public class Usuario {
         this.password = password;
     }
 
+    public Roles getRol() {
+        return rol;
+    }
 
+    public void setRol(Roles rol) {
+        this.rol = rol;
+    }
+
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
 }

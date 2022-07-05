@@ -45,8 +45,9 @@
         <form:label path="rut">RUT:</form:label>
         <form:input type="text" path="rut" />
         <br>
-
-
+        <form:select  path = "rolesUsuarios">
+            <form:option value="0">Seleccione su tipo de usuario</form:option>
+        </form:select>
         <input type="submit" value="Editar">
     </form:form>
 </div>

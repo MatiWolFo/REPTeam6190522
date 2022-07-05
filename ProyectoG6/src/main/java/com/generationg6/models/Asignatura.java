@@ -1,55 +1,62 @@
 package com.generationg6.models;
-/*CREATE TABLE asignaturas(
-id_asignatura int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-nombre_asignatura varchar(50),
-id_modulo int,
-id_usuario int
-);*/
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "asignaturas")
 public class Asignatura {
 
-	private int id_asignatura;
-	private String nombre_asignatura;
-	private int id_modulo;
-	private int id_usuario;
-	
-	public Asignatura() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-		super();
-	}
-	
-	public Asignatura(int id_asignatura, String nombre_asignatura, int id_modulo, int id_usuario) {
-	super();
-	
-		this.id_asignatura= id_asignatura;
-		this.nombre_asignatura= nombre_asignatura;
-		this.id_modulo= id_modulo;
-		this.id_usuario= id_usuario;
-		
-	}
+    private String nombre;
 
-	public int getId_asignatura() {
-		return id_asignatura;
-	}
-	public void setId_asignatura(int id_asignatura) {
-		this.id_asignatura = id_asignatura;
-	}
-	public String getNombre_asignatura() {
-		return nombre_asignatura;
-	}
-	public void setNombre_asignatura(String nombre_asignatura) {
-		this.nombre_asignatura = nombre_asignatura;
-	}
-	public int getId_modulo() {
-		return id_modulo;
-	}
-	public void setId_modulo(int id_modulo) {
-		this.id_modulo = id_modulo;
-	}
-	public int getId_usuario() {
-		return id_usuario;
-	}
-	public void setId_usuario(int id_usuario) {
-		this.id_usuario = id_usuario;
-	}
+    private String descripcion;
+
+    @OneToMany(mappedBy = "asignatura")
+    private List<Modulos> modulosList;
+
+    public Asignatura() {
+        super();
+    }
+
+    public Asignatura(Long id, String nombre, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public List<Modulos> getModulosList() {
+        return modulosList;
+    }
+
+    public void setModulosList(List<Modulos> modulosList) {
+        this.modulosList = modulosList;
+    }
 }

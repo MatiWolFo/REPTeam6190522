@@ -1,46 +1,64 @@
 package com.generationg6.models;
-/*CREATE TABLE  roles(
-		id_roles int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-		nombre_rol varchar(30),
-		descripcion varchar(50)
-		);*/
-		
+
+
+import org.hibernate.annotations.NaturalId;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "roles")
 public class Roles {
-	
-	private int id_roles;
-	private String nombre_modulo;
+	@Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String nombre;
 	private String descripcion;
-	 
+
+	@OneToOne
+	private Usuario usuario;
+
 
 	public Roles() {
 		super();
 	}
 
-	
-	public Roles(int id_roles, String nombre_modulo, String descripcion) {
-		super();
-
-		this.id_roles = id_roles;
-		this.nombre_modulo = nombre_modulo;
+	public Roles(Long id, String nombre, String descripcion) {
+		this.id = id;
+		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
 
-	public int getId_roles() {
-		return id_roles;
+	public Long getId() {
+		return id;
 	}
-	public void setId_roles(int id_roles) {
-		this.id_roles = id_roles;
-}
-	public String getNombre_modulo() {
-		return nombre_modulo;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public void setNombre_modulo(String nombre_modulo) {
-		this.nombre_modulo = nombre_modulo;
-}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion= descripcion;
-}
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+
 }

@@ -3,6 +3,8 @@ package com.generationg6.controllers;
 
 import javax.validation.Valid;
 
+import com.generationg6.models.Roles;
+import com.generationg6.services.RolesService;
 import com.generationg6.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,16 +21,20 @@ import java.util.List;
 
 
 @Controller()
-
-
 public class RegistroController {
 
 	@Autowired
+	RolesService rolesService;
+
+	@Autowired
+
 	UsuarioService usuarioService;
 
-
 	@RequestMapping ("/home/registro")
-	public String registro(@ModelAttribute("usuario") Usuario usuario){//Objeto Usuario esta vacio
+	public String registro(@ModelAttribute("usuario") Usuario usuario, Model model){
+
+		List<Roles> listaRoles = rolesService.findAll();
+		model.addAttribute("listaRoles", listaRoles);
 
 		return "registroUsuario.jsp";
 	}
@@ -36,6 +42,7 @@ public class RegistroController {
 
 	@RequestMapping ("/home/registro/mostrar")
 	public String mostrar( Model model){//Objeto Usuario esta vacio
+
 		List<Usuario> listaUsuario = usuarioService.findAll();
 		model.addAttribute("ListaUsuarios", listaUsuario);
 		return "mostrarUsuario.jsp";
@@ -64,13 +71,15 @@ public class RegistroController {
 
 		Usuario usuario= usuarioService.buscarId(id);
 		model.addAttribute("usuario", usuario);
+		List<Usuario> listaUsuario = usuarioService.findAll();
+		model.addAttribute("ListaUsuarios", listaUsuario);
 		return "editarregistroUsuario.jsp";
 
 	}
 
 	//Para actualizar la BBDD
 	@PostMapping("home/registro/actualizar/{id}")
-	public String actualizarRegistro(@PathVariable("id") Long id, @Valid @ModelAttribute("usuario") Usuario usuario, //Objeto Usuario esta vacio
+	public String actualizarRegistro(@PathVariable("id") Long id, @Valid @ModelAttribute("usuario") Usuario usuario,
 									 BindingResult resultado,
 									 Model model) {
 
