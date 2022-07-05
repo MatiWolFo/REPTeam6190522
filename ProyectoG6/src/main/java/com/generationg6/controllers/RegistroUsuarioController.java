@@ -12,24 +12,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller()
 @RequestMapping("/home")
 
+
 public class RegistroUsuarioController {
 
-    /*@Autowired
+@Autowired
     RegistroUsuario registroUsuarioService;
 
-    @RequestMapping("/home/registro")
+
+@RequestMapping("/home/registro")
     public String registro(@ModelAttribute("usuario") Usuarios usuario,
-                           BindingResult result, Model model) {
+                           BindingResult result, Model model){
 
-        if (result.hasErrors()) {
+    if(result.hasErrors()){
 
 
-        }
-    }*/
+
+
+
+
+
+
+    }
+
+
+
+
+
 }
-
-
-
 
 
 
