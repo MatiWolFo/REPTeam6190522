@@ -15,42 +15,33 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
-/* INTERTABLE ETAPA USUARIO*/
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "etapas_juegos")
-public class EtapaJuego {
-	
-	/*ATRIBUTOS*/
+@Table(name = "alternativas")
+public class Alternativa {
+
+	/* OBJETO Y ATRIBUTO */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String respuesta;
+	private String descripcion;
 	/* COLUMNAS CREATED N UPDATED */
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
-	
-	/*MANYTOMANY = 2 MANYTOONE*/
-	/*MANYTOONE ETAPA*/
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "etapa_id")
-	/* ATRIBUTO COLABORATIVO */
-	private Etapa etapa;
 
-	/*MANYTOONE USUARIO*/
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "juego_id")
-	/* ATRIBUTO COLABORATIVO */
-	private Juego juego;
-	
+
 	/* CONSTRUCTORES */
-	public EtapaJuego() {
+	public Alternativa() {
 		super();
 	}
 
-	public EtapaJuego(Long id) {
+	public Alternativa(Long id, String respuesta, String descripcion) {
 		super();
 		this.id = id;
+		this.respuesta = respuesta;
+		this.descripcion = descripcion;
 	}
 	
 	/* GETTERS N SETTERS */
@@ -62,20 +53,36 @@ public class EtapaJuego {
 		this.id = id;
 	}
 
-	public Etapa getEtapa() {
-		return etapa;
+	public String getRespuesta() {
+		return respuesta;
 	}
 
-	public void setEtapa(Etapa etapa) {
-		this.etapa = etapa;
+	public void setRespuesta(String respuesta) {
+		this.respuesta = respuesta;
 	}
 
-	public Juego getJuego() {
-		return juego;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setJuego(Juego juego) {
-		this.juego = juego;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Pregunta getPregunta() {
+		return pregunta;
+	}
+
+	public void setPregunta(Pregunta pregunta) {
+		this.pregunta = pregunta;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
@@ -88,4 +95,5 @@ public class EtapaJuego {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+	
 }

@@ -41,7 +41,7 @@ public class Modulo {
 
 	/* VARIOS MODULOS TIENEN 1 ASIGNATURA MANY TO ONE */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "asignatura_id")
+	@JoinColumn(name = "id_asignatura")
 	/* ATRIBUTO FK COLABORATIVO */
 	private Asignatura asignatura;
 

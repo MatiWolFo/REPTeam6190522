@@ -39,7 +39,7 @@ public class RespuestaJuego {
 	
 	/* VARIAS RESPUESTAS TIENEN 1 USUARIO MANY TO ONE */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuarioa_id")
+	@JoinColumn(name = "id_usuario")
 	/* ATRIBUTO FK COLABORATIVO */
 	private Usuario usuario;
 

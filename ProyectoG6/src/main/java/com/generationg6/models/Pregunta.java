@@ -20,14 +20,14 @@ import javax.persistence.Table;
 
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "preguntas_etapas")
-public class PreguntaEtapa {
+@Table(name = "preguntas")
+public class Pregunta {
 
 	/* OBJETO Y ATRIBUTO */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String pregunta;
+
 	private String descripcion;
 	/* COLUMNAS CREATED N UPDATED */
 	@Column(updatable = false)
@@ -36,21 +36,21 @@ public class PreguntaEtapa {
 	
 	/* VARIAS PREGUNTAS TIENEN 1 ETAPA MANY TO ONE */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "etapa_id")
+	@JoinColumn(name = "id_etapa")
 	/* ATRIBUTO FK COLABORATIVO */
 	private Etapa etapa;
 	
 	/* 1 PREGUNTA TIENE VARIAS RESPUESTAS ONE TO MANY */
-	@OneToMany(mappedBy = "preguntaEtapa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<RespuestaEtapa> listaRespuestaEtapas;
+	private List<Alternativa> listaAlternativa;
 	
 	/* CONSTRUCTORES */
-	public PreguntaEtapa() {
+	public Pregunta() {
 		super();
 	}
 
-	public PreguntaEtapa(Long id, String pregunta, String descripcion) {
+	public Pregunta(Long id, String pregunta, String descripcion) {
 		super();
 		this.id = id;
 		this.pregunta = pregunta;
@@ -64,14 +64,6 @@ public class PreguntaEtapa {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getPregunta() {
-		return pregunta;
-	}
-
-	public void setPregunta(String pregunta) {
-		this.pregunta = pregunta;
 	}
 
 	public String getDescripcion() {
@@ -90,12 +82,12 @@ public class PreguntaEtapa {
 		this.etapa = etapa;
 	}
 
-	public List<RespuestaEtapa> getListaRespuestaEtapas() {
-		return listaRespuestaEtapas;
+	public List<Alternativa> getListaAlternativa() {
+		return listaAlternativa;
 	}
 
-	public void setListaRespuestaEtapas(List<RespuestaEtapa> listaRespuestaEtapas) {
-		this.listaRespuestaEtapas = listaRespuestaEtapas;
+	public void setListaAlternativa(List<Alternativa> listaAlternativa) {
+		this.listaAlternativa = listaAlternativa;
 	}
 
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */

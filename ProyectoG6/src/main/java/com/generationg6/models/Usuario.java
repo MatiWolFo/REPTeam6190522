@@ -32,9 +32,9 @@ public class Usuario {
 	private String nombre;
 	private String apellido;
 	private Integer edad;
-	private String email;
 	private String username;
 	private String password;
+	private String email;
 	/* COLUMNAS CREATED N UPDATED */
 	@Column(updatable = false)
 	private Date createdAt;
@@ -42,19 +42,19 @@ public class Usuario {
 
 	/* VARIOS USUARIOS TIENEN 1 ROL MANY TO ONE */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "rol_id")
+	@JoinColumn(name = "id_rol")
 	/* ATRIBUTO FK COLABORATIVO */
 	private Rol rol;
 	
 	/* 1 USUARIO TIENE VARIAS RESPUESTAS DE ETAPAS */
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<RespuestaEtapa> listaRespuestaEtapas;
+	private List<Alternativa> listaalternativa;
 	
 	/* 1 USUARIO TIENE VARIAS RESPUESTAS DE JUEGOS */
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<RespuestaJuego> listaRespuestaJuegos;
+	private List<ScoreUsuario> listaScoreUsuario;
 	
 	/* MANYTOMANY ETAPAUSUARIO */
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -62,9 +62,9 @@ public class Usuario {
 			/* EL NOMBRE ENTITY DE LA INTERTABLE */
 			name = "etapas_usuarios",
 			/* DESDE LA ENTIDAD O TABLA PRESENTE */
-			joinColumns = @JoinColumn(name = "usuario_id"),
+			joinColumns = @JoinColumn(name = "id_usuario"),
 			/* HACIA LA OTRA ENTIDAD O TABLA */
-			inverseJoinColumns = @JoinColumn(name = "etapa_id"))
+			inverseJoinColumns = @JoinColumn(name = "id_etapa"))
 	/* COMO ATRIBUTO DE COLABORACION LA CLASE INVERSEJOIN */
 	private List<Etapa> etapas;
 
@@ -158,21 +158,23 @@ public class Usuario {
 		this.etapas = etapas;
 	}
 
-	public List<RespuestaEtapa> getListaRespuestaEtapas() {
-		return listaRespuestaEtapas;
+	public List<Alternativa> getListaalternativa() {
+		return listaalternativa;
 	}
 
-	public void setListaRespuestaEtapas(List<RespuestaEtapa> listaRespuestaEtapas) {
-		this.listaRespuestaEtapas = listaRespuestaEtapas;
+	public void setListaalternativa(List<Alternativa> listaalternativa) {
+		this.listaalternativa = listaalternativa;
 	}
 
-	public List<RespuestaJuego> getListaRespuestaJuegos() {
-		return listaRespuestaJuegos;
+	public List<ScoreUsuario> getListaScoreUsuario() {
+		return listaScoreUsuario;
 	}
 
-	public void setListaRespuestaJuegos(List<RespuestaJuego> listaRespuestaJuegos) {
-		this.listaRespuestaJuegos = listaRespuestaJuegos;
+	public void setListaScoreUsuario(List<ScoreUsuario> listaScoreUsuario) {
+		this.listaScoreUsuario = listaScoreUsuario;
 	}
+
+}
 
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
 	@PrePersist

@@ -41,7 +41,7 @@ public class Contenido {
 	
 	/* VARIAS CONTENIDOS TIENEN 1 MODULO MANY TO ONE */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "modulo_id")
+	@JoinColumn(name = "id_modulo")
 	/* ATRIBUTO FK COLABORATIVO */
 	private Modulo modulo;
 	

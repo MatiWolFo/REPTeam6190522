@@ -44,34 +44,22 @@ public class Etapa {
 			/* EL NOMBRE ENTITY DE LA INTERTABLE */
 			name = "etapas_usuarios",
 			/* DESDE LA ENTIDAD O TABLA PRESENTE */
-			joinColumns = @JoinColumn(name = "etapa_id"),
+			joinColumns = @JoinColumn(name = "id_etapa"),
 			/* HACIA LA OTRA ENTIDAD O TABLA */
-			inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+			inverseJoinColumns = @JoinColumn(name = "id_usuario"))
 	/* COMO ATRIBUTO DE COLABORACION LA CLASE INVERSEJOIN */
 	private List<Usuario> usuarios;
-	
-	/* MANYTOMANY ETAPAJUEGO */
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			/* EL NOMBRE ENTITY DE LA INTERTABLE */
-			name = "etapas_juegos",
-			/* DESDE LA ENTIDAD O TABLA PRESENTE */
-			joinColumns = @JoinColumn(name = "etapa_id"),
-			/* HACIA LA OTRA ENTIDAD O TABLA */
-			inverseJoinColumns = @JoinColumn(name = "juego_id"))
-	/* COMO ATRIBUTO DE COLABORACION LA CLASE INVERSEJOIN */
-	private List<Juego> juegos;
-	
+
 	/* VARIAS ETAPAS TIENEN 1 CONTENIDO MANY TO ONE */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "contenido_id")
+	@JoinColumn(name = "id_contenido")
 	/* ATRIBUTO FK COLABORATIVO */
 	private Contenido contenido;
 	
 	/* 1 ETAPA TIENE VARIAS PREGUNTAS ONE TO MANY */
 	@OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<PreguntaEtapa> listaPreguntaEtapas;
+	private List<Pregunta> listaPregunta;
 	
 	/* CONSTRUCTORES */
 	public Etapa() {

@@ -35,23 +35,22 @@ public class Juego {
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
+
+	/* VARIOS JUEGOS PUEDEN ESTAR EN 1 ETAPA */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_etapa")
+	/* ATRIBUTO FK COLABORATIVO */
+	private Etapa etapa;
 	
-	/* MANYTOMANY ETAPAJUEGO */
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			/* EL NOMBRE ENTITY DE LA INTERTABLE */
-			name = "etapas_juegos",
-			/* DESDE LA ENTIDAD O TABLA PRESENTE */
-			joinColumns = @JoinColumn(name = "juego_id"),
-			/* HACIA LA OTRA ENTIDAD O TABLA */
-			inverseJoinColumns = @JoinColumn(name = "etapa_id"))
-	/* COMO ATRIBUTO DE COLABORACION LA CLASE INVERSEJOIN */
-	private List<Etapa> etapas;
-	
-	/* 1 JUEGO TIENE VARIAS PREGUNTAS ONE TO MANY */
+	/* 1 JUEGO TIENE VARIAS REGLAS */
 	@OneToMany(mappedBy = "juego", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<PreguntaJuego> listaPreguntaJuegos;
+	private List<ConfiguracionJuego> listaConfiguracionJuego;
+
+	/* 1 JUEGO TIENE VARIOS SCORES */
+	@OneToMany(mappedBy = "juego", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+	private List<ScoreUsuario> listaScoreUsuario;
 
 	/* CONSTRUCTORES */
 	public Juego() {
@@ -90,20 +89,20 @@ public class Juego {
 		this.descripcion = descripcion;
 	}
 
-	public List<Etapa> getEtapas() {
-		return etapas;
+	public List<ConfiguracionJuego> getListaConfiguracionJuego() {
+		return listaConfiguracionJuego;
 	}
 
-	public void setEtapas(List<Etapa> etapas) {
-		this.etapas = etapas;
+	public void setListaConfiguracionJuego(List<ConfiguracionJuego> listaConfiguracionJuego) {
+		this.listaConfiguracionJuego = listaConfiguracionJuego;
 	}
 
-	public List<PreguntaJuego> getListaPreguntaJuegos() {
-		return listaPreguntaJuegos;
+	public List<ScoreUsuario> getListaScoreUsuario() {
+		return listaScoreUsuario;
 	}
 
-	public void setListaPreguntaJuegos(List<PreguntaJuego> listaPreguntaJuegos) {
-		this.listaPreguntaJuegos = listaPreguntaJuegos;
+	public void setListaScoreUsuario(List<ScoreUsuario> listaScoreUsuario) {
+		this.listaScoreUsuario = listaScoreUsuario;
 	}
 
 	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
