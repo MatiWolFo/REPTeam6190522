@@ -1,50 +1,96 @@
 package com.generationg6.models;
-/* CREATE TABLE asignaturas(
-id_asignatura int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-nombre_asignatura varchar(50),
-descripcion_asignatura varchar(100)
-); */
 
+/* IMPORTAR LIBRERIAS */
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+
+/* CREAR ENTIDAD */
+@Entity
+@Table(name = "asignaturas")
 public class Asignatura {
+
+	/* OBJETO Y ATRIBUTO */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String nombre;
+	private String descripcion;
+	/* COLUMNAS CREATED N UPDATED */
+	@Column(updatable = false)
+	private Date createdAt;
+	private Date updatedAt;
 	
-
-	private int id_asignatura;
-	private String nombre_asignatura;
-	private int descripcion_asignatura;
-
+	/* 1 ASIGNATURA TIENE VARIOS MODULOS ONE TO MANY */
+	@OneToMany(mappedBy = "asignatura", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+	private List<Modulo> listaModulos;
+	
+	/* CONSTRUCTORES */
 	public Asignatura() {
 		super();
 	}
-	public Asignatura(int id_asignatura, String nombre_asignatura, int descripcion_asignatura) {
+
+	public Asignatura(Long id, String nombre, String descripcion) {
 		super();
-		this.id_asignatura = id_asignatura;
-		this.nombre_asignatura = nombre_asignatura;
-		this.descripcion_asignatura = descripcion_asignatura;
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+	}
+	
+	/* GETTERS N SETTERS */
+	public Long getId() {
+		return id;
 	}
 
-	public int getId_asignatura() {
-		return id_asignatura;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public void setId_asignatura(int id_asignatura) {
-		this.id_asignatura = id_asignatura;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public String getNombre_asignatura() {
-		return nombre_asignatura;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public void setNombre_asignatura(String nombre_asignatura) {
-		this.nombre_asignatura = nombre_asignatura;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public int getDescripcion_asignatura() {
-		return descripcion_asignatura;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public void setDescripcion_asignatura(int descripcion_asignatura) {
-		this.descripcion_asignatura = descripcion_asignatura;
+	public List<Modulo> getListaModulos() {
+		return listaModulos;
 	}
 
+	public void setListaModulos(List<Modulo> listaModulos) {
+		this.listaModulos = listaModulos;
+	}
 
+	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
+	
 }

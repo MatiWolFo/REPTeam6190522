@@ -29,7 +29,7 @@ public class RegistroController {
 	// JSP cumplen las condiciones de dichas anotaciones
 	public String guardarUsuario(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult resultado,
 			Model model) {
-		// si el resultado de la validacion de BINDINGRESULT tiene errores, arroja
+		// si el resultado de la ValidacionRespuestasEtapa de BINDINGRESULT tiene errores, arroja
 		// mensaje de error y vuelve a cargar la pagina para ingresar datos
 		if (resultado.hasErrors()) {
 			model.addAttribute("msgError", "Datos incorrectos. Comprueba la información.");

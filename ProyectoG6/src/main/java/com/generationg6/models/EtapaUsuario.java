@@ -1,39 +1,85 @@
 package com.generationg6.models;
-/*
- * CREATE TABLE  EtapaUsuario(
-id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-id_etapas int,
-id_usuario int
-); */
- 
 
+/* IMPORTAR LIBRERIAS */
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+
+/* INTERTABLE ETAPA USUARIO*/
+/* CREAR ENTIDAD */
+@Entity
+@Table(name = "etapas_usuarios")
 public class EtapaUsuario {
-	private int id_etapausuario;
-	private int id_etapa;
-	private int id_usuario;
-	public EtapaUsuario(int id_etapausuario, int id_etapa, int id_usuario) {
+	
+	/*ATRIBUTOS*/
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	/* COLUMNAS CREATED N UPDATED */
+	@Column(updatable = false)
+	private Date createdAt;
+	private Date updatedAt;
+	
+	/*MANYTOMANY = 2 MANYTOONE*/
+	/*MANYTOONE ETAPA*/
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "etapa_id")
+	/* ATRIBUTO COLABORATIVO */
+	private Etapa etapa;
+
+	/*MANYTOONE USUARIO*/
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario_id")
+	/* ATRIBUTO COLABORATIVO */
+	private Usuario usuario;
+	
+	/* CONSTRUCTORES */
+	public EtapaUsuario() {
 		super();
-		this.id_etapausuario = id_etapausuario;
-		this.id_etapa = id_etapa;
-		this.id_usuario = id_usuario;
 	}
-	public int getId_etapausuario() {
-		return id_etapausuario;
+	public EtapaUsuario(Long id) {
+		super();
+		this.id = id;
 	}
-	public void setId_etapausuario(int id_etapausuario) {
-		this.id_etapausuario = id_etapausuario;
+	
+	/* GETTERS N SETTERS */
+	public Long getId() {
+		return id;
 	}
-	public int getId_etapa() {
-		return id_etapa;
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public void setId_etapa(int id_etapa) {
-		this.id_etapa = id_etapa;
+	public Etapa getEtapa() {
+		return etapa;
 	}
-	public int getId_usuario() {
-		return id_usuario;
+	public void setEtapa(Etapa etapa) {
+		this.etapa = etapa;
 	}
-	public void setId_usuario(int id_usuario) {
-		this.id_usuario = id_usuario;
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
 	}
 
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
 }
