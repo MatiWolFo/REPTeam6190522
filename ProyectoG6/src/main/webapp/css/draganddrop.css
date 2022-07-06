@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700);
+
 body {
     font-size: 16px;
 }
@@ -52,29 +53,35 @@ body {
     padding-bottom: 50px;
     pointer-events: none;
 }
+
 .success-callback .title,
 .success-callback button {
     position: relative;
     transform: translateY(20px);
     opacity: 0;
 }
+
 .success-callback.show {
     pointer-events: auto;
 }
+
 .success-callback.show .title {
     transform: translateY(0);
     opacity: 1;
     transition: 0.3s all ease;
 }
+
 .success-callback.show button {
     transform: translateY(0);
     opacity: 1;
     transition: 0.3s all ease 0.15s;
 }
+
 .success-callback .title {
     margin-top: 0;
     margin-bottom: 20px;
 }
+
 .success-callback button {
     background: #E60012;
     color: #fff;
@@ -86,6 +93,7 @@ body {
     letter-spacing: 2px;
     cursor: pointer;
 }
+
 .success-callback button:hover {
     background: #ff3443;
 }

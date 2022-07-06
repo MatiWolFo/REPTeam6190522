@@ -8,7 +8,7 @@ import com.generationg6.repositories.ContenidoRepository;
 @Service
 public class ContenidoService {
 
-	/* INYECCION DE DEPENDENCIA A REPOSITORIO */
-	@Autowired
-	ContenidoRepository contenidoRepository;
+    /* INYECCION DE DEPENDENCIA A REPOSITORIO */
+    @Autowired
+    ContenidoRepository contenidoRepository;
 }

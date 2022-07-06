@@ -1,110 +1,88 @@
 package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /* CREAR ENTIDAD */
 @Entity
-@Table(name = "respuestas_juegos")
-public class RespuestaJuego {
+@Table(name = "respuestas_usuarios")
+public class RespuestaUsuario {
 
-	/* OBJETO Y ATRIBUTO */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String respuesta;
-	private String descripcion;
-	/* COLUMNAS CREATED N UPDATED */
-	@Column(updatable = false)
-	private Date createdAt;
-	private Date updatedAt;
-	
-	/* VARIAS RESPUESTAS TIENEN 1 PREGUNTA MANY TO ONE */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "pregunta_juego_id")
-	/* ATRIBUTO FK COLABORATIVO */
-	private PreguntaJuego preguntaJuego;
-	
-	/* VARIAS RESPUESTAS TIENEN 1 USUARIO MANY TO ONE */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_usuario")
-	/* ATRIBUTO FK COLABORATIVO */
-	private Usuario usuario;
+    /* OBJETO Y ATRIBUTO */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	/* CONSTRUCTORES */
-	public RespuestaJuego() {
-		super();
-	}
+    /* COLUMNAS CREATED N UPDATED */
+    @Column(updatable = false)
+    private Date fechaCreacion;
 
-	public RespuestaJuego(Long id, String respuesta, String descripcion) {
-		super();
-		this.id = id;
-		this.respuesta = respuesta;
-		this.descripcion = descripcion;
-	}
+    /* VARIOS JUEGOS PUEDEN ESTAR EN 1 ETAPA */
+    @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_alternativas_pregunta")
+    /* ATRIBUTO FK COLABORATIVO */
+    private AlternativaPregunta alternativaPregunta;
+    @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario")
+    /* ATRIBUTO FK COLABORATIVO */
+    private Usuario usuario;
 
-	/* GETTERS N SETTERS */
-	public Long getId() {
-		return id;
-	}
+    /* CONSTRUCTORES */
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public RespuestaUsuario() {
+    }
 
-	public String getRespuesta() {
-		return respuesta;
-	}
+    public RespuestaUsuario(Long id) {
+        this.id = id;
+    }
 
-	public void setRespuesta(String respuesta) {
-		this.respuesta = respuesta;
-	}
+    /* GETTERS & SETTERS */
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public PreguntaJuego getPreguntaJuego() {
-		return preguntaJuego;
-	}
+    public AlternativaPregunta getAlternativaPregunta() {
+        return alternativaPregunta;
+    }
 
-	public void setPreguntaJuego(PreguntaJuego preguntaJuego) {
-		this.preguntaJuego = preguntaJuego;
-	}
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
+    public void setAlternativaPregunta(AlternativaPregunta alternativaPregunta) {
+        this.alternativaPregunta = alternativaPregunta;
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
-	
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+    @PrePersist
+    protected void onCreate() {
+        this.fechaCreacion = new Date();
+    }
+
+
 }
+

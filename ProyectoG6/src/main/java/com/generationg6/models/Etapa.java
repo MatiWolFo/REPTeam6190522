@@ -1,6 +1,9 @@
 package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -25,120 +28,135 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "etapas")
 public class Etapa {
-	
-	/* OBJETO Y ATRIBUTO */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String nombre;
-	private String descripcion;
-	/* COLUMNAS CREATED N UPDATED */
-	@Column(updatable = false)
-	private Date createdAt;
-	private Date updatedAt;
-	
-	
-	/* MANYTOMANY ETAPAUSUARIO */
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			/* EL NOMBRE ENTITY DE LA INTERTABLE */
-			name = "etapas_usuarios",
-			/* DESDE LA ENTIDAD O TABLA PRESENTE */
-			joinColumns = @JoinColumn(name = "id_etapa"),
-			/* HACIA LA OTRA ENTIDAD O TABLA */
-			inverseJoinColumns = @JoinColumn(name = "id_usuario"))
-	/* COMO ATRIBUTO DE COLABORACION LA CLASE INVERSEJOIN */
-	private List<Usuario> usuarios;
 
-	/* VARIAS ETAPAS TIENEN 1 CONTENIDO MANY TO ONE */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_contenido")
-	/* ATRIBUTO FK COLABORATIVO */
-	private Contenido contenido;
-	
-	/* 1 ETAPA TIENE VARIAS PREGUNTAS ONE TO MANY */
-	@OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<Pregunta> listaPregunta;
-	
-	/* CONSTRUCTORES */
-	public Etapa() {
-		super();
-	}
+    /* OBJETO Y ATRIBUTO */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nombre;
+    private String descripcion;
+    /* COLUMNAS CREATED N UPDATED */
+    @Column(updatable = false)
+    private Date fechaCreacion;
+    private Date fechaEdicion;
 
-	public Etapa(Long id, String nombre, String descripcion) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-	}
-	
-	/* GETTERS N SETTERS */
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /* ONETOMANY ETAPA */
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
 
-	public String getNombre() {
-		return nombre;
-	}
+    @OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<EtapaUsuario> listaEtapaUsuario;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    @OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Juego> listaJuego;
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    @OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Pregunta> listaPregunta;
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    /* VARIAS ETAPAS TIENEN 1 CONTENIDO MANY TO ONE */
+    @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_contenido")
+    /* ATRIBUTO FK COLABORATIVO */
+    private Contenido contenido;
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
+    /* CONSTRUCTORES */
 
-	public List<Juego> getJuegos() {
-		return juegos;
-	}
+    public Etapa() {
+    }
 
-	public void setJuegos(List<Juego> juegos) {
-		this.juegos = juegos;
-	}
+    public Etapa(Long id, String nombre, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
 
-	public Contenido getContenido() {
-		return contenido;
-	}
+    /* GETTERS N SETTERS */
 
-	public void setContenido(Contenido contenido) {
-		this.contenido = contenido;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public List<PreguntaEtapa> getListaPreguntaEtapas() {
-		return listaPreguntaEtapas;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setListaPreguntaEtapas(List<PreguntaEtapa> listaPreguntaEtapas) {
-		this.listaPreguntaEtapas = listaPreguntaEtapas;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public List<EtapaUsuario> getListaEtapaUsuario() {
+        return listaEtapaUsuario;
+    }
+
+    public void setListaEtapaUsuario(List<EtapaUsuario> listaEtapaUsuario) {
+        this.listaEtapaUsuario = listaEtapaUsuario;
+    }
+
+    public Contenido getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(Contenido contenido) {
+        this.contenido = contenido;
+    }
+
+    public List<Juego> getListaJuego() {
+        return listaJuego;
+    }
+
+    public void setListaJuego(List<Juego> listaJuego) {
+        this.listaJuego = listaJuego;
+    }
+
+    public List<Pregunta> getListaPregunta() {
+        return listaPregunta;
+    }
+
+    public void setListaPregunta(List<Pregunta> listaPregunta) {
+        this.listaPregunta = listaPregunta;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaEdicion() {
+        return fechaEdicion;
+    }
+
+    public void setFechaEdicion(Date fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
+    }
+
+    /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+    @PrePersist
+    protected void onCreate() {
+        this.fechaCreacion = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.fechaEdicion = new Date();
+    }
 }
 

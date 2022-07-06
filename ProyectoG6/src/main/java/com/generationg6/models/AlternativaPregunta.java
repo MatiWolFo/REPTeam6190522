@@ -1,4 +1,10 @@
 package com.generationg6.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Date;
+
 @Entity
 @Table(name = "alternativas_preguntas")
 public class AlternativaPregunta {
@@ -8,6 +14,7 @@ public class AlternativaPregunta {
     private Boolean correcta;
 
     /* VARIAS RESPUESTAS TIENEN 1 PREGUNTA MANY TO ONE */
+    @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_pregunta")
     /* ATRIBUTO FK COLABORATIVO */
@@ -18,6 +25,9 @@ public class AlternativaPregunta {
     @JoinColumn(name = "id_alternativa")
     /* ATRIBUTO FK COLABORATIVO */
     private Alternativa alternativa;
+    @Column(updatable = false)
+    private Date fechaCreacion;
+    private Date fechaEdicion;
 
     public AlternativaPregunta() {
     }
@@ -59,13 +69,29 @@ public class AlternativaPregunta {
         this.alternativa = alternativa;
     }
 
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaEdicion() {
+        return fechaEdicion;
+    }
+
+    public void setFechaEdicion(Date fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
+    }
+
     @PrePersist
     protected void onCreate() {
-        this.createdAt = new Date();
+        this.fechaCreacion = new Date();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.updatedAt = new Date();
+        this.fechaEdicion = new Date();
     }
 }
