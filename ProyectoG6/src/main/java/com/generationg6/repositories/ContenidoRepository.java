@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.generationg6.models.Contenido;
 
 @Repository
-public interface ContenidoRepository extends JpaRepository<Contenido, Long>{
+public interface ContenidoRepository extends JpaRepository<Contenido, Long> {
 
 }

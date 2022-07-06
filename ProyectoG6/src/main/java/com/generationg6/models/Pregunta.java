@@ -1,6 +1,9 @@
 package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,82 +26,99 @@ import javax.persistence.Table;
 @Table(name = "preguntas")
 public class Pregunta {
 
-	/* OBJETO Y ATRIBUTO */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    /* OBJETO Y ATRIBUTO */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String descripcion;
-	/* COLUMNAS CREATED N UPDATED */
-	@Column(updatable = false)
-	private Date createdAt;
-	private Date updatedAt;
-	
-	/* VARIAS PREGUNTAS TIENEN 1 ETAPA MANY TO ONE */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_etapa")
-	/* ATRIBUTO FK COLABORATIVO */
-	private Etapa etapa;
-	
-	/* 1 PREGUNTA TIENE VARIAS RESPUESTAS ONE TO MANY */
-	@OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<Alternativa> listaAlternativa;
-	
-	/* CONSTRUCTORES */
-	public Pregunta() {
-		super();
-	}
+    private String descripcion;
+    /* COLUMNAS CREATED N UPDATED */
+    @Column(updatable = false)
+    private Date fechaCreacion;
+    private Date fechaEdicion;
 
-	public Pregunta(Long id, String pregunta, String descripcion) {
-		super();
-		this.id = id;
-		this.pregunta = pregunta;
-		this.descripcion = descripcion;
-	}
+    /* VARIAS PREGUNTAS TIENEN 1 ETAPA MANY TO ONE */
+    @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_etapa")
+    /* ATRIBUTO FK COLABORATIVO */
+    private Etapa etapa;
 
-	/* GETTERS N SETTERS */
-	public Long getId() {
-		return id;
-	}
+    /* 1 PREGUNTA TIENE VARIAS RESPUESTAS ONE TO MANY */
+    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    private List<AlternativaPregunta> listaAlternativaPregunta;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /* CONSTRUCTORES */
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public Pregunta() {
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public Pregunta(Long id, String descripcion, Etapa etapa, List<AlternativaPregunta> listaAlternativaPregunta) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.etapa = etapa;
+        this.listaAlternativaPregunta = listaAlternativaPregunta;
+    }
 
-	public Etapa getEtapa() {
-		return etapa;
-	}
+    /* GETTERS N SETTERS */
+    public Long getId() {
+        return id;
+    }
 
-	public void setEtapa(Etapa etapa) {
-		this.etapa = etapa;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public List<Alternativa> getListaAlternativa() {
-		return listaAlternativa;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public void setListaAlternativa(List<Alternativa> listaAlternativa) {
-		this.listaAlternativa = listaAlternativa;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
+    public Etapa getEtapa() {
+        return etapa;
+    }
 
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
-	
+    public void setEtapa(Etapa etapa) {
+        this.etapa = etapa;
+    }
+
+    public List<AlternativaPregunta> getListaAlternativaPregunta() {
+        return listaAlternativaPregunta;
+    }
+
+    public void setListaAlternativaPregunta(List<AlternativaPregunta> listaAlternativaPregunta) {
+        this.listaAlternativaPregunta = listaAlternativaPregunta;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaEdicion() {
+        return fechaEdicion;
+    }
+
+    public void setFechaEdicion(Date fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
+    }
+
+    /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+    @PrePersist
+    protected void onCreate() {
+        this.fechaCreacion = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.fechaEdicion = new Date();
+    }
+
 }

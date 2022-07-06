@@ -1,99 +1,96 @@
 package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
-import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
 
 /* CREAR ENTIDAD */
+@JsonIgnoreProperties({"hibernateLazyInitializer"})//ignora las listas y hace qe sean visibles las alternativas en el front
 @Entity
 @Table(name = "alternativas")
 public class Alternativa {
 
-	/* OBJETO Y ATRIBUTO */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String respuesta;
-	private String descripcion;
-	/* COLUMNAS CREATED N UPDATED */
-	@Column(updatable = false)
-	private Date createdAt;
-	private Date updatedAt;
+    /* OBJETO Y ATRIBUTO */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String descripcion;
+    /* COLUMNAS CREATED N UPDATED */
+    @Column(updatable = false)
+    private Date fechaCreacion;
+    private Date fechaEdicion;
+    @JsonIgnore /* La lista no regresa al padre, porque si regresa se genera un loop, por lo tanto ignora el regreso hacia el padre*/
+    @OneToMany(mappedBy = "alternativa", cascade = CascadeType.ALL)
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    private List<AlternativaPregunta> listaAlternativaPregunta;
 
+    /* CONSTRUCTORES */
+    public Alternativa() {
+    }
 
-	/* CONSTRUCTORES */
-	public Alternativa() {
-		super();
-	}
+    public Alternativa(Long id, String descripcion) {
+        this.id = id;
+        this.descripcion = descripcion;
+    }
 
-	public Alternativa(Long id, String respuesta, String descripcion) {
-		super();
-		this.id = id;
-		this.respuesta = respuesta;
-		this.descripcion = descripcion;
-	}
-	
-	/* GETTERS N SETTERS */
-	public Long getId() {
-		return id;
-	}
+    /* GETTERS N SETTERS */
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getRespuesta() {
-		return respuesta;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setRespuesta(String respuesta) {
-		this.respuesta = respuesta;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public List<AlternativaPregunta> getListaAlternativaPregunta() {
+        return listaAlternativaPregunta;
+    }
 
-	public Pregunta getPregunta() {
-		return pregunta;
-	}
+    public void setListaAlternativaPregunta(List<AlternativaPregunta> listaAlternativaPregunta) {
+        this.listaAlternativaPregunta = listaAlternativaPregunta;
+    }
 
-	public void setPregunta(Pregunta pregunta) {
-		this.pregunta = pregunta;
-	}
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
 
-	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
+    public Date getFechaEdicion() {
+        return fechaEdicion;
+    }
 
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
-	
+    public void setFechaEdicion(Date fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
+    }
+
+    /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+    @PrePersist
+    protected void onCreate() {
+        this.fechaCreacion = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.fechaEdicion = new Date();
+    }
+
 }
