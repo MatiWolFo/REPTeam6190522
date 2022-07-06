@@ -43,7 +43,7 @@ public class ApiRestController {
 	RespuestaEtapaService respuestaEtapaService;
 
 	/* CREAR UNA RUTA PARA RETORNAR E INICIARLA */
-	@RequestMapping("/etapas")
+	@RequestMapping("/etapa")
 	/* SE VA A RETORNAR UN JSON, EN ESTE CASO UNA LISTA DE ETAPAS */
 	/* NO OLVIDAR IMPORTAR LO NECESARIO */
 	public List<Etapa> obtenerListaEtapas() {
@@ -54,35 +54,50 @@ public class ApiRestController {
 
 	}
 
+	@RequestMapping("/asignatura")
 	public List<Asignatura> obtenerListaAsignaturas() {
 		List<Asignatura> listaAsignaturas = asignaturaService.findAll();
 		return listaAsignaturas;
 	}
 
+	@RequestMapping("/modulo")
 	public List<Modulo> obtenerListaModulos() {
 		List<Modulo> listaModulos = moduloService.findAll();
 		return listaModulos;
 	}
-	
+
+	@RequestMapping("/contenido")
 	public List<Contenido> obtenerListaContenidos() {
 		List<Contenido> listaContenidos = contenidoService.findAll();
 		return listaContenidos;
 	}
-	
+
+	@RequestMapping("/juego")
 	public List<Juego> obtenerListaJuegos() {
 		List<Juego> listaJuegos = juegoService.findAll();
 		return listaJuegos;
 	}
-	
+
+	/*
+	 * ESTAS HAY QUE CORREGIRLAS PARA QUE SE MUESTREN COMO QUIZ FINAL DE ETAPAS,
+	 * MODIFICAR SEGUN SE NECESITE
+	 */
+	@RequestMapping("/pregunta")
 	public List<PreguntaEtapa> obtenerListaPreguntas() {
 		List<PreguntaEtapa> listaPreguntas = preguntaEtapaService.findAll();
 		return listaPreguntas;
 	}
-	
+
+	/*
+	 * ESTAS HAY QUE CORREGIRLAS PARA QUE SE MUESTREN COMO QUIZ FINAL DE ETAPAS,
+	 * MODIFICAR SEGUN SE NECESITE
+	 */
+	@RequestMapping("/respuesta")
 	public List<RespuestaEtapa> obtenerListaRespuestas() {
 		List<RespuestaEtapa> listaRespuestas = respuestaEtapaService.findAll();
 		return listaRespuestas;
 	}
+
 	/*
 	 * LO QUE VA A RETORNAR, ES UN JSON, UNA API REST PARA QUE SEA CONSUMIDA
 	 * EXTERNAMENTE
