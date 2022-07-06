@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 import com.generationg6.models.Asignatura;
 
 @Repository
+<<<<<<< HEAD
 public interface AsignaturaRepository extends JpaRepository<Asignatura, Long>{
+=======
+public interface AsignaturaRepository extends JpaRepository<Asignatura, Long> {
+>>>>>>> MatiRebolledo
 
 }

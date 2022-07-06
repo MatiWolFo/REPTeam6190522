@@ -1,0 +1,281 @@
+    1  git --version
+    2  ls
+    3  pwd
+    4  cd /c/Users/MatiWolfo/Desktop/BOOTCAMP/CursoJava
+    5  clear
+    6  ls -la
+    7  chmod 777 TEXTO.txt 
+    8  ls -la
+    9  chmod 777 TEXTO.txt
+   10  ls -la
+   11  clear
+   12  cd REP180522/
+   13  ls
+   14  ls -al
+   15  echo "# REP180522" >> README.md
+   16  git init
+   17  git add README.md
+   18  git commit -m "first commit"
+   19  la -al
+   20  ls -al
+   21  git config --global user.email "you@example.com"
+   22  git config --global user.email "mat.aravenar@hmail.com"
+   23  git config --global user.name "MatiWolFo"
+   24  git commit -m "first commit"
+   25  ls -al
+   26  cat README.md
+   27  git branc -M main
+   28  git branch -M main
+   29  git remote add origin https://github.com/MatiWolFo/REP180522.git
+   30  git push -u origin main
+   31  git push -u origin main
+   32  CLEAR
+   33  code .
+   34  code .
+   35  git status
+   36  git log
+   37  touch archivo.txt
+   38  code .
+   39  code .
+   40  code .
+   41  history > comandosgitemergencia.txt
+   42  git add .
+   43  git commit -m "cambio readme"
+   44  git push
+   45  code .
+   46  cd ..
+   47  code .
+   48  cd REP180522/
+   49  ls -la
+   50  git push
+   51  git checkout -b cursoJava
+   52  ls 
+   53  git add .
+   54  git commit -m "cambio cursoJava"
+   55  git push
+   56  git push --set-upstream origin cursoJava
+   57  git add .
+   58  git commit -m "cambio cursoJava"
+   59  git push
+   60  git status
+   61  git add calc.html
+   62  git status
+   63  git commit -m "cambio suma"
+   64  git push
+   65  git status
+   66  git status
+   67  git add calcEj1.html
+   68  git commit m- "cambio suma"
+   69  git commit -m "cambio suma"
+   70  git push
+   71  git status
+   72  git rm calc.html
+   73  git status
+   74  git push
+   75  git status
+   76  git commit -m "borrar calc.html"
+   77  git push
+   78  git status
+   79  git status
+   80  git add .
+   81  git status
+   82  git commit -m "cambio calcEj1.html resta"
+   83  git status
+   84  git push
+   85  git status
+   86  git status
+   87  git add calcEj1.html
+   88  git status
+   89  git commit -m "cambio calcEj1.html function3"
+   90  git push
+   91  git status
+   92  history > comandosUsadosEjerCommit.txt
+   93  git add .
+   94  git commit -m "los comandos de los ejercicios de la calculadora en bash"
+   95  git push
+   96  git status
+   97  LS
+   98  echo "# REPTeam6190522" >> README.md
+   99  git init
+  100  git add README.md
+  101  git commit -m "first commit"
+  102  git branch -M main
+  103  git remote add origin https://github.com/MatiWolFo/REPTeam6190522.git
+  104  git push -u origin main
+  105  git status
+  106  git status
+  107  clear
+  108  git status
+  109  git checkout -b MatiRebolledo
+  110  git status
+  111  git push
+  112  git push --set-upstream origin MatiRebolledo
+  113  git push
+  114  git status
+  115  git add .
+  116  git commit -m "primer texto Mati"
+  117  git push
+  118  git status
+  119  clear
+  120  git checkout main
+  121  get status
+  122  git status
+  123  git pull
+  124  ls -la
+  125  git push
+  126  git checkout MatiRebolledo
+  127  git pull
+  128  git checkout main
+  129  git checkout MatiRebolledo
+  130  git checkout main
+  131  git pull
+  132  git push
+  133  git merge MatiRebolledo
+  134  git status
+  135  git push
+  136  git status
+  137  git pull
+  138  git status
+  139  git checkout MatiRebolledo
+  140  git merge main
+  141  git checkout main
+  142  git status
+  143  git status
+  144  git checkout MatiRebolledo
+  145  ls -la
+  146  git push
+  147  git checkout main
+  148  git pull
+  149  git pull
+  150  git checkout MatiRebolledo
+  151  git pull
+  152  git merge
+  153  git merge main
+  154  git checkout main
+  155  git status
+  156  touch archivoChaos.html
+  157  git add .
+  158  git commit -m "html a modificar"
+  159  git push
+  160  git status
+  161  git checkout MatiRebolledo
+  162  git pull
+  163  git merge main
+  164  git add .
+  165  git status
+  166  git commit -m "cambios de mati al html"
+  167  git push
+  168  git status
+  169  git checkout main
+  170  git pull
+  171  git merge MatiRebolledo
+  172  git add .
+  173  git commit -m "actualizado por mati"
+  174  git push
+  175  git status
+  176  git add .
+  177  git commit -m "html mezcladito"
+  178  git push
+  179  git status
+  180  git pull
+  181  git checkout MatiRebolledo
+  182  git merge main
+  183  git status
+  184  git push
+  185  git checkout main
+  186  git pull
+  187  git checkout MatiRebolledo
+  188  git merge main
+  189  git push
+  190  git status
+  191  ls -la
+  192  history > COMANDOSUSADOSHAREDREP.txt
+  193  git add .
+  194  git commit -m "todos los comandos usados en el ejercicio del repositorio compartido"
+  195  git push
+  196  git status
+  197  ls -la
+  198  git rm israpalma.txt
+  199  git rm MichaelRoldan.txt
+  200  rm paulinorubio.txt 
+  201  git add .
+  202  git commit -m "Solo deje mis archivos"
+  203  git push
+  204  git status
+  205  clear
+  206  exit
+  207  git checkout main
+  208  git pull
+  209  git status
+  210  git checkout MatiRebolleod
+  211  git checkout MatiRebolledo
+  212  git status
+  213  git pull archivoChaos.html
+  214  git merge main arhivoChaos.html
+  215  git merge main archivoChaos.html
+  216  git merge main
+  217  git status
+  218  git push
+  219  git status
+  220  git merge main
+  221  git checkout main
+  222  git pull
+  223  git status
+  224  git checkout MatiRebolledo
+  225  git merge main
+  226  clear
+  227  exit
+  228  git checkout main
+  229  pull
+  230  git pull
+  231  git status
+  232  git checkout MatiRebolledo
+  233  git merge main
+  234  git add.
+  235  git add .
+  236  git commit -m "SIIIIIUUUU"
+  237  git push
+  238  git status
+  239  git checkout main
+  240  git merge MatiRebolledo
+  241  git pull
+  242  git refuse
+  243  git pull
+  244  git status
+  245  git status
+  246  git pull
+  247  git checkout MatiRebolledo
+  248  git status
+  249  git checkout main
+  250  code .
+  251  git reset --hard HEAD~1
+  252  git reset --hard HEAD~1
+  253  git checkout cbfc139
+  254  git commit -m "SOLUCION DE CAMBIOS"
+  255  git status
+  256  git checkout -b fixy
+  257  git merge -s ours main
+  258  git checkout main
+  259  git merge fixy
+  260  git push
+  261  git status
+  262  code .
+  263  git status
+  264  git checkout MatiRebolledo
+  265  git merge main
+  266  git status
+  267  git checkout main
+  268  git checkout MatiRebolledo
+  269  git add .
+  270  git commit -m "CAMBIOS MATI"
+  271  git push
+  272  git status
+  273  git checkout main
+  274  git pull
+  275  git checkout MatiRebolledo
+  276  git merge main
+  277  git pull
+  278  git checkout main
+  279  git checkout MatiRebolledo
+  280  history > COMANDOS USADOS PROBLEMA.txt
+  281  history > COMANDOSUSADOSPROBLEMA.txt

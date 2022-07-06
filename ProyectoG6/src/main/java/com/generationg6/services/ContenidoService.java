@@ -11,12 +11,22 @@ import com.generationg6.repositories.ContenidoRepository;
 @Service
 public class ContenidoService {
 
+<<<<<<< HEAD
 	/* INYECCION DE DEPENDENCIA A REPOSITORIO */
 	@Autowired
 	ContenidoRepository contenidoRepository;
 
 	/*METODOS INYECTADOS DESDE API REST CONTROLLER*/
 	public List<Contenido> findAll() {
+=======
+    /* INYECCION DE DEPENDENCIA A REPOSITORIO */
+    @Autowired
+    ContenidoRepository contenidoRepository;
+
+    /* METODOS INYECTADOS DESDE API REST CONTROLLER */
+	public List<Contenido> findAll() {
+		
+>>>>>>> MatiRebolledo
 		return contenidoRepository.findAll();
 	}
 }
