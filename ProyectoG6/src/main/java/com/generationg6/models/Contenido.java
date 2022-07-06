@@ -1,6 +1,9 @@
 package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,91 +26,108 @@ import javax.persistence.Table;
 @Table(name = "contenidos")
 public class Contenido {
 
-	/* OBJETO Y ATRIBUTO */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String nombre;
-	private String descripcion;
-	/* COLUMNAS CREATED N UPDATED */
-	@Column(updatable = false)
-	private Date createdAt;
-	private Date updatedAt;
-	
-	/* 1 CONTENIDO TIENE VARIAS ETAPAS ONE TO MANY */
-	@OneToMany(mappedBy = "contenido", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<Etapa> listaEtapas;
-	
-	/* VARIAS CONTENIDOS TIENEN 1 MODULO MANY TO ONE */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "modulo_id")
-	/* ATRIBUTO FK COLABORATIVO */
-	private Modulo modulo;
-	
-	/* CONSTRUCTORES */
-	public Contenido() {
-		super();
-	}
+    /* OBJETO Y ATRIBUTO */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nombre;
+    private String descripcion;
+    /* COLUMNAS CREATED N UPDATED */
+    @Column(updatable = false)
+    private Date fechaCreacion;
+    private Date fechaEdicion;
 
-	public Contenido(Long id, String nombre, String descripcion) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-	}
+    /* 1 CONTENIDO TIENE VARIAS ETAPAS ONE TO MANY */
+    @OneToMany(mappedBy = "contenido", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    private List<Etapa> listaEtapas;
 
-	/* GETTERS N SETTERS */
-	public Long getId() {
-		return id;
-	}
+    /* VARIAS CONTENIDOS TIENEN 1 MODULO MANY TO ONE */
+    @JsonIgnore /*De la lista no regresa al padre (modulo) o sino se genera un loop*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_modulo")
+    /* ATRIBUTO FK COLABORATIVO */
+    private Modulo modulo;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /* CONSTRUCTORES */
+    public Contenido() {
+        super();
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public Contenido(Long id, String nombre, String descripcion) {
+        super();
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    /* GETTERS N SETTERS */
+    public Long getId() {
+        return id;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public List<Etapa> getListaEtapas() {
-		return listaEtapas;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setListaEtapas(List<Etapa> listaEtapas) {
-		this.listaEtapas = listaEtapas;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public Modulo getModulo() {
-		return modulo;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public void setModulo(Modulo modulo) {
-		this.modulo = modulo;
-	}
+    public List<Etapa> getListaEtapas() {
+        return listaEtapas;
+    }
 
-	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
+    public void setListaEtapas(List<Etapa> listaEtapas) {
+        this.listaEtapas = listaEtapas;
+    }
 
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
+    public Modulo getModulo() {
+        return modulo;
+    }
+
+    public void setModulo(Modulo modulo) {
+        this.modulo = modulo;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaEdicion() {
+        return fechaEdicion;
+    }
+
+    public void setFechaEdicion(Date fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
+    }
+
+    /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+    @PrePersist
+    protected void onCreate() {
+        this.fechaCreacion = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.fechaEdicion = new Date();
+    }
 }
 	
 

@@ -8,7 +8,7 @@ import com.generationg6.repositories.JuegoRepository;
 @Service
 public class JuegoService {
 
-	/* INYECCION DE DEPENDENCIA A REPOSITORIO */
-	@Autowired
-	JuegoRepository juegoRepository;
+    /* INYECCION DE DEPENDENCIA A REPOSITORIO */
+    @Autowired
+    JuegoRepository juegoRepository;
 }

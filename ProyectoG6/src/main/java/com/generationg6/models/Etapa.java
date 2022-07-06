@@ -1,6 +1,9 @@
 package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,8 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
@@ -25,132 +26,135 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "etapas")
 public class Etapa {
-	
-	/* OBJETO Y ATRIBUTO */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String nombre;
-	private String descripcion;
-	/* COLUMNAS CREATED N UPDATED */
-	@Column(updatable = false)
-	private Date createdAt;
-	private Date updatedAt;
-	
-	
-	/* MANYTOMANY ETAPAUSUARIO */
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			/* EL NOMBRE ENTITY DE LA INTERTABLE */
-			name = "etapas_usuarios",
-			/* DESDE LA ENTIDAD O TABLA PRESENTE */
-			joinColumns = @JoinColumn(name = "etapa_id"),
-			/* HACIA LA OTRA ENTIDAD O TABLA */
-			inverseJoinColumns = @JoinColumn(name = "usuario_id"))
-	/* COMO ATRIBUTO DE COLABORACION LA CLASE INVERSEJOIN */
-	private List<Usuario> usuarios;
-	
-	/* MANYTOMANY ETAPAJUEGO */
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			/* EL NOMBRE ENTITY DE LA INTERTABLE */
-			name = "etapas_juegos",
-			/* DESDE LA ENTIDAD O TABLA PRESENTE */
-			joinColumns = @JoinColumn(name = "etapa_id"),
-			/* HACIA LA OTRA ENTIDAD O TABLA */
-			inverseJoinColumns = @JoinColumn(name = "juego_id"))
-	/* COMO ATRIBUTO DE COLABORACION LA CLASE INVERSEJOIN */
-	private List<Juego> juegos;
-	
-	/* VARIAS ETAPAS TIENEN 1 CONTENIDO MANY TO ONE */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "contenido_id")
-	/* ATRIBUTO FK COLABORATIVO */
-	private Contenido contenido;
-	
-	/* 1 ETAPA TIENE VARIAS PREGUNTAS ONE TO MANY */
-	@OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	/* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-	private List<PreguntaEtapa> listaPreguntaEtapas;
-	
-	/* CONSTRUCTORES */
-	public Etapa() {
-		super();
-	}
 
-	public Etapa(Long id, String nombre, String descripcion) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-	}
-	
-	/* GETTERS N SETTERS */
-	public Long getId() {
-		return id;
-	}
+    /* OBJETO Y ATRIBUTO */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nombre;
+    private String descripcion;
+    /* COLUMNAS CREATED N UPDATED */
+    @Column(updatable = false)
+    private Date fechaCreacion;
+    private Date fechaEdicion;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
-	public String getNombre() {
-		return nombre;
-	}
+    /* ONETOMANY ETAPA */
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    @OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<EtapaUsuario> listaEtapaUsuario;
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    @OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Juego> listaJuego;
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    @OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Pregunta> listaPregunta;
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
+    /* VARIAS ETAPAS TIENEN 1 CONTENIDO MANY TO ONE */
+    @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_contenido")
+    /* ATRIBUTO FK COLABORATIVO */
+    private Contenido contenido;
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
 
-	public List<Juego> getJuegos() {
-		return juegos;
-	}
+    /* CONSTRUCTORES */
 
-	public void setJuegos(List<Juego> juegos) {
-		this.juegos = juegos;
-	}
+    public Etapa() {
+    }
 
-	public Contenido getContenido() {
-		return contenido;
-	}
+    public Etapa(Long id, String nombre, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
 
-	public void setContenido(Contenido contenido) {
-		this.contenido = contenido;
-	}
+    /* GETTERS N SETTERS */
 
-	public List<PreguntaEtapa> getListaPreguntaEtapas() {
-		return listaPreguntaEtapas;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setListaPreguntaEtapas(List<PreguntaEtapa> listaPreguntaEtapas) {
-		this.listaPreguntaEtapas = listaPreguntaEtapas;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	/* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public List<EtapaUsuario> getListaEtapaUsuario() {
+        return listaEtapaUsuario;
+    }
+
+    public void setListaEtapaUsuario(List<EtapaUsuario> listaEtapaUsuario) {
+        this.listaEtapaUsuario = listaEtapaUsuario;
+    }
+
+    public Contenido getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(Contenido contenido) {
+        this.contenido = contenido;
+    }
+
+    public List<Juego> getListaJuego() {
+        return listaJuego;
+    }
+
+    public void setListaJuego(List<Juego> listaJuego) {
+        this.listaJuego = listaJuego;
+    }
+
+    public List<Pregunta> getListaPregunta() {
+        return listaPregunta;
+    }
+
+    public void setListaPregunta(List<Pregunta> listaPregunta) {
+        this.listaPregunta = listaPregunta;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaEdicion() {
+        return fechaEdicion;
+    }
+
+    public void setFechaEdicion(Date fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
+    }
+
+    /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+    @PrePersist
+    protected void onCreate() {
+        this.fechaCreacion = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.fechaEdicion = new Date();
+    }
 }
 

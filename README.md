@@ -1,6 +1,9 @@
 # REPTeam6190522
 Hola Equipo 6
 ## CONTROL DE CAMBIOS
+### Fecha 06/07/22
+- UPDATED script precargados
+- ADDED API REST, diagrama ver3
 ### Fecha 28/06/22
 - UPDATED relaciones, repositorios
 - ADDED services, diagrama ver2

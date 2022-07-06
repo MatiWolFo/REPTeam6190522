@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.generationg6.models.Juego;
 
 @Repository
-public interface JuegoRepository extends JpaRepository<Juego, Long>{
+public interface JuegoRepository extends JpaRepository<Juego, Long> {
 
 }
