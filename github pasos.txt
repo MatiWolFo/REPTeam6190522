@@ -1,7 +1,0 @@
-Para llevar a mi rama:
-
-ir al lugar preciso de los archivos
-git checkout Diana7riachuelos
-git add .
-git commit -m ""
-git push
