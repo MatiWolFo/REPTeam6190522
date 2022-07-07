@@ -5,7 +5,6 @@ package com.generationg6.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -20,7 +19,10 @@ public class ConfiguracionJuego {
     private Long id;
     private Integer vidas;
     private Integer scoreMinimo;
-
+    /* COLUMNAS CREATED N UPDATED */
+    @Column(updatable = false)
+    private Date fechaCreacion;
+    private Date fechaEdicion;
     /* VARIOS JUEGOS PUEDEN ESTAR EN 1 ETAPA */
     @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
     @ManyToOne(fetch = FetchType.LAZY)
@@ -72,5 +74,14 @@ public class ConfiguracionJuego {
         this.juego = juego;
     }
 
+    /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+    @PrePersist
+    protected void onCreate() {
+        this.fechaCreacion = new Date();
+    }
 
+    @PreUpdate
+    protected void onUpdate() {
+        this.fechaEdicion = new Date();
+    }
 }
