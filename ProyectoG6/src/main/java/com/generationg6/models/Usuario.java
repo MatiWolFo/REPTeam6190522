@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="usuarios")
+@Table(name="usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Usuario {
 
 @Id
