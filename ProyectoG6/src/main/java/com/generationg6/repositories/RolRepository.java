@@ -6,10 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.generationg6.models.Rol;
 
 @Repository
-<<<<<<< HEAD
-public interface RolRepository extends JpaRepository<Rol, Long>{
-=======
 public interface RolRepository extends JpaRepository<Rol, Long> {
->>>>>>> MatiRebolledo
 
 }

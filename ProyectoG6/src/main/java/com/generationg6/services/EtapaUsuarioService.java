@@ -8,13 +8,7 @@ import com.generationg6.repositories.EtapaUsuarioRepository;
 @Service
 public class EtapaUsuarioService {
 
-<<<<<<< HEAD
-	/* INYECCION DE DEPENDENCIA A REPOSITORIO */
-	@Autowired
-	EtapaUsuarioRepository etapaUsuarioRepository;
-=======
     /* INYECCION DE DEPENDENCIA A REPOSITORIO */
     @Autowired
     EtapaUsuarioRepository etapaUsuarioRepository;
->>>>>>> MatiRebolledo
 }

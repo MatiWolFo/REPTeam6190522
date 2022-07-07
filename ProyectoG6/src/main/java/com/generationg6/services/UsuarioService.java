@@ -1,10 +1,5 @@
 package com.generationg6.services;
 
-<<<<<<< HEAD
-public class UsuarioService {
-
-}
-=======
 import com.generationg6.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,4 +12,3 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 }
->>>>>>> MatiRebolledo

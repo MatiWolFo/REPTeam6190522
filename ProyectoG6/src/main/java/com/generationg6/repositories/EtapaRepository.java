@@ -6,10 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.generationg6.models.Etapa;
 
 @Repository
-<<<<<<< HEAD
-public interface EtapaRepository extends JpaRepository<Etapa, Long>{
-=======
 public interface EtapaRepository extends JpaRepository<Etapa, Long> {
->>>>>>> MatiRebolledo
 
 }

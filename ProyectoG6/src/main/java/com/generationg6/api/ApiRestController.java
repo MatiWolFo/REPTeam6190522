@@ -3,32 +3,6 @@ package com.generationg6.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.generationg6.models.Asignatura;
-import com.generationg6.models.Contenido;
-import com.generationg6.models.Etapa;
-import com.generationg6.models.Juego;
-import com.generationg6.models.Modulo;
-import com.generationg6.models.PreguntaEtapa;
-import com.generationg6.models.RespuestaEtapa;
-import com.generationg6.services.AsignaturaService;
-import com.generationg6.services.ContenidoService;
-import com.generationg6.services.EtapaService;
-import com.generationg6.services.JuegoService;
-import com.generationg6.services.ModuloService;
-import com.generationg6.services.PreguntaEtapaService;
-import com.generationg6.services.RespuestaEtapaService;
-
-/*INYECTAR LIBRERIA REST API*/
-@RestController
-@RequestMapping("/api/obtener")
-public class ApiRestController {
-
-	/* INYECTAR DEPENDENCIAS CLASES A MOSTRAR */
-=======
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -57,7 +31,6 @@ import com.generationg6.services.ScoreUsuarioService;
 public class ApiRestController {
 
 	/* INYECTAR DEPENDENCIAS CLASES A MOSTRAR EN API */
->>>>>>> MatiRebolledo
 	@Autowired
 	EtapaService etapaService;
 	@Autowired
@@ -67,19 +40,11 @@ public class ApiRestController {
 	@Autowired
 	ContenidoService contenidoService;
 	@Autowired
-<<<<<<< HEAD
-	JuegoService juegoService;
-	@Autowired
-	PreguntaEtapaService preguntaEtapaService;
-	@Autowired
-	RespuestaEtapaService respuestaEtapaService;
-=======
 	ScoreUsuarioService	scoreUsuarioService;
 	@Autowired
 	PreguntaService preguntaService;
 	@Autowired
 	AlternativaService alternativaService;
->>>>>>> MatiRebolledo
 
 	/* CREAR UNA RUTA PARA RETORNAR E INICIARLA */
 	@RequestMapping("/etapa")
@@ -88,20 +53,12 @@ public class ApiRestController {
 	public List<Etapa> obtenerListaEtapas() {
 		/* VA A BUSCAR AL SERVICE EL METODO */
 		List<Etapa> listaEtapas = etapaService.findAll();
-<<<<<<< HEAD
-		/* UNA VEZ EL SERVICE VA AL REPOSITORY, RETORNA LA VARIABLE DESEADA */
-		return listaEtapas;
-
-	}
-
-=======
 		/* UNA VEZ EL SERVICE VA AL REPOSITORY, RETORNA LA VARIABLE O LISTA DESEADA */
 		return listaEtapas;
 	}
 
 	/* FAVOR CHECAR SI SE TIENEN QUE AGREGAR O QUITAR APIREST */
 
->>>>>>> MatiRebolledo
 	@RequestMapping("/asignatura")
 	public List<Asignatura> obtenerListaAsignaturas() {
 		List<Asignatura> listaAsignaturas = asignaturaService.findAll();
@@ -120,43 +77,6 @@ public class ApiRestController {
 		return listaContenidos;
 	}
 
-<<<<<<< HEAD
-	@RequestMapping("/juego")
-	public List<Juego> obtenerListaJuegos() {
-		List<Juego> listaJuegos = juegoService.findAll();
-		return listaJuegos;
-	}
-
-	/*
-	 * ESTAS HAY QUE CORREGIRLAS PARA QUE SE MUESTREN COMO QUIZ FINAL DE ETAPAS,
-	 * MODIFICAR SEGUN SE NECESITE
-	 */
-	@RequestMapping("/pregunta")
-	public List<PreguntaEtapa> obtenerListaPreguntas() {
-		List<PreguntaEtapa> listaPreguntas = preguntaEtapaService.findAll();
-		return listaPreguntas;
-	}
-
-	/*
-	 * ESTAS HAY QUE CORREGIRLAS PARA QUE SE MUESTREN COMO QUIZ FINAL DE ETAPAS,
-	 * MODIFICAR SEGUN SE NECESITE
-	 */
-	@RequestMapping("/respuesta")
-	public List<RespuestaEtapa> obtenerListaRespuestas() {
-		List<RespuestaEtapa> listaRespuestas = respuestaEtapaService.findAll();
-		return listaRespuestas;
-	}
-
-	/*
-	 * LO QUE VA A RETORNAR, ES UN JSON, UNA API REST PARA QUE SEA CONSUMIDA
-	 * EXTERNAMENTE
-	 */
-	/*
-	 * LA REST API TOMA UN OBJETO Y LO MUESTRA COMO STRINGS PARA SER USADO POR
-	 * REACT, POR EJEMPLO
-	 */
-
-=======
 	@RequestMapping("/puntaje")
 	public List<ScoreUsuario> obtenerListaPuntajes() {
 		List<ScoreUsuario> listaPuntajes = scoreUsuarioService.findAll();
@@ -179,5 +99,4 @@ public class ApiRestController {
 		return listaRespuestas;
 	}
 
->>>>>>> MatiRebolledo
 }
