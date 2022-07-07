@@ -13,7 +13,6 @@
 <body>
 
 <div>
-
 	<form:form action="/home/registro" method ="post">
 		<input type = "submit" value ="Registrar Usuario">
 	</form:form>

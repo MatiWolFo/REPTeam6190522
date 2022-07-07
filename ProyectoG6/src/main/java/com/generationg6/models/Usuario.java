@@ -1,57 +1,84 @@
 package com.generationg6.models;
 
+/* IMPORTAR LIBRERIAS */
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+
+/* CREAR ENTIDAD */
 @Entity
-@Table(name="usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "usuarios")
 public class Usuario {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    /* OBJETO Y ATRIBUTO */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
-
     private String apellido;
-
     private Integer edad;
-
     private String rut;
-
-    private String email;
-
     private String username;
-
     private String password;
-
-@OneToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "id_rol", referencedColumnName = "id")
-private Roles rol;
-//Este rol corresponde a "rol" del .jsp
-
-
+    private String email;
+    /* COLUMNAS CREATED N UPDATED */
     @Column(updatable = false)
-    private Date updatedAt;
-    private Date createdAt;
+    private Date fechaCreacion;
+    private Date fechaEdicion;
+
+    /* VARIOS USUARIOS TIENEN 1 ROL MANY TO ONE */
+    @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_rol")
+    /* ATRIBUTO FK COLABORATIVO */
+    private Rol rol;
+
+    /* 1 USUARIO TIENE VARIAS RESPUESTAS DE JUEGOS */
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    private List<ScoreUsuario> listaScoreUsuario;
+
+    /* ETAPAUSUARIO */
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    private List<EtapaUsuario> listaEtapaUsuario;
+
+    /* CONSTRUCTORES */
 
     public Usuario() {
-        super();
     }
 
-    public Usuario(Long id, String nombre, String apellido, Integer edad, String rut, String email, String username, String password) {
+    public Usuario(Long id, String nombre, String apellido, Integer edad, String username, String password, String rut, String email, Rol rol, List<ScoreUsuario> listaScoreUsuario, List<EtapaUsuario> listaEtapaUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
-        this.rut = rut;
-        this.email = email;
         this.username = username;
         this.password = password;
-
+        this.rut = rut;
+        this.email = email;
+        this.rol = rol;
+        this.listaScoreUsuario = listaScoreUsuario;
+        this.listaEtapaUsuario = listaEtapaUsuario;
     }
+
+    /* GETTERS N SETTERS */
 
     public Long getId() {
         return id;
@@ -85,22 +112,6 @@ private Roles rol;
         this.edad = edad;
     }
 
-    public String getRut() {
-        return rut;
-    }
-
-    public void setRut(String rut) {
-        this.rut = rut;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -117,20 +128,70 @@ private Roles rol;
         this.password = password;
     }
 
-    public Roles getRol() {
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(Roles rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
-    @PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
+    public List<ScoreUsuario> getListaScoreUsuario() {
+        return listaScoreUsuario;
     }
+
+    public void setListaScoreUsuario(List<ScoreUsuario> listaScoreUsuario) {
+        this.listaScoreUsuario = listaScoreUsuario;
+    }
+
+    public List<EtapaUsuario> getListaEtapaUsuario() {
+        return listaEtapaUsuario;
+    }
+
+    public void setListaEtapaUsuario(List<EtapaUsuario> listaEtapaUsuario) {
+        this.listaEtapaUsuario = listaEtapaUsuario;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaEdicion() {
+        return fechaEdicion;
+    }
+
+    public void setFechaEdicion(Date fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
+    }
+
+    /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+    @PrePersist
+    protected void onCreate() {
+        this.fechaCreacion = new Date();
+    }
+
     @PreUpdate
-    protected void onUpdate(){
-        this.updatedAt = new Date();
+    protected void onUpdate() {
+        this.fechaEdicion = new Date();
     }
 }

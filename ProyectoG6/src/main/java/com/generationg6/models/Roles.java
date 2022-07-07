@@ -1,15 +1,13 @@
 package com.generationg6.models;
 
 
-import org.hibernate.annotations.NaturalId;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "roles")
 public class Roles {
 	@Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private String descripcion;

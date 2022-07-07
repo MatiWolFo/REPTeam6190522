@@ -1,33 +1,56 @@
 package com.generationg6.models;
 
-import javax.persistence.*;
+/* IMPORTAR LIBRERIAS */
+
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+
+/* CREAR ENTIDAD */
 @Entity
 @Table(name = "asignaturas")
 public class Asignatura {
 
+    /* OBJETO Y ATRIBUTO */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
-
     private String descripcion;
+    /* COLUMNAS CREATED N UPDATED */
+    @Column(updatable = false)
+    private Date fechaCreacion;
+    private Date fechaEdicion;
 
-    @OneToMany(mappedBy = "asignatura")
-    private List<Modulos> modulosList;
+    /* 1 ASIGNATURA TIENE VARIOS MODULOS ONE TO MANY */
+    @OneToMany(mappedBy = "asignatura", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    private List<Modulo> listaModulos;
 
+    /* CONSTRUCTORES */
     public Asignatura() {
         super();
     }
 
     public Asignatura(Long id, String nombre, String descripcion) {
+        super();
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
 
+    /* GETTERS N SETTERS */
     public Long getId() {
         return id;
     }
@@ -52,11 +75,39 @@ public class Asignatura {
         this.descripcion = descripcion;
     }
 
-    public List<Modulos> getModulosList() {
-        return modulosList;
+    public List<Modulo> getListaModulos() {
+        return listaModulos;
     }
 
-    public void setModulosList(List<Modulos> modulosList) {
-        this.modulosList = modulosList;
+    public void setListaModulos(List<Modulo> listaModulos) {
+        this.listaModulos = listaModulos;
     }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaEdicion() {
+        return fechaEdicion;
+    }
+
+    public void setFechaEdicion(Date fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
+    }
+
+    /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
+    @PrePersist
+    protected void onCreate() {
+        this.fechaCreacion = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.fechaEdicion = new Date();
+    }
+
 }
