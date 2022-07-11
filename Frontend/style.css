@@ -2,7 +2,10 @@
 
 * {
     font-family: 'Press Start 2P', cursive;
-    background-color: #21a6ff;
+}
+
+body {
+    background: url(disenio/background-nube.png) ;
     color: aliceblue;
 }
 
@@ -69,7 +72,6 @@ h1 {
     color: rgb(250, 137, 8);
     margin-top: 35px;
     background-color: rgba(0, 0, 0, 0);
-    background: purple;
 }
 
 .nompag {
@@ -86,8 +88,9 @@ footer {
 }
 
 .RS {
-    background: url(./public/pasto.png) center;
+    background: url(disenio/pasto.png) center;
     width: 100%;
+    height: 80px;
 }
 
 .img-tw,
@@ -116,23 +119,33 @@ footer {
     margin: 0px;
 }
 
+.testi {
+    text-align: center;
+}
+
 .MiR,
-.PR,
-.MaR,
 .DM,
-.AV {
+.PR,
+.AV,
+.MaR {
+    width: 25%;
+    margin: 2em;
+}
+
+.MDP,
+.AM {
     display: flex;
     flex-direction: row;
-    margin: 20px;
+    justify-content: center;
 }
 
 .ID {
-    width: 25%;
-    border-radius: 1000px;
+    width: 50%;
+    border-radius: 100%;
 }
 
 .name {
-    margin-top: 50px;
+    margin-top: 3em;
     color: yellow;
 }
 
@@ -148,38 +161,57 @@ footer {
     margin: 0px;
 }
 
-.tabla table {
-    list-style-type: square;
-    font-size: 1em;
-    font-weight: 50;
-    text-align: left;
-    font-family: 'Times New Roman', Times, serif;
+.correo {
+    text-align: center;
 }
 
 
 /*Estilos Registro*/
+.regis {
+
+    background: url(./public/castillo.png) center no-repeat;
+}
+
+.reg {
+    margin-bottom: 60px;
+}
 
 .registro1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 5em;
-    background: url(./public/castillo.png);
 }
 
-.img-est {
-    width: 200px;
-    background: rgba(0, 0, 0, 0);
+.profe {
+    width: 25%;
+    padding: 2em;
+    margin-left: 3em;
+    color: whitesmoke;
+    text-align: center;
+    border: #213567 solid 5px;
+    border-radius: 20%;
+    background-color: rgba(0, 0, 0, .3);
 }
 
+.est {
+    width: 25%;
+    padding: 2em;
+    color: whitesmoke;
+    text-align: center;
+    border: #1e3d8a solid 5px;
+    border-radius: 20%;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.img-est,
 .img-profe {
-    width: 200px;
+    min-width: 100px;
+    width: 50%;
 }
 
 .img-padre {
     width: 72%;
 }
-
 
 /*estilos codigo*/
 
@@ -187,7 +219,6 @@ footer {
     display: flex;
     flex-direction: row;
 }
-
 
 /*Estilo estudiante profesor*/
 
@@ -243,7 +274,7 @@ input {
     background: #222A3F;
     padding: 10px;
     font-size: 16px;
-    font-weight: 700px!important;
+    font-weight: 700px !important;
     color: white;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
     transition: 0.5s ease-in;
@@ -271,7 +302,7 @@ input {
     text-decoration-style: none;
     text-decoration-line: none;
     font-size: 20px;
-    font-weight: 700!important;
+    font-weight: 700 !important;
     /* border: 2px solid white; */
     padding: 10px;
     border-radius: 10px;
