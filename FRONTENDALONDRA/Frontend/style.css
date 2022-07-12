@@ -1,0 +1,549 @@
+/*Estilos generales */
+
+* {
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background: url(disenio/background-nube.png);
+    color: aliceblue;
+}
+
+.img {
+background-size: 20%;
+
+}
+
+h1 {
+    font-size: 5em;
+    margin: 25px;
+}
+
+
+/*Nav bar*/
+.navv {
+    background-color: #ffffff;
+    font-size: x-large;
+    min-height: 100%;
+    width: 90%;
+    margin-top: 3%;
+    margin-left: 5%;
+    justify-content: space-around;
+    opacity: 0.7;
+}
+
+.navv:hover {
+    opacity: 1.0;
+}
+
+/*Banner*/
+
+.kd {
+    display: flex;
+    flex-direction: row;
+    border-radius: 50px;
+}
+
+.k {
+    color: rgb(255, 0, 0);
+    margin-top: 37px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.i {
+    color: yellow;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.d {
+    color: blue;
+    margin-top: 45px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.s {
+    color: rgb(2, 254, 2);
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.D1 {
+    color: rgb(136, 0, 154);
+    margin-left: 50px;
+    margin-top: 50px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.y {
+    color: yellow;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.D2 {
+    color: rgb(250, 137, 8);
+    margin-top: 35px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.nompag {
+    display: flex;
+    flex-direction: row;
+}
+
+footer {
+    text-align: center;
+}
+
+.GN {
+    width: 15%;
+    margin-bottom: -80px;
+}
+
+.RS {
+    background: url(disenio/pasto.png) center;
+    width: 100%;
+    height: 200px;
+}
+
+.img-tw,
+.img-ig,
+.img-fb {
+    padding-top: 4%;
+    padding-right: 3%;
+    vertical-align: middle;
+    align-items: center;
+    width: 6%;
+    margin-bottom: 20px;
+    margin-left: 3%;
+    background: rgba(0, 0, 0, 0);
+    justify-content: space-around;
+    
+}
+
+/*estilos etapas*/
+
+body{
+    overflow: visible
+}
+
+#tamago{
+width: 10%;
+height: 10%;
+}
+
+/*BOXES ETAPAS*/
+
+/*TITULOS NIVELES*/
+
+.nivel1{
+    display: flex;
+    background-color: rgb(61, 148, 54);
+    box-shadow: 2px 2px 15px 15px rgba(61, 148, 54, 0.7);
+    border-style: none;
+    width: 60%;
+    padding: 20px;
+    margin-top: 10%;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.h4center{
+padding-left: 30%;
+}
+
+.nivel2{
+    display: flex;
+    background-color: rgb(61, 148, 54);
+    box-shadow: 2px 2px 15px 15px rgba(61, 148, 54, 0.7);
+    border-style: none;
+    width: 60%;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.nivel3{
+    display: flex;
+    background-color: rgb(24, 24, 26);
+    box-shadow: 2px 2px 15px 15px rgba(24, 24, 26, 0.7);
+    border-style: none;
+    width: 60%;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 20px;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.h5center{
+    padding-left: 30%;
+    }
+
+/*A LINK ETAPAS, TEXTO SIN UNDERSCORE*/
+.nivelFont{
+    color: #ffffff;
+}
+a{
+    text-decoration: none;
+}
+
+
+/*BOXES NIVELES*/
+
+.boxNivel{
+    display: flex;
+    padding-top: 15px;
+    margin-top: -20px;
+    background-color: rgb(61, 148, 54);
+    border-style: none;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    justify-content: center;
+}
+
+.boxSoon{
+    display: flex;
+    padding-top: 15px;
+    background-color: rgb(24, 24, 26);;
+    border-style: hidden;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+#proximamente{
+    font-size: small;
+}
+
+.box1 {
+    display: block;
+    background-image: url("disenio/Picture1.png");
+    background-size: 100%;
+    background-position: center;
+    background-clip: border-box;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: rgb(101, 207, 117);
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px 30px rgba(101, 207, 117, 0.7);
+    min-width: 400px;
+    max-width: 1000px;
+    min-height: 450px;
+    max-height: 500px;
+    opacity: 0.4;
+}
+
+.box1:hover{
+    opacity: 1;
+}
+
+.box2 {
+    display: block;
+    background-image: url("disenio/juego2.png");
+    background-size: 100%;
+    background-position: center;
+    background-clip: border-box;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: rgb(101, 207, 117);
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px 30px rgba(101, 207, 117, 0.7);
+    min-width: 400px;
+    max-width: 1000px;
+    min-height: 450px;
+    max-height: 500px;
+    opacity: 0.4;
+}
+
+.box2:hover{
+    opacity: 1;
+}
+
+/*BOXES ETAPAS PROXIMAMENTE*/
+.box3 {
+    display: block;
+    background-color: gray;
+    background-image: url("disenio/undercons.png");
+    background-repeat: no-repeat;
+    background-size: 150px;
+    background-position: center;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: gray;
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px 30px rgba(95, 95, 102, 0.7);
+    min-width: 400px;
+    max-width: 1000px;
+    min-height: 450px;
+    max-height: 500px;
+    opacity: 0.7;
+}
+
+/*estilos contenidos*/
+
+
+
+
+/*Estilos index*/
+
+
+/*por ahora está vacío*/
+
+
+/*Estilo Nosotros*/
+
+.QS,
+.reg {
+    font-size: 4em;
+    text-align: center;
+    background: url(./public/cuadricula.png) center;
+    height: 80px;
+    color: black;
+    margin: 0px;
+}
+
+.testi {
+    text-align: center;
+}
+
+.MiR,
+.DM,
+.PR,
+.AV,
+.MaR {
+    width: 25%;
+    margin: 2em;
+}
+
+.MDP,
+.AM {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ID {
+    width: 50%;
+    border-radius: 100%;
+}
+
+.name {
+    margin-top: 3em;
+    color: yellow;
+}
+
+
+/*Contacto*/
+
+.contact {
+    font-size: 4em;
+    text-align: center;
+    background: url(./public/cuadricula.png) center no-repeat;
+    height: 80px;
+    color: black;
+    margin: 0px;
+}
+
+.correo {
+    text-align: center;
+}
+
+
+/*Estilos Registro*/
+.regis {
+
+    background: url(./public/castillo.png) center no-repeat;
+}
+
+.reg {
+    margin-bottom: 60px;
+}
+
+.registro1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.profe {
+    width: 25%;
+    padding: 2em;
+    margin-left: 3em;
+    color: whitesmoke;
+    text-align: center;
+    border: #213567 solid 5px;
+    border-radius: 20%;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.est {
+    width: 25%;
+    padding: 2em;
+    color: whitesmoke;
+    text-align: center;
+    border: #1e3d8a solid 5px;
+    border-radius: 20%;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.img-est,
+.img-profe {
+    min-width: 100px;
+    width: 50%;
+}
+
+.img-padre {
+    width: 72%;
+}
+
+/*estilos codigo*/
+
+.codino {
+    display: flex;
+    flex-direction: row;
+}
+
+/*Estilo estudiante profesor*/
+
+.registro {
+    width: 650px;
+    background: rgba(200, 138, 77, 0.918);
+    padding: 30px;
+    margin: auto;
+    border-radius: 10px;
+    font-family: 'Press Start 2P';
+}
+
+.registro p,
+.registro h2 {
+    background: rgb(0, 0, 0, 0);
+}
+
+input {
+    color: antiquewhite;
+    background-color: rgba(136, 68, 34, 0.313);
+}
+
+
+/*iniciar sesion*/
+
+.formulario {
+    margin-top: 5%;
+    min-width: 30%;
+    max-width: 600px;
+    background: rgba(200, 138, 77, 0.918);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(200, 138, 77, 0.568);
+    color: white;
+}
+
+.form-control {
+    background: rgb(136, 68, 34, 0.313);
+    border-style: none;
+    transition: 0.5s ease-in;
+    outline: none;
+    box-shadow: none;
+    padding: 30px;
+    margin-top: 10px;
+}
+
+.form-control:focus {
+    background: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: white;
+}
+
+.ingresar {
+    background: #ca8114;
+    margin: 5%;
+    padding-top: 20px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 500px !important;
+    color: white;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
+    transition: 0.5s ease-in;
+}
+
+.ingresar:hover {
+    color: white;
+}
+
+.olvide {
+    color: white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+}
+
+.olvide:hover {
+    color: white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+}
+
+.olvide1 {
+    color: white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    font-size: 20px;
+    font-weight: 700 !important;
+    /* border: 2px solid white; */
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(113, 62, 5, 0.5);
+    padding: 20px;
+}
+
+.olvide1:hover {
+    color: white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+}
+
+/* ESTILOS HEADER SEMILLITA */
+.a {
+    margin-top: 10px;
+    width: 30%;
+}
+
+.b {
+    margin-top: 10px;
+    margin-left: 30%;
+    width: 200%;
+}
+
+.c {
+    margin-top: 80px;
+    width: 200px;
+    height: 150px;
+}
+
+.k {
+    width: 150px;
+    height: 2em;
+}
+
+.kd {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+}
