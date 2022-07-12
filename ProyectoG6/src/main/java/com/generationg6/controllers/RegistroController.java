@@ -1,19 +1,17 @@
 package com.generationg6.controllers;
 
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import com.generationg6.models.Roles;
-import com.generationg6.services.RolesService;
+import com.generationg6.models.Rol;
+import com.generationg6.services.RolService;
 import com.generationg6.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.generationg6.models.Usuario;
 
@@ -24,7 +22,7 @@ import java.util.List;
 public class RegistroController {
 
 	@Autowired
-	RolesService rolesService;
+	RolService rolService;
 
 	@Autowired
 
@@ -33,7 +31,7 @@ public class RegistroController {
 	@RequestMapping ("/home/registro")
 	public String registro(@ModelAttribute("usuario") Usuario usuario, Model model){
 
-		List<Roles> listaRoles = rolesService.findAll();
+		List<Rol> listaRoles = rolService.findAll();
 		model.addAttribute("listaRoles", listaRoles);
 
 		return "registroUsuario.jsp";
@@ -48,9 +46,8 @@ public class RegistroController {
 		return "mostrarUsuario.jsp";
 	}
 
-	@RequestMapping("/home/registro/completo")
-
-	public String guardarUsuario(@Valid @ModelAttribute("usuario") Usuario usuario,
+	@PostMapping("/home/registro/completo")
+	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario,
 								 BindingResult resultado,
 								 Model model) {
 
@@ -59,13 +56,51 @@ public class RegistroController {
 			return "registroUsuario.jsp";
 		} else {
 
-			usuarioService.GuardarUsuario(usuario);
-			List<Usuario> listaUsuario = usuarioService.findAll();
-			model.addAttribute("ListaUsuarios", listaUsuario);
-			return "mostrarUsuario.jsp";
+			//Ya no es necesario agregar esta lista al atributo porque no estamos cargando el "mostrarUsuario.jsp"
+			//List<Usuario> listaUsuario = usuarioService.findAll();
+			//model.addAttribute("ListaUsuarios", listaUsuario);
+
+			//Creamos la variable usuarioExistente como booleano para ser usada en el if
+			//Llamamos a GuardarUsuario con la variable usuario cargada para que haga los comandos que
+			//se hicieron en la clase UsuarioService
+			boolean usuarioExistente = usuarioService.GuardarUsuario(usuario);
+
+			//Verificamos el booleano y se hacen las acciones correspondientes
+			if(usuarioExistente) {
+				model.addAttribute("msgError", "El email ya esta registrado");
+				return "registro.jsp";
+			}else {
+				return "login.jsp";
+			}
+
 		}
 
 	}
+
+	@RequestMapping("/home/registro/login")
+	public String ingresoUsuario(@RequestParam(value="email") String email,
+								 @RequestParam(value="password") String password,
+								 Model model, HttpSession session) {
+		/*validaciones a realizar*/
+		//validar que los parametros no son null o vacios
+		if(email==null || password ==null ||  email.isEmpty() || password.isEmpty()) {
+			model.addAttribute("msgError", "Todos los campos son obligatorios");
+			return "login.jsp";
+		}
+		//si es true, indica que hay un error el bd
+		boolean usuarioValidado = usuarioService.validarUsuario(email,password);
+
+		if(usuarioValidado){
+			model.addAttribute("msgError", "Error en el ingreso al sistema");
+			return "login.jsp";
+		}else {
+			//no hay error, puede ingresar al sistema
+			session.setAttribute("email", email);
+
+			return "redirect:/home";
+		}
+	}
+
 	@RequestMapping("/editar/{id}")
 	public String editar(@PathVariable("id") Long id, Model model) {
 
@@ -108,5 +143,7 @@ public class RegistroController {
 
 		return "redirect:/home/registro/mostrar"; //redirect manda a la ruta asociada
 	}
+
+
 
 }

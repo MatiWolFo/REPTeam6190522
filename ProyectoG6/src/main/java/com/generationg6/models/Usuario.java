@@ -7,19 +7,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /* CREAR ENTIDAD */
 @Entity
@@ -35,7 +25,13 @@ public class Usuario {
     private Integer edad;
     private String rut;
     private String username;
+
+    @NotNull
+
     private String password;
+    @Transient
+    private String passwordConfirm;
+
     private String email;
     /* COLUMNAS CREATED N UPDATED */
     @Column(updatable = false)
@@ -44,8 +40,7 @@ public class Usuario {
 
     /* VARIOS USUARIOS TIENEN 1 ROL MANY TO ONE */
     @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_rol")
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     /* ATRIBUTO FK COLABORATIVO */
     private Rol rol;
 
@@ -151,6 +146,14 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
 
     public List<ScoreUsuario> getListaScoreUsuario() {
         return listaScoreUsuario;

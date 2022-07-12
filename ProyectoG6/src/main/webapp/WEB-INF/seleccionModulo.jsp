@@ -6,22 +6,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PESTAÑA REGISTRO USUARIO</title>
+<title>Seleccion de Modulo</title>
 </head>
 <body>
-<h1>Selecciona tu asignatura</h1>
-	<div>
-		<form>
-		<%--@elvariable id="asignatura" type=""--%>
-		<form:form action="/home/seccion?=${asignatura.id}" method="post" modelAttribute="asignatura">
-			<form:select  path = "id">
-				<form:option value="0">Seleccione su asignatura</form:option>
-				<c:forEach var = "asignatura" items = "${listaAsignatura}">
-						<form:option value="${asignatura.id}">${asignatura.nombre}</form:option>
-				</c:forEach>
-			</form:select>
-			<input type="submit" value="Seleccion">
-		</form:form>
-	</div>
+<h1>Selecciona tu modulo</h1>
+<div>
+	<form:form action="/home/seleccion/contenido" method ="post">
+		<input type = "submit" value ="Modulo 1">
+	</form:form>
+</div>
+<div>
+	<form:form action="/home/seleccion/contenido" method ="post">
+		<input type = "submit" value ="Modulo 2">
+	</form:form>
+</div>
+<div>
+	<form:form action="/home/seleccion/contenido" method ="post">
+		<input type = "submit" value ="Modulo 3">
+	</form:form>
+</div>
 </body>
 </html>

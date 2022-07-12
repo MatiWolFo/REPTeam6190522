@@ -17,5 +17,16 @@
 		<input type = "submit" value ="Registrar Usuario">
 	</form:form>
 </div>
+<div>
+	<form:form action="/home/login" method ="post">
+		<input type = "submit" value ="Login">
+	</form:form>
+</div>
+<div>
+	<form:form action="/home/seleccion/asignatura" method ="post">
+		<input type = "submit" value ="Selecciona tu asignatura">
+	</form:form>
+</div>
+
 </body>
 </html>

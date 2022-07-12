@@ -17,16 +17,16 @@
 
 
 <%--@elvariable id="usuario" type=""--%>
-<form:form action="/home" method="post" modelAttribute="usuario">
-    <form:label path="email">Correo:</form:label>
-    <form:input type="email" path="email" />
+<form action="/home/registro/login" method="post" modelAttribute="usuario">
+    <label>Correo:</label>
+    <input type="email" name ="email" />
     <br>
-    <form:label path="password">Contraseña:</form:label>
-    <form:input type="text" path="password" />
+    <label>Contraseña:</label>
+    <input type="text" name="password" />
     <br>
 
     <input type="submit" value="Ingresar">
-</form:form>
+</form>
 
 </body>
 </html>

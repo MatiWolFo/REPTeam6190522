@@ -18,10 +18,13 @@
 	<form:input type="number" path="edad" />
 	<br>
 	<form:label path="email">Email:</form:label>
-	<form:input type="text" path="email" />
+	<form:input type="email" path="email" />
 	<br>
 	<form:label path="password">Contraseña:</form:label>
-	<form:input type="text" path="password" />
+	<form:input type="password" path="password" />
+	<br>
+	<form:label path="passwordConfirm">Confirmar Contraseña:</form:label>
+	<form:input type="password" path="passwordConfirm" />
 	<br>
 	<form:label path="username">Usuario:</form:label>
 	<form:input type="text" path="username" />

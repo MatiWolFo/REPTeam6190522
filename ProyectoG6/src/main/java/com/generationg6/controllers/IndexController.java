@@ -9,13 +9,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
+//Establecemos que la clase en un controlador y ruta inicial
+//RequestMapping permite cualquier metodo que llegue a la ruta(GET,POST,PUT, PATCH, DELETE)
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 
 public class IndexController {
     AsignaturaService asignaturaService;
@@ -27,25 +29,15 @@ public class IndexController {
         this.etapaService = etapaService;
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)//Aqui transformo una clase del modelo(objeto) a JSON.
-    @RequestMapping("getAsignaturaById")
-    public ResponseEntity <Asignatura> getAsignaturaById(Long idAsignatura) {
-        Asignatura asignatura ;
+    @RequestMapping("")
+    public String index(){
 
-        try {
-            asignatura = asignaturaService.getAsignaturaById(idAsignatura);
-        }catch (Exception e){
-            return new ResponseEntity<>(new Asignatura(), HttpStatus.BAD_REQUEST);
-
-        }
-        return new ResponseEntity<>(asignatura, HttpStatus.ACCEPTED);
-
+        return "home.jsp";
     }
 
-    @RequestMapping("/")
-    public String index(Model model) {
+    @RequestMapping("/login")
+    public String login(){
 
-        // PASA OBJETO A VISTA JSP
-        return "home.jsp";
+        return "login.jsp";
     }
 }

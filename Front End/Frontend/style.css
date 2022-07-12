@@ -1,0 +1,286 @@
+/*Estilos generales */
+
+* {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #21a6ff;
+    color: aliceblue;
+}
+
+.img {
+    margin: 1px;
+    width: 50%;
+}
+
+h1 {
+    font-size: 5em;
+    margin: 25px;
+}
+
+
+/*Nav bar*/
+
+
+/*Banner*/
+
+.kd {
+    display: flex;
+    flex-direction: row;
+    border-radius: 50px;
+}
+
+.k {
+    color: rgb(255, 0, 0);
+    margin-top: 37px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.i {
+    color: yellow;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.d {
+    color: blue;
+    margin-top: 45px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.s {
+    color: rgb(2, 254, 2);
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.D1 {
+    color: rgb(136, 0, 154);
+    margin-left: 50px;
+    margin-top: 50px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.y {
+    color: yellow;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.D2 {
+    color: rgb(250, 137, 8);
+    margin-top: 35px;
+    background-color: rgba(0, 0, 0, 0);
+    background: purple;
+}
+
+.nompag {
+    display: flex;
+    flex-direction: row;
+}
+
+footer {
+    text-align: center;
+}
+
+.GN {
+    width: 7%;
+}
+
+.RS {
+    background: url(./public/pasto.png) center;
+    width: 100%;
+}
+
+.img-tw,
+.img-ig,
+.img-fb {
+    width: 3%;
+    background: rgba(0, 0, 0, 0);
+}
+
+
+/*Estilos index*/
+
+
+/*por ahora está vacío*/
+
+
+/*Estilo Nosotros*/
+
+.QS,
+.reg {
+    font-size: 4em;
+    text-align: center;
+    background: url(./public/cuadricula.png) center;
+    height: 80px;
+    color: black;
+    margin: 0px;
+}
+
+.MiR,
+.PR,
+.MaR,
+.DM,
+.AV {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.ID {
+    width: 25%;
+    border-radius: 1000px;
+}
+
+.name {
+    margin-top: 50px;
+    color: yellow;
+}
+
+
+/*Contacto*/
+
+.contact {
+    font-size: 4em;
+    text-align: center;
+    background: url(./public/cuadricula.png) center no-repeat;
+    height: 80px;
+    color: black;
+    margin: 0px;
+}
+
+.tabla table {
+    list-style-type: square;
+    font-size: 1em;
+    font-weight: 50;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+/*Estilos Registro*/
+
+.registro1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5em;
+    background: url(./public/castillo.png);
+}
+
+.img-est {
+    width: 200px;
+    background: rgba(0, 0, 0, 0);
+}
+
+.img-profe {
+    width: 200px;
+}
+
+.img-padre {
+    width: 72%;
+}
+
+
+/*estilos codigo*/
+
+.codino {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/*Estilo estudiante profesor*/
+
+.registro {
+    width: 650px;
+    background: rgba(200, 138, 77, 0.918);
+    padding: 30px;
+    margin: auto;
+    border-radius: 10px;
+    font-family: 'Press Start 2P';
+}
+
+.registro p,
+.registro h2 {
+    background: rgb(0, 0, 0, 0);
+}
+
+input {
+    color: antiquewhite;
+    background-color: rgba(136, 68, 34, 0.313);
+}
+
+
+/*iniciar sesion*/
+
+.formulario {
+    background: rgba(200, 138, 77, 0.918);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(200, 138, 77, 0.568);
+    color: white;
+}
+
+.form-control {
+    background: rgb(136, 68, 34, 0.313);
+    border-style: none;
+    transition: 0.5s ease-in;
+    outline: none;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    background: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: white;
+}
+
+.ingresar {
+    background: #222A3F;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 700px!important;
+    color: white;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
+    transition: 0.5s ease-in;
+}
+
+.ingresar:hover {
+    color: white;
+}
+
+.olvide {
+    color: white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+}
+
+.olvide:hover {
+    color: white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+}
+
+.olvide1 {
+    color: white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    font-size: 20px;
+    font-weight: 700!important;
+    /* border: 2px solid white; */
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .5);
+}
+
+.olvide1:hover {
+    color: white;
+    text-decoration-style: none;
+    text-decoration-line: none;
+    cursor: pointer;
+}
