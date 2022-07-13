@@ -24,54 +24,27 @@ h1 {
 
 
 /*Banner*/
-
+.a{
+    margin-top: 50px;
+    width: 120px;
+}
+.b{
+    margin-top: 50px;
+width: 600px;
+}
+.c{
+    margin-top: 60px;
+    width: 200px;
+    height: 150px
+}
+.k{
+    width: 150px;
+    height: 2em;
+}
 .kd {
     display: flex;
     flex-direction: row;
-    border-radius: 50px;
-}
-
-.k {
-    color: rgb(255, 0, 0);
-    margin-top: 37px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.i {
-    color: yellow;
-    margin-top: 15px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.d {
-    color: blue;
-    margin-top: 45px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.s {
-    color: rgb(2, 254, 2);
-    margin-top: 15px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.D1 {
-    color: rgb(136, 0, 154);
-    margin-left: 50px;
-    margin-top: 50px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.y {
-    color: yellow;
-    margin-top: 15px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.D2 {
-    color: rgb(250, 137, 8);
-    margin-top: 35px;
-    background-color: rgba(0, 0, 0, 0);
+    width: 20%;
 }
 
 .nompag {
