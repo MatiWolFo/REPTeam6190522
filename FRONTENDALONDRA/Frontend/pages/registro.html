@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kids D&D</title>
+    <title>SEMILLITA - REGISTRO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -18,13 +19,23 @@
         <!--banner?-->
         <div class="nompag">
             <a class="aimg" href="../index.html">
-                <img class="img" src="../disenio/TAMA-YLLW.png" alt="TAMA">
+                <img class="img" src="../disenio/TAMA-YLLW.png" alt="tamago">
             </a>
-            <h1>Kids D&D</h1>
+            <div class="kd">
+                <!-- <img class= "b"src="./disenio/imagen logo semillita/SEM.png" alt="">
+                <img class= "k"src="./disenio/i.png" alt="">
+                <img class= "a"src="./disenio/imagen logo semillita/LL.png" alt="">
+                <img class= "k"src="./disenio/I.png" alt="">-->
+                <img class="b" src="../disenio/Semilli.png" alt="semilli">
+                <img class="c" src="../disenio/Semilla.png" alt="semilla">
+                <img class="a" src="../disenio/A.png" alt="a">
+            </div>
+
+
         </div>
         <!--navbar-->
         <nav class="navv">
-            <ul class="nav nav-pills">
+            <ul class="nav justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="../index.html">Inicio</a>
                 </li>
@@ -34,38 +45,68 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contacto.html">Contacto</a>
                 </li>
-            </ul>
-            <!--ver como hacer que queden en la misma linea, por ahora queda asi-->
-            <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" href="registro.html">Registro</a>
+                    <a class="nav-link" href="registro.html">Registro</a>
                 </li>
-                <li class="nav justify-content-end">
-                    <a class="nav-link" href="iniciarSesion.html">Iniciar Sesión</a>
+                <li class="nav-item">
+                    <a class="nav-link active" href="iniciarSesion.html">Iniciar Sesión</a>
                 </li>
             </ul>
         </nav>
     </header>
     <!--Cuerpo de pagina-->
-    <main class="regis">
-        <h1 class="reg">¿Quién eres?</h1>
-        <section class="registro1">
-            <div class="est">
-                <h2>Estudiante</h2>
-                <a href="nocodigo.html"> <img class="img-est" src="../public/Estudiante.png" alt="Estudiante"> </a>
-            </div>
-            <div class="profe">
-                <h2>Profesor</h2>
-                <a href="profesor.html"> <img class="img-profe" src="../public/profesor.png" alt="Profesor"> </a>
-            </div>
-            <!-- <div class="padre">
-                <h2>
-                    Padre
-                </h2>
-                <a href="padres.html"><img class="img-padre" src="../public/link.jpg" alt="padre"></a>
-            </div> -->
+    <main>
+        <h3 class="subtitulo">Regístrate. ¿Quién eres?...</h3>
+        <section class="cuerpoPagina">
+            <div class="wrapper">
+                <div class="container1">
+                    <div class="tabla1 row">
+                        <div class="columna1 col text-dark" align="center">
+                            <p>Nombres</p>
+                            <input type="text" name="nombres" id="nombres" placeholder="Ingrese sus nombres">
+                            <br>
+                            <p>Apellidos</p>
+                            <input type="text" name="apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
+                            <br>
+                            <p>Edad</p>
+                            <input type="int" name="edad" id="int" placeholder="Ingrese su edad">
+                            <br>
+                            <p>Correo</p>
+                            <input type="email" name="correo" id="correo" placeholder="Ingrese su correo">
+                            <br>
+                            <p>Nombre de usuario</p>
+                            <input type="text" name="nombreUsuario" id="nombreUsuario"
+                                placeholder="Ingrese su nombre de usuario">
+                            <br>
+                            <p>Clave</p>
+                            <input type="password" name="clave" id="clave" placeholder="Ingrese su clave">
+                            <br>
+                            <p>Reingrese su clave</p>
+                            <input type="password" name="reingresoClave" id="reingreoClave"
+                                placeholder="Reingrese su clave">
+                            <br>
+                            <br>
+                            <!--INYECTADO LINK AL BOTON-->
+                            <a href="asignaturas.html">
+                                <input id="btn1" type="submit" value="Registrarse">
+                            </a>
+                        </div>
+                        <div class="columna2 col text-dark">
+                            <div class="btn-selector">
+                                <div class="grupobtn btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-secondary"
+                                        style="font-size: x-small;">Left</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        style="font-size: x-small;">Middle</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        style="font-size: x-small;">Right</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </section>
-    
+    </main>
     <!--pie de pagina-->
     <footer>
         <img class="GN" src="../public/generation.png" alt="generation">
@@ -73,12 +114,9 @@
             <a href="https://www.instagram.com"><img class="img-ig" src="../public/ig.png" alt="ig"></a>
             <a href="https://www.Facebook.com"><img class="img-fb" src="../public/fb.png" alt="fb"></a>
             <a href="https://twitter.com"><img class="img-tw " src="../public/tw.png" alt="tw"></a>
-            <br>
-            <br>
-            <h6>Generation2022</h6>
         </div>
     </footer>
-</main>
+    </main>
 </body>
 
 </html>
