@@ -9,9 +9,12 @@ body {
     color: aliceblue;
 }
 
+/*IMAGEN TAMAGO INICIO PAGINA*/
 .img {
-background-size: 20%;
-
+    width: 40%;
+    height: 60%;
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
 h1 {
@@ -23,7 +26,7 @@ h1 {
 /*Nav bar*/
 .navv {
     background-color: #ffffff;
-    font-size: x-large;
+    font-size: large;
     min-height: 100%;
     width: 90%;
     margin-top: 3%;
@@ -35,6 +38,11 @@ h1 {
 .navv:hover {
     opacity: 1.0;
 }
+
+/*PISO MARIO CASTLE
+.floor{
+    
+}*/
 
 /*Banner*/
 
@@ -119,28 +127,37 @@ footer {
     margin-left: 3%;
     background: rgba(0, 0, 0, 0);
     justify-content: space-around;
-    
+
 }
 
 /*estilos etapas*/
 
-body{
-    overflow: visible
+.nav-link:hover {
+    color: #ca8114;
 }
 
-#tamago{
-width: 10%;
-height: 10%;
+.subtitulo {
+    background-color: rgb(61, 148, 54);
+    box-shadow: 0px 0px 5px 5px rgba(61, 148, 54, 0.7);
+    border-style: none;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 5%;
+    text-align: center;
+}
+
+body {
+    overflow: visible
 }
 
 /*BOXES ETAPAS*/
 
 /*TITULOS NIVELES*/
 
-.nivel1{
+.nivel1 {
     display: flex;
     background-color: rgb(61, 148, 54);
-    box-shadow: 2px 2px 15px 15px rgba(61, 148, 54, 0.7);
+    box-shadow: 0px 0px 5px 5px rgba(61, 148, 54, 0.7);
     border-style: none;
     width: 60%;
     padding: 20px;
@@ -149,14 +166,14 @@ height: 10%;
     text-align: center;
 }
 
-.h4center{
-padding-left: 30%;
+.h4center {
+    padding-left: 30%;
 }
 
-.nivel2{
+.nivel2 {
     display: flex;
     background-color: rgb(61, 148, 54);
-    box-shadow: 2px 2px 15px 15px rgba(61, 148, 54, 0.7);
+    box-shadow: 0px 0px 5px 5px rgba(61, 148, 54, 0.7);
     border-style: none;
     width: 60%;
     padding: 20px;
@@ -165,10 +182,10 @@ padding-left: 30%;
     text-align: center;
 }
 
-.nivel3{
+.nivel3 {
     display: flex;
     background-color: rgb(24, 24, 26);
-    box-shadow: 2px 2px 15px 15px rgba(24, 24, 26, 0.7);
+    box-shadow: 0px 0px 5px 5px rgba(24, 24, 26, 0.7);
     border-style: none;
     width: 60%;
     padding: 20px;
@@ -178,22 +195,23 @@ padding-left: 30%;
     opacity: 0.7;
 }
 
-.h5center{
+.h5center {
     padding-left: 30%;
-    }
+}
 
 /*A LINK ETAPAS, TEXTO SIN UNDERSCORE*/
-.nivelFont{
+.nivelFont {
     color: #ffffff;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
 
 /*BOXES NIVELES*/
 
-.boxNivel{
+.boxNivel {
     display: flex;
     padding-top: 15px;
     margin-top: -20px;
@@ -205,10 +223,11 @@ a{
     justify-content: center;
 }
 
-.boxSoon{
+.boxSoon {
     display: flex;
     padding-top: 15px;
-    background-color: rgb(24, 24, 26);;
+    background-color: rgb(24, 24, 26);
+    ;
     border-style: hidden;
     border-radius: 10px;
     width: 200px;
@@ -217,7 +236,7 @@ a{
     opacity: 0.7;
 }
 
-#proximamente{
+#proximamente {
     font-size: small;
 }
 
@@ -241,7 +260,7 @@ a{
     opacity: 0.4;
 }
 
-.box1:hover{
+.box1:hover {
     opacity: 1;
 }
 
@@ -265,7 +284,7 @@ a{
     opacity: 0.4;
 }
 
-.box2:hover{
+.box2:hover {
     opacity: 1;
 }
 
@@ -293,7 +312,116 @@ a{
 
 /*estilos contenidos*/
 
+.subtitulo1 {
+    width: 130%;
+    padding: 20px;
+    margin-top: 5%;
+    margin-left: -15%;
+    border-style: none;
+    background-color: rgb(61, 148, 54);
+    box-shadow: 0px 0px 5px 5px rgba(61, 148, 54, 0.7);
+}
 
+.descCont {
+    display: flex;
+    background-color: rgb(61, 148, 54);
+    box-shadow: 0px 0px 5px 5px rgba(61, 148, 54, 0.7);
+    border-style: none;
+    width: 100%;
+    padding: 20px;
+    margin-top: 10%;
+    margin-left: -20%;
+    margin-bottom: 10%;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.boxCont1 {
+    display: flex;
+    padding-top: 15px;
+    margin-top: -20px;
+    background-color: rgb(61, 148, 54);
+    border-style: none;
+    border-radius: 10px;
+    width: 60%;
+    height: 120%;
+    justify-content: center;
+    text-align: center;
+}
+
+.boxContA {
+    display: block;
+    background-image: url("disenio/juego2.png");
+    background-size: 100%;
+    background-position: center;
+    background-clip: border-box;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: rgb(101, 207, 117);
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px 30px rgba(101, 207, 117, 0.7);
+    min-width: 400px;
+    max-width: 1000px;
+    min-height: 450px;
+    max-height: 500px;
+    opacity: 0.4;
+}
+
+.boxContA:hover {
+    opacity: 1;
+}
+
+.boxContB {
+    display: block;
+    background-image: url("disenio/html.JPG");
+    background-size: 100%;
+    background-position: center;
+    background-clip: border-box;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: rgb(101, 207, 117);
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px 30px rgba(101, 207, 117, 0.7);
+    min-width: 400px;
+    max-width: 1000px;
+    min-height: 450px;
+    max-height: 500px;
+    opacity: 0.4;
+}
+
+.boxContB:hover {
+    opacity: 1;
+}
+
+/*ESTILOS MODULO*/
+
+.boxContC {
+    display: block;
+    background-image: url("disenio/helloWorld.jpg");
+    background-size: 100%;
+    background-position: center;
+    background-clip: border-box;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: rgb(101, 207, 117);
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px 30px rgba(101, 207, 117, 0.7);
+    min-width: 400px;
+    max-width: 1000px;
+    min-height: 450px;
+    max-height: 500px;
+    opacity: 0.4;
+}
+
+.boxContC:hover {
+    opacity: 1;
+}
 
 
 /*Estilos index*/
@@ -439,6 +567,18 @@ input {
 
 /*iniciar sesion*/
 
+.cont1 {
+    display: flex;
+    background-color: rgb(61, 148, 54);
+    box-shadow: 0px 0px 5px 5px rgba(61, 148, 54, 0.7);
+    border-style: none;
+    width: 60%;
+    padding: 20px;
+    margin-top: 10%;
+    border-radius: 20px;
+    text-align: center;
+}
+
 .formulario {
     margin-top: 5%;
     min-width: 30%;
@@ -448,12 +588,13 @@ input {
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(200, 138, 77, 0.568);
     color: white;
+    transition: 1s ease-in;
 }
 
 .form-control {
     background: rgb(136, 68, 34, 0.313);
     border-style: none;
-    transition: 0.5s ease-in;
+    transition: 1s ease-in;
     outline: none;
     box-shadow: none;
     padding: 30px;
@@ -527,12 +668,12 @@ input {
 
 .b {
     margin-top: 10px;
-    margin-left: 30%;
+    margin-left: -20%;
     width: 200%;
 }
 
 .c {
-    margin-top: 80px;
+    margin-top: 10px;
     width: 200px;
     height: 150px;
 }
