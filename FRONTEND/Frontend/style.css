@@ -457,11 +457,10 @@ a {
     margin-top: 5%;
     margin-left: 10%;
     margin-bottom: 10%;
-    background-color: rgba(200, 138, 77);
+    background-color: rgb(197, 147, 97);
     border-radius: 20px;
     border-style: none;
-    box-shadow: 0px 0px 30px 30px rgba(200, 138, 77, 0.568);
-    
+    box-shadow: 0px 0px 30px 30px rgba(197, 147, 97);
 }
 
 .subNombre {
@@ -485,7 +484,8 @@ a {
 .MaR {
     width: 25%;
     margin: 2em;
-    opacity: 0.2;
+    opacity: 0.5;
+    justify-content: space-around;
 }
 
 /*ANIMACION NOSOTROS*/
@@ -507,7 +507,7 @@ a {
 .AM {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .ID {
