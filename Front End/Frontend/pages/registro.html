@@ -27,7 +27,6 @@ height: 700px;
 width: 900px;
 margin: 6em;
 background-image: url("../public/imagen_libro.gif" ); 
-background-color: #cccccc; 
 background-position: center;
 background-repeat: no-repeat; 
 background-size: cover;
@@ -40,7 +39,7 @@ background-size: cover;
     width: 78%;
     margin-right: 1em;
     margin-left: 1em;
-    background-color: blue;
+
 }
 
 .col{
@@ -76,7 +75,7 @@ text-align: center  ;
 
 .btn-selector{
 
-    background-color: yellow;
+    
     width: 100%;
     height: 10%;
     margin-top: 30px;
@@ -84,6 +83,14 @@ text-align: center  ;
     
 }
 
+.grupobtn{
+
+display: inline-flex;
+justify-content:center;
+padding: 8px;
+margin-left: 17px;
+
+}
 
 
 </style>
@@ -96,7 +103,7 @@ text-align: center  ;
             <a class="aimg" href="../index.html">
                 <img class="img" src="../public/pixil-frame-0 (3).png" alt="neko">
             </a>
-            <h1>Kids D&D</h1>
+            <h1>Semillita -</h1>
         </div>
         <!--navbar-->
         <nav class="navv">
@@ -125,9 +132,9 @@ text-align: center  ;
     <section class="cuerpoPagina">
         <div class="wrapper">
         
-        <div class="container1 bg-success">
+        <div class="container1">
                 <div class="tabla1 row">
-                    <div class="columna1 col text-dark" style ="border: 1px solid red;">
+                    <div class="columna1 col text-dark" >
                         <p>Nombres</p>
                         <input type="text" name="nombres" id="nombres" placeholder="Ingrese sus nombres">
                         <br>
@@ -152,12 +159,12 @@ text-align: center  ;
                         <br>
                         <input id="btn1" type="submit" value="Registrarse">
                     </div>
-                    <div class="columna2 col text-dark" style ="border: 1px solid red;">
+                    <div class="columna2 col text-dark" >
                      <div class="btn-selector">
-                          <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-secondary" style = "font-size: 1px;" >Left</button>
-                            <button type="button" class="btn btn-secondary" style = "font-size: 1px;">Middle</button>
-                            <button type="button" class="btn btn-secondary" style = "font-size: 1px;">Right</button>
+                          <div class="grupobtn btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary" style = "font-size: x-small;">Left</button>
+                            <button type="button" class="btn btn-secondary" style = "font-size: x-small;">Middle</button>
+                            <button type="button" class="btn btn-secondary" style = "font-size: x-small;">Right</button>
                           </div>
                         </div>
                     </div>
