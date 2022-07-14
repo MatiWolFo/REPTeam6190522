@@ -2,6 +2,8 @@
 Hola Equipo 6
 
 # CHANGELOG
+### Fecha 14/07/22
+- UPDATED script precargados y STS
 ### Fecha 13/07/22
 - ADDED vistas FrontEnd
 ### Fecha 06/07/22

@@ -13,7 +13,7 @@ insert into modulos(id_asignatura, nombre, descripcion, fecha_creacion, fecha_ed
 insert into contenidos(id_modulo, nombre, descripcion, fecha_creacion, fecha_edicion) values
 (1,'HTML TITULOS','Que es un titulo <h1> a <h6>',NOW(),NULL),
 (1,'HTML PARRAFOS','Que es un parrafo <p>',NOW(),NULL),
-(1,'HTML SALTA LAS LINEAS','Que es un <b>',NOW(),NULL),
+(1,'HTML SALTA LAS LINEAS','Que es un <br>',NOW(),NULL),
 (1,'HTML DIBUJA LAS LINEAS','Que es un parrafo <p>',NOW(),NULL);
 
 insert into etapas(id_contenido, nombre, descripcion, fecha_creacion, fecha_edicion) values
