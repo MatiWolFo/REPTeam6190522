@@ -20,4 +20,10 @@ public class ModuloService {
 		
 		return moduloRepository.findAll();
 	}
+
+    public Modulo getModuloById(Long IdModulo){
+
+
+        return moduloRepository.findById(IdModulo).get();
+    }
 }

@@ -7,19 +7,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /* CREAR ENTIDAD */
 @Entity
@@ -33,8 +23,15 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private Integer edad;
+    private String rut;
     private String username;
+
+    @NotNull
+
     private String password;
+    @Transient
+    private String passwordConfirm;
+
     private String email;
     /* COLUMNAS CREATED N UPDATED */
     @Column(updatable = false)
@@ -43,8 +40,7 @@ public class Usuario {
 
     /* VARIOS USUARIOS TIENEN 1 ROL MANY TO ONE */
     @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_rol")
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     /* ATRIBUTO FK COLABORATIVO */
     private Rol rol;
 
@@ -63,13 +59,14 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nombre, String apellido, Integer edad, String username, String password, String email, Rol rol, List<ScoreUsuario> listaScoreUsuario, List<EtapaUsuario> listaEtapaUsuario) {
+    public Usuario(Long id, String nombre, String apellido, Integer edad, String username, String password, String rut, String email, Rol rol, List<ScoreUsuario> listaScoreUsuario, List<EtapaUsuario> listaEtapaUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.username = username;
         this.password = password;
+        this.rut = rut;
         this.email = email;
         this.rol = rol;
         this.listaScoreUsuario = listaScoreUsuario;
@@ -126,6 +123,14 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -141,6 +146,14 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
 
     public List<ScoreUsuario> getListaScoreUsuario() {
         return listaScoreUsuario;

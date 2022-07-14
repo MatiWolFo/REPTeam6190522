@@ -1,7 +1,5 @@
 package com.generationg6.models;
 
-/* IMPORTAR LIBRERIAS */
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
@@ -25,6 +23,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "contenidos")
 public class Contenido {
+
 
     /* OBJETO Y ATRIBUTO */
     @Id
