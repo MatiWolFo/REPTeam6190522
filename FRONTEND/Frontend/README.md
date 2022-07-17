@@ -1,3 +1,4 @@
-VISTAS AGREGADAS ver1
+#vistas quiza de lo que será, no lo se, no lo se
 
-SE NECESITA COMPLEMETAR CON NUEVAS VISTAS
+PRUEBA CLONAR
+
