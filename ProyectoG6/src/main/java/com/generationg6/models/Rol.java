@@ -5,17 +5,7 @@ package com.generationg6.models;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /* CREAR ENTIDAD */
 @Entity
@@ -24,6 +14,7 @@ public class Rol {
     /* OBJETO Y ATRIBUTO */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     private Long id;
     private String nombre;
     private String descripcion;
@@ -32,10 +23,11 @@ public class Rol {
     private Date fechaCreacion;
     private Date fechaEdicion;
 
-    /* 1 ROL TIENE VARIOS USUARIOS ONE TO MANY */
-    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /* 1 ROL TIENE solo un usuario */
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name ="rol_id")
     /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-    private List<Usuario> listaUsuarios;
+    private Usuario usuario;
 
     /* CONSTRUCTORES */
     public Rol() {
@@ -74,13 +66,7 @@ public class Rol {
         this.descripcion = descripcion;
     }
 
-    public List<Usuario> getListaUsuarios() {
-        return listaUsuarios;
-    }
 
-    public void setListaUsuarios(List<Usuario> listaUsuarios) {
-        this.listaUsuarios = listaUsuarios;
-    }
 
     public Date getFechaCreacion() {
         return fechaCreacion;
@@ -96,6 +82,14 @@ public class Rol {
 
     public void setFechaEdicion(Date fechaEdicion) {
         this.fechaEdicion = fechaEdicion;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */

@@ -1,6 +1,7 @@
 package com.generationg6.models;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*CREATE TABLE contenidos(
 id_contenido int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 nombre_contenido varchar(50),
@@ -11,6 +12,8 @@ id_modulo int
 /* IMPORTAR LIBRERIAS */
 >>>>>>> 8965fd0905a909c8a14eeef2be3b63ba9458bf46
 
+=======
+>>>>>>> 29ae305aef9652a7958a8e7ccb2dba93c151c1c4
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
@@ -72,6 +75,7 @@ public class Contenido {
 		}	
 =======
 >>>>>>> 8965fd0905a909c8a14eeef2be3b63ba9458bf46
+
 
     /* OBJETO Y ATRIBUTO */
     @Id
