@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 
 const initialValues =[
@@ -100,7 +100,7 @@ return(
                 />
                 
                 {/*INYECTADO LINK AL BOTON*/}
-                <a href="asignaturas.html">
+                <a href="/login">
                   <input id="btn1" type="submit" defaultValue="Registrarse" />
                 </a>
               </div>
