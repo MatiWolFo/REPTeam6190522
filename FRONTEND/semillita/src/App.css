@@ -1,0 +1,169 @@
+/*Estilos generales */
+
+* {
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background: url(./imagenes/background-nube.png);
+    color: aliceblue;
+}
+
+/*Header y nav*/
+
+.a {
+    margin-top: 10px;
+    width: 30%;
+}
+
+.b {
+    margin-top: 10px;
+    margin-left: 0px;
+    width: 200%;
+}
+
+.c {
+    margin-top: 55px;
+    width: 200px;
+    height: 150px;
+}
+
+.kd {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    margin-left: 10%;
+}
+
+.navv {
+
+    text-align: center;
+    justify-content: center;
+    background-color: #c4d8b4;
+    font-size:x-large ;
+    min-height: 100%;
+    width: 80%;
+    margin: 5%;
+    opacity: 0.9;
+    height: 80px;
+    padding-top: 15px;
+}
+li{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.navv:hover {
+    opacity: 1.0;
+}
+/*Footer*/
+
+footer {
+    text-align: center;
+}
+
+.GN {
+    width: 10%;
+    margin-bottom: -80px;
+}
+
+.RS {
+    background: url(./imagenes/pasto.png) center;
+    width: 100%;
+    height: 200px;
+}
+
+.img-tw,
+.img-ig,
+.img-fb {
+    padding-top: 4%;
+    padding-right: 3%;
+    vertical-align: middle;
+    align-items: center;
+    width: 6%;
+    margin-bottom: 20px;
+    margin-left: 3%;
+    background: rgba(0, 0, 0, 0);
+    justify-content: space-around;
+
+}
+
+/*REGISTRO*/
+
+.wrapper {
+    margin: auto;
+    display: grid;
+    place-items: center;
+}
+
+.container1 {
+    display: grid;
+    place-items: center;
+    height: 900px;
+    width: 1100px;
+    background-image: url(./imagenes/Imagen_libro.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.tabla1 {
+    height: 68%;
+    width: 78%;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+.col {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding: 1em;
+}
+
+.columna1 {
+    font-size: 90%;
+    text-align: center;   
+}
+
+.columna1 p {
+    color: black;
+    margin-bottom: 25px;
+}
+
+/*BOTON ANIMADO REGISTRARSE*/
+#btn1 {
+    width: 60%;
+    height: 10%;
+    color: black;
+    opacity: 0.5;
+}
+
+#btn1:hover {
+    opacity: 1;
+}
+
+.columna2 {
+    margin-left: 3em;
+}
+
+.imagen_libro {
+    height: 600px;
+    width: 1000px;
+    object-fit: cover;
+    text-align: center;
+}
+
+.btn-selector {
+    width: 100%;
+    height: 10%;
+    margin-top: 30px;
+    display: block;
+}
+
+.grupobtn {
+    display: inline-flex;
+    justify-content: center;
+    padding: 8px;
+    margin-left: 6em;
+}
