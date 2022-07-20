@@ -28,12 +28,16 @@ body {
     height: 150px;
 }
 
+.centrar-imagen{
+    margin: 0 auto;
+    display: table;
+}
+
 .kd {
     text-align: center;
     display: flex;
     flex-direction: row;
-    width: 20%;
-    margin-left: 10%;
+    width: 100%;
 }
 
 .navv {
@@ -392,3 +396,10 @@ footer {
     cursor: pointer;
     opacity: 1;
 }
+
+.gameContainer{
+    margin: 0 auto;
+      display: table;
+      margin-top: 20px;
+      border: black 10px solid;
+  }
