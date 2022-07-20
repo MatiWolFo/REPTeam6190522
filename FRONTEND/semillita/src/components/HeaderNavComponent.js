@@ -9,7 +9,7 @@ const HeaderNavComponent = () =>
 <header>
     {/*banner?*/}
     <div className="nompag">
-    <a className="aimg" href="../index.html">
+    <a className="aimg" href="/home">
         <img className="img" src={semillon_logo} alt="tamago" />
     </a>
     <div className="kd">
@@ -22,28 +22,27 @@ const HeaderNavComponent = () =>
     <nav className="navv">
     <ul className="nav justify-content-center">
         <li className="nav-item">
-        <a className="nav-link " aria-current="page" href="../index.html">
+        <a className="nav-link " aria-current="page" href="/home">
             Inicio
         </a>
         </li>
         <li className="nav-item">
-        <a className="nav-link" href="Nosotros.html">
-            {" "}
+        <a className="nav-link" href="/home/nosotros">
             ¿Quienes somos?
         </a>
         </li>
         <li className="nav-item">
-        <a className="nav-link" href="contacto.html">
+        <a className="nav-link" href="/home/contacto">
             Contacto
         </a>
         </li>
         <li className="nav-item">
-        <a className="nav-link" href="registro.html">
+        <a className="nav-link" href="/home/registro">
             Registro
         </a>
         </li>
         <li className="nav-item">
-        <a className="nav-link active" href="iniciarSesion.html">
+        <a className="nav-link active" href="/home/login">
             Iniciar Sesión
         </a>
         </li>
