@@ -2,64 +2,91 @@
 
 * {
     font-family: 'Press Start 2P', cursive;
+    color: rgb(240, 243, 245);
 }
 
 body {
     background: url(./imagenes/background-nube.png);
-    color: aliceblue;
+    overflow: visible;
 }
 
+h1 {
+    font-size: 4em;
+    margin: 25px;
+}
+.subtitulo {
+   
+    width: 80%;
+    background-color: rgb(61, 148, 54);
+    box-shadow: 0px 0px 5px 5px rgba(61, 148, 54, 0.7);
+    border-style: none;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 5%;
+    margin-left: 10%;
+    text-align: center;
+}
 /*Header y nav*/
 
-.a {
-    margin-top: 10px;
-    width: 30%;
+link {
+    text-decoration: none;
 }
 
-.b {
-    margin-top: 10px;
+
+.nompag {
+    display: flex;
+    flex-direction: row;
+}
+
+.img {
+    margin-top: 30px;
+    margin-left: 30px;
+    background-color:rgb(229, 229, 229);
+    border-radius: 90%;
+    width: 100px;
+    
+}
+
+.semillita {
+    margin-top: 30px;
     margin-left: 0px;
-    width: 200%;
 }
 
-.c {
-    margin-top: 55px;
-    width: 200px;
-    height: 150px;
-}
+
 
 .centrar-imagen{
     margin: 0 auto;
     display: table;
 }
 
-.kd {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
 
 .navv {
-
-    text-align: center;
-    justify-content: center;
-    background-color: #c4d8b4;
-    font-size:x-large ;
+    display: grid;
+    align-items: center;
+    background-color: rgb(179, 231, 187);
+    font-size:large ;
     min-height: 100%;
     width: 80%;
     margin: 5%;
-    opacity: 0.9;
-    height: 80px;
-    padding-top: 15px;
+    opacity: 0.8;
+    height: 60px;
+    padding-top: 10px;
 }
+
+.navv:hover {
+    background-color:rgb(179, 231, 187);
+    opacity: 1.0;
+}
+
 li{
     margin-left: 20px;
     margin-right: 20px;
 }
 
-.navv:hover {
-    opacity: 1.0;
+
+li:hover {
+
+    background-color: rgb(148, 230, 169) ;
 }
 /*Footer*/
 
@@ -92,10 +119,51 @@ footer {
     justify-content: space-around;
 
 }
+/*Index*/
+.semi,
+.semitxt{
+display: grid;
+place-items: center;
+}
+.semitxt p{
+        width: 60%;
+        margin: 2em;
+        opacity: 0.9;
+        justify-content: center;
+        background-color: rgb(94, 115, 135);
+        border-radius: 20px;
+        box-shadow: 0px 0px 5px 5px rgba(41, 129, 183, 0.568);
+        border-style: none;
+        /*box-shadow: 0px 0px 30px 30px rgba(159, 210, 122, 0.5);
+        */
+}
+.semitxt h4{
+    width: 100%;
+    background-color: rgba(108, 193, 108, 0.705);
+    box-shadow: 0px 0px 5px 5px rgba(41, 183, 62, 0.568);
+    border-style: none;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    text-align: center;
+}
+.semitxt h2{
+    width: 80%;
+    background-color: rgb(61, 148, 54);
+    box-shadow: 0px 0px 5px 5px rgba(61, 148, 54, 0.7);
+    border-style: none;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 5%;
+    margin-left: 10%;
+    text-align: center;
 
+}
 /*REGISTRO*/
 
 .wrapper {
+   
     margin: auto;
     display: grid;
     place-items: center;
@@ -130,13 +198,14 @@ footer {
     text-align: center;   
 }
 
-.columna1 p {
+.columna1 label {
     color: black;
-    margin-bottom: 25px;
+    margin-top: 20px;
 }
 
 /*BOTON ANIMADO REGISTRARSE*/
 #btn1 {
+    margin-top: 20px;
     width: 60%;
     height: 10%;
     color: black;
@@ -244,7 +313,6 @@ footer {
 
 
 .MiR,
-.DM,
 .PR,
 .AV,
 .MaR {
@@ -263,7 +331,6 @@ footer {
 /*ANIMACION NOSOTROS*/
 
 .MiR:hover,
-.DM:hover,
 .PR:hover,
 .AV:hover,
 .MaR:hover {
@@ -283,7 +350,9 @@ footer {
     flex-direction: row;
     justify-content: space-evenly   ;
 }
-
+.MiR .ID{
+    background-image: url("./imagenes/MIR.png");
+}
 .ID {
     width: 50%;
     border-radius: 100%;

@@ -8,8 +8,7 @@ const NosotrosComponent = () =>
 
 <div>
   <h3 className="subtitulo">¿Quienes somos?</h3>
-  <br />
-  <br />
+  
   <section className="testi">
     <div className="MDP">
       <div className="MiR">
@@ -43,8 +42,7 @@ const NosotrosComponent = () =>
         <p>
           "Si mediante la pagina que estamos creando puedo enseñar
           <br /> a pequeñas Alondritas a programar no lo voy a pensar
-          <br />
-          dos veces y voy a dar todo lo que pueda para hacerlo realidad "
+          <br /> dos veces y voy a dar todo lo que pueda para hacerlo realidad "
           <br />
           <br />
           <span className="name">-Alondra Valenzuela.</span>

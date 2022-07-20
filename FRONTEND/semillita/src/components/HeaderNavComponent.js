@@ -1,8 +1,7 @@
 import React from "react";
 import semillon_logo from "../imagenes/semillita_logo.png";
-import a from "../imagenes/A.png"
-import semilli from "../imagenes/Semilli.png"
-import semilla_t from "../imagenes/Semilla.png"
+import semilli from "../imagenes/semilli.png"
+
 import { Link } from 'react-router-dom'
 const HeaderNavComponent = () =>
 
@@ -10,14 +9,11 @@ const HeaderNavComponent = () =>
     {/*banner?*/}
     <div className="nompag">
     <Link className="aimg" to="">
-        <img className="img" width={100} src={semillon_logo} alt="tamago" />
+        <img className="img"  src={semillon_logo} alt="Semillita" />
     </Link>
     <div className="centrar-imagen">
-    <div className="kd">
-        <img className="b" src={semilli} alt="semilli" />
-        <img className="c" src={semilla_t} alt="semilla" />
-        <img className="a" src={a} alt="a" />
-    </div>
+        <img className="semillita" src={semilli} alt="semilli" />
+        
     </div>
    
     </div>
