@@ -1,11 +1,14 @@
 import { Scene } from "phaser";
 
 import Phaser from "phaser";
+import { getJuegoById, guardarScoreUsuario } from "../../services/JuegoService";
 
 export default class MainScene extends Scene {
   constructor() {
     super({ key: "MainScene" });
+
   }
+
   fondoWinner = {}
   fondoGameOver = {}
   botonStart = {}
@@ -28,37 +31,62 @@ export default class MainScene extends Scene {
   tiempoTerminoBicho = new Date();
   tiempoEsperaLetra = 1000;
   tiempoEsperaBicho = 500;
-  vidas = 3;
+  vidas;
   gameOver = false;
   win = false;
-  puntajeParaPasarNivel = 500;
+  puntajeParaPasarNivel;
   huevoTocaPiso = false;
   ENTER = null;
 
+  juego = {};
+
+  scoreUsuario = {
+    id:0,
+    scoreRealizado:0,
+    vidasUtilizadas:0,
+    juego:{
+      id:1
+    },
+    usuario:{
+      id:1
+    }
+  }
+
   preload() {
+
+    this.juego = getJuegoById(1).then((data) => {
+      console.log(data)
+      this.juego = data;
+
+      this.vidas = data.listaConfiguracionJuego[0].vidas
+      this.puntajeParaPasarNivel = data.listaConfiguracionJuego[0].scoreMinimo
+      
+    });
     this.load.image("fondoboton", "assets/img/fondoboton.png");
-    this.load.image("fondo", "assets/img/fondojuego1.png");
-    this.load.image("body", "assets/img/body.png");
-    this.load.image("head", "assets/img/head.png");
-    this.load.image("title", "assets/img/title.png");
+      this.load.image("fondo", "assets/img/fondojuego1.png");
+      this.load.image("body", "assets/img/body.png");
+      this.load.image("head", "assets/img/head.png");
+      this.load.image("title", "assets/img/title.png");
 
-    this.load.image("html", "assets/img/html.png");
-    this.load.image("html2", "assets/img/html2.png");
+      this.load.image("html", "assets/img/html.png");
+      this.load.image("html2", "assets/img/html2.png");
 
-    this.load.image('piso', 'assets/img/platform.png');
-    this.load.image('corazon', 'assets/img/corazon.png');
-    this.load.image('bicho', 'assets/img/bicho.png');
-    this.load.image('fondoWinner', 'assets/img/winner.png');
-    this.load.image('fondoGameOver', 'assets/img/game-over.png');
+      this.load.image('piso', 'assets/img/platform.png');
+      this.load.image('corazon', 'assets/img/corazon.png');
+      this.load.image('bicho', 'assets/img/bicho.png');
+      this.load.image('fondoWinner', 'assets/img/winner.png');
+      this.load.image('fondoGameOver', 'assets/img/game-over.png');
 
-    this.load.spritesheet("huevo", "assets/img/TAMA-RD.png", {
-      frameWidth: 629,
-      frameHeight: 369,
-    });
-    this.load.spritesheet("boton", "assets/img/jugar.png", {
-      frameWidth: 629,
-      frameHeight: 369,
-    });
+      this.load.spritesheet("huevo", "assets/img/TAMA-RD.png", {
+        frameWidth: 629,
+        frameHeight: 369,
+      });
+      this.load.spritesheet("boton", "assets/img/jugar.png", {
+        frameWidth: 629,
+        frameHeight: 369,
+      });
+
+
   }
 
   create() {
@@ -68,7 +96,7 @@ export default class MainScene extends Scene {
       .setInteractive()
       .on("pointerdown", () => this.play());
 
-      this.ENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+    this.ENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 
 
   }
@@ -95,7 +123,7 @@ export default class MainScene extends Scene {
       } else {
         this.vDerecha = 800;
         this.vIzquierda = 800;
-        if(this.huevo){
+        if (this.huevo) {
           this.huevo.setVelocityX(0);
 
         }
@@ -109,7 +137,7 @@ export default class MainScene extends Scene {
           setXY: { x: Phaser.Math.Between(0, 900), y: 0 },
           setScale: { x: 0.3, y: 0.3 },
         });
-        this.physics.add.collider(this.letras, this.platforms, this.colisionPlatform,undefined,this);
+        this.physics.add.collider(this.letras, this.platforms, this.colisionPlatform, undefined, this);
         this.physics.add.overlap(this.huevo, this.letras, this.collectLetras, undefined, this);
 
       }
@@ -122,7 +150,7 @@ export default class MainScene extends Scene {
           setXY: { x: Phaser.Math.Between(0, 900), y: 0 },
           setScale: { x: 0.07, y: 0.07 },
         });
-        this.physics.add.collider(this.bichos, this.platforms, this.colisionPlatform,undefined,this);
+        this.physics.add.collider(this.bichos, this.platforms, this.colisionPlatform, undefined, this);
 
         this.physics.add.overlap(
           this.huevo,
@@ -132,10 +160,10 @@ export default class MainScene extends Scene {
           this
         );
       }
-    }else{
-      if(this.gameOver && this.ENTER.isDown){
-        
-        
+    } else {
+      if (this.gameOver && this.ENTER.isDown) {
+
+
         this.scene.restart();
         this.gameOver = false;
         this.vidas = 3;
@@ -143,7 +171,20 @@ export default class MainScene extends Scene {
         this.juagando = false;
         this.huevoTocaPiso = false;
         this.corazones = []
-        
+
+        this.scoreUsuario = {
+          id:0,
+          scoreRealizado:0,
+          vidasUtilizadas:0,
+          juego:{
+            id:1
+          },
+          usuario:{
+            id:1
+          }
+        }
+
+
       }
     }
   }
@@ -169,7 +210,7 @@ export default class MainScene extends Scene {
     this.huevo.setBounce(0.2);
     this.huevo.setCollideWorldBounds(true);
 
-    this.physics.add.collider(this.huevo, this.platforms,this.colisionHuevoPlatform,undefined,this);
+    this.physics.add.collider(this.huevo, this.platforms, this.colisionHuevoPlatform, undefined, this);
 
 
 
@@ -179,7 +220,7 @@ export default class MainScene extends Scene {
       strokeThickness: 6,
     });
   }
-  colisionHuevoPlatform(huevo,platform){
+  colisionHuevoPlatform(huevo, platform) {
     this.huevoTocaPiso = true;
   }
 
@@ -191,13 +232,21 @@ export default class MainScene extends Scene {
       this.fondoWinner = this.add.image(1024 / 2, 720 / 2, "fondoWinner").setScale(0.3);
       this.physics.pause();
       this.win = true;
+      this.scoreUsuario.scoreRealizado = this.puntajeInt;
+      guardarScoreUsuario(this.scoreUsuario).then(()=>{
+        console.log("score guardado con exito")
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      });
     }
   }
 
   collectBichos(huevo, bichos) {
     bichos.disableBody(true, true);
     this.vidas -= 1;
-
+    this.scoreUsuario.vidasUtilizadas +=1;
     if (this.vidas > 0) {
       this.corazones[this.vidas].visible = false;
     } else {
@@ -205,7 +254,10 @@ export default class MainScene extends Scene {
       this.physics.pause();
       this.gameOver = true;
       this.fondoGameOver = this.add.image(1024 / 2, 720 / 2, "fondoGameOver").setScale(0.3);
-   
+      this.scoreUsuario.scoreRealizado = this.puntajeInt;
+      guardarScoreUsuario(this.scoreUsuario).then(()=>{
+        console.log("score guardado con exito")
+      });
 
     }
     this.puntajeInt = 0;
