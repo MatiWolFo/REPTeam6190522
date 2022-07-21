@@ -1,11 +1,19 @@
 import axios from 'axios';
 
-const baseUrl = "http://localhost:8080/api"
+const baseUrl = "http://localhost:9080/api"
 
-const saveAuto = async(auto) =>{
+const getAll = async() =>{
 
-    const res = await axios.post (baseUrl + "/guardar/auto", auto)
+    const res = await axios.get(baseUrl + "/usuario/obtener")
+
+    console.log(res.data)
+    return res.data
+}
+
+const saveUsuario = async(usuario) =>{
+
+    const res = await axios.post (baseUrl + "/guardar/usuario", usuario)
     return res.data;
 }
 
-export default {saveAuto}
+export {getAll,saveUsuario}

@@ -2,9 +2,12 @@ package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.*;
 
 /* CREAR ENTIDAD */
@@ -19,19 +22,20 @@ public class Rol {
     private String nombre;
     private String descripcion;
     /* COLUMNAS CREATED N UPDATED */
+    @JsonIgnore
     @Column(updatable = false)
     private Date fechaCreacion;
+    @JsonIgnore
     private Date fechaEdicion;
 
-    /* 1 ROL TIENE solo un usuario */
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name ="rol_id")
-    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
-    private Usuario usuario;
+    @JsonBackReference
+    @ManyToMany(mappedBy ="roles",fetch=FetchType.LAZY)
+    private List<Usuario> usuarios;
+
 
     /* CONSTRUCTORES */
     public Rol() {
-        super();
+
     }
 
     public Rol(Long id, String nombre, String descripcion) {
@@ -66,7 +70,13 @@ public class Rol {
         this.descripcion = descripcion;
     }
 
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
 
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 
     public Date getFechaCreacion() {
         return fechaCreacion;
@@ -84,13 +94,7 @@ public class Rol {
         this.fechaEdicion = fechaEdicion;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 
     /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
     @PrePersist

@@ -383,10 +383,7 @@ a {
 
 
 /*Estilos index*/
-.video{
-    margin-top: 10%;
-    margin-bottom: 10%;
-}
+
 /*por ahora está vacío*/
 
 .placeholderBox{
@@ -787,7 +784,7 @@ input {
 
 /*BOTON ANIMADO REGISTRARSE*/
 #btn1 {
-    width: 60%;
+    width: 45%;
     height: 10%;
     color: black;
     opacity: 0.5;

@@ -105,13 +105,14 @@ CREATE TABLE respuestas_usuarios(
 );
 CREATE TABLE roles(
     `id` bigint AUTO_INCREMENT NOT NULL,
-    `nombre` varchar(50) NOT NULL,
-    `descripcion` varchar(50) NOT NULL,
+    `nombre` varchar(50),
+    `descripcion` varchar(50),
+
  CONSTRAINT `PK_roles` PRIMARY KEY (`id`)
 );
 CREATE TABLE usuarios(
     `id` bigint AUTO_INCREMENT NOT NULL,
-    `id_rol` bigint NOT NULL,
+    `rol_id` bigint NOT NULL,
     `nombre` varchar(50) NOT NULL,
     `apellido` varchar(50) NOT NULL,
     `edad` int NOT NULL,
@@ -149,6 +150,6 @@ ALTER TABLE respuestas_usuarios  ADD  CONSTRAINT `FK_respuestas_usuarios_alterna
 REFERENCES alternativas_preguntas (`id`);
 ALTER TABLE respuestas_usuarios  ADD  CONSTRAINT `FK_respuestas_usuarios_usuarios` FOREIGN KEY(`id_usuario`)
 REFERENCES usuarios (`id`);
-ALTER TABLE usuarios ADD CONSTRAINT `FK_roles1` FOREIGN KEY (`id_rol`) 
+ALTER TABLE usuarios ADD CONSTRAINT `FK_roles1` FOREIGN KEY (`rol_id`) 
 REFERENCES roles(`id`)
 
