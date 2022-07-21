@@ -50,17 +50,20 @@ const NosotrosComponent = () =>
       </div>
       <div className="MaR">
         <h2 className="subNombre">ID_MaR</h2>
-        <img className="ID" src={MAR} alt="MAR" />
-        <p>
-          “La posibilidad de unir elementos del pasado <br /> con elementos del
-          presente y el futuro, dando
-          <br /> a nuevas generaciones una pizca de historia mientras juegan.”
-          <br />
-          <br />
-          <span className="name">-Matias Rebolledo.</span>
-        </p>
-      </div>
-    </div>
+                <div className="contenedor">
+                    <img src={MAR} alt="MAR" />
+                    <img className="top" src={AV} alt="MAR" />
+                </div>
+            <p>
+                “La posibilidad de unir elementos del pasado <br /> con elementos del
+                presente y el futuro, dando
+                <br /> a nuevas generaciones una pizca de historia mientras juegan.”
+                <br />
+                <br />
+                <span className="name">-Matias Rebolledo.</span>
+            </p>
+            </div>
+        </div>    
   </section>
 </div>
 
