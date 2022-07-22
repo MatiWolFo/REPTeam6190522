@@ -132,7 +132,7 @@ footer {
 display: grid;
 place-items: center;
 }
-.semitxt p{
+.semitxt h5{
         margin: 2em;
         opacity: 0.9;
         text-align: center;
