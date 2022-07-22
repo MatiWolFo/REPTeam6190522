@@ -16,13 +16,13 @@ const ContactoComponent = () =>
       <span>Nombre:</span>
       <br />
       <br />
-      <input type="”text”" size="”19″" name="”ContactName”" />
+      <input type="”text”" size="”19″" name="”ContactName”" placeholder="Ingresa tu nombre"/>
       <br />
       <br />
       <span>Correo:</span>
       <br />
       <br />
-      <input type="”text”" size="”19″" name="”ContactName”" />
+      <input type="”text”" size="”19″" name="”ContactName”" placeholder="correo@correo.com"/>
       <br />
       <br />
       <span>Mensaje:</span>
@@ -33,11 +33,12 @@ const ContactoComponent = () =>
         rows="”6″"
         cols="”20″"
         defaultValue={""}
+        placeholder="Escribe tu mensaje..."
       />
       <br />
       <br />
       {/*CHECAR PROBLEMA NO RE DIRECCIONA*/}
-      <button type="”submit”" value="”Submit”" id="send">
+      <button type="submit" value="Submit" id="send">
         Enviar
       </button>
     </form>

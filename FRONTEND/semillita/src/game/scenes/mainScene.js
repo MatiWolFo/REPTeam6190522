@@ -74,7 +74,7 @@ export default class MainScene extends Scene {//Aqui extiendo la clase MainScene
       this.load.image('fondoWinner', 'assets/img/winner.png');
       this.load.image('fondoGameOver', 'assets/img/game-over.png');
 
-      this.load.spritesheet("huevo", "assets/img/TAMA-RD.png", {
+      this.load.spritesheet("huevo", "assets/img/semillita_logo.png", {
         frameWidth: 629,
         frameHeight: 369,
       });
@@ -101,7 +101,7 @@ export default class MainScene extends Scene {//Aqui extiendo la clase MainScene
     //console.log(objeto.texture)
     if (objeto.texture.key !== "bicho" && this.puntajeInt > 0) {//si objeto.texture.key(imagenesprecargadas(texturas) segun id) es distinto de "bicho" y el puntaje es mayor que 0 entonces voy a restar del puntaje -10 puntos
 
-      this.puntajeInt -= 10;//resto -10 puntos
+      this.puntajeInt -= 5;//resto -10 puntos
       this.puntajeText.setText("puntaje: " + this.puntajeInt);//seteo el puntaje actual 
     }
     objeto.destroy()//cuando colisiona los taghtml(imagen) con la plataforma destruyo el objeto para que desaparezca 
