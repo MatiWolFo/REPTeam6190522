@@ -19,17 +19,19 @@ public class ApiUsuario {
     @Autowired //Inyeccion de dependencias, traer una clase para ser usada internamente
     UsuarioService usuarioService;
 
-        @RequestMapping(value = "/usuario/obtener")
-        public List<Usuario> obtenerListaUsuario(){
 
-            List<Usuario> listaUsuarios = usuarioService.findAll();
-            return listaUsuarios;
-        }
+         @RequestMapping(value = "/usuario/obtener", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+         public @ResponseBody List<Usuario> getUsuarios(HttpServletRequest request){
+             List<Usuario> usuarios = usuarioService.findAll();
+             return usuarios;
+         }
 
 
-        @PostMapping("/guardar/usuario")
-        public ResponseEntity<Usuario> guardarUsuario(@RequestBody Usuario usuario){
+
+        @PostMapping(value = "/guardar/usuario")
+        public  ResponseEntity<Usuario> guardarUsuario(@RequestBody Usuario usuario){
             usuarioService.GuardarUsuario(usuario);
+            System.out.println(usuario.getRoles());
             return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
         }
 

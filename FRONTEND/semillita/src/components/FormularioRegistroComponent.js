@@ -36,7 +36,7 @@ const handleInputChange=(e)=>{
   const guardarUser = async(usuario)=>{
     await saveUsuario(usuario)
     setValues(await getAll())
-}
+    }
 
 const handleSubmit = (e) =>{
   e.preventDefault();

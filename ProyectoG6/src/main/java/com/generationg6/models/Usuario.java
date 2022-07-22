@@ -2,13 +2,9 @@ package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+import com.fasterxml.jackson.annotation.*;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -24,6 +20,7 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private Integer edad;
+    @JsonIgnore
     private String rut;
     private String username;
 
@@ -52,9 +49,6 @@ public class Usuario {
             inverseJoinColumns=@JoinColumn(name="rol_id")
     )
     private List<Rol> roles;
-
-
-
 
     /* 1 USUARIO TIENE VARIAS RESPUESTAS DE JUEGOS */
     @JsonIgnore
