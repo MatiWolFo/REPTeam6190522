@@ -101,7 +101,7 @@ return(
                 
                 {/*INYECTADO LINK AL BOTON*/}
                 <a href="asignaturas.html">
-                  <input id="btn1" type="submit" defaultValue="Registrarse" />
+                  <input id="btn1" type="submit" defaultValue="Registrarse"/>
                 </a>
               </div>
               <div className="columna2 col text-dark">
