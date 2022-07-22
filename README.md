@@ -1,12 +1,5 @@
 # REPTeam6190522
 Hola Equipo 6
-
-<<<<<<< HEAD
-### FECHA 03/06/22
-- Agregadas carpetas para cada integrante
-- Commit MATIAS a su carpeta
-
-
 ### FECHA 15/06/22
 
 - Actualizacion a base de datos
