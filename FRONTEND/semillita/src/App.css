@@ -338,6 +338,29 @@ place-items: center;
 }
 
 /*ANIMACION NOSOTROS*/
+.contenedor {
+    display: grid;
+    place-items: center;
+    position: relative;
+    height: 290px;
+    width: 290px;
+    margin: 50px 20px;
+  }
+.contenedor img {
+    position: absolute;
+    transition: opacity 0.7s ease-in-out;
+    width: 80%;
+    border-radius: 100%;
+    margin-bottom: 10%;
+    background-color:rgb(88, 107, 123);
+}
+
+.contenedor img.top:hover {
+    opacity: 0;
+        width: 80%;
+    border-radius: 100%;
+    margin-bottom: 10%;
+}
 
 .MiR:hover,
 .PR:hover,

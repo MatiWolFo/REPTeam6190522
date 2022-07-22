@@ -14,10 +14,10 @@ function EtapaComponent() {
                     <h4 class="nivel1 justify-content-center">ATRAPA LOS "TAGS HTML"</h4>
                     <h5 class="descCont">¡Intenta atrapar las etiquetas que caen desde el cielo!</h5>
                 </div>
-                <Link className="hyperlinksub" to="/juego-html">
+                <Link className="hyperlinksub" to="/video">
                     <div className="box1 container">
                         <div className="boxNivel container">
-                            <h6 className="nivelFont">NIVEL 1</h6>
+                            <h6 className="nivelFont">Semillita</h6>
                         </div>
                     </div>
                 </Link>

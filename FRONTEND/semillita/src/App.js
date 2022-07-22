@@ -12,7 +12,8 @@ import JuegoHtmlComponent from './components/juego-html';
 import AsignaturaComponent from './components/AsignaturaComponent';
 import ModuloComponent from './components/ModuloComponent';
 import EtapaComponent from './components/EtapaComponent';
-
+import VideoComponent from './components/VideoComponent';
+import PreguntasComponent from './components/PreguntasComponent';
 const App = () => {
   return (
     
@@ -28,6 +29,9 @@ const App = () => {
       <Route path='modulo' element={<ModuloComponent/>}></Route>
       <Route path='etapa' element={<EtapaComponent/>}></Route>
       <Route path="juego-html" element={<JuegoHtmlComponent/>}></Route>
+      <Route path="video" element={<VideoComponent/>}></Route>
+      <Route path="preguntas" element={<PreguntasComponent/>}></Route>
+
       </Routes>
       <FooterComponent/>
     </BrowserRouter>
