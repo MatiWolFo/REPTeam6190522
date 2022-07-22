@@ -1,12 +1,10 @@
 # REPTeam6190522
 Hola Equipo 6
-### FECHA 15/06/22
 
+# CHANGELOG
+### FECHA 15/06/22
 - Actualizacion a base de datos
 - Agregadas todas las tablas y columnas que se necesitan por ahora
-## END COMMENTS
-=======
-# CHANGELOG
 ### Fecha 14/07/22
 - UPDATED carpeta frontend y rama AV
 ### Fecha 14/07/22
