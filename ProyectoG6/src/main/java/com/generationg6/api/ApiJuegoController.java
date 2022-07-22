@@ -6,6 +6,9 @@ import com.generationg6.models.Usuario;
 import com.generationg6.services.JuegoService;
 import com.generationg6.services.ScoreUsuarioService;
 import com.generationg6.services.UsuarioService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -44,6 +47,18 @@ public class ApiJuegoController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(juego, HttpStatus.ACCEPTED);
+
+    }
+
+    @RequestMapping("/obtener/scoreall")
+    public ResponseEntity<List <ScoreUsuario>> getScoreAll() {
+        List<ScoreUsuario> listaScoreUsuario;
+        try {
+            listaScoreUsuario = scoreUsuarioService.getScoreAll();
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(listaScoreUsuario, HttpStatus.ACCEPTED);
 
     }
 
