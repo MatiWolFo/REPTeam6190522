@@ -18,10 +18,10 @@ public class UsuarioService {
     UsuarioRepository usuariosRepository;
 
     //YA NO SOLO GUARDAMOS USARIO, VALIDAMOS PRIMERO
-    public Usuario GuardarUsuario(@Valid Usuario usuario) {
+    /*public Usuario GuardarUsuario(@Valid Usuario usuario) {
         usuariosRepository.save(usuario);
         return usuario;
-    }
+    }*/
 
 
     public List<Usuario> findAll() {
@@ -49,11 +49,11 @@ public class UsuarioService {
         usuariosRepository.findByUsername(usuario.getUsername());
     }
 
-    /*public Usuario GuardarUsuario(Usuario usuario) {
+    public boolean  GuardarUsuario(Usuario usuario) {
         boolean error=true;
         /*Proceso de validacion de datos*/
         //1-) Validar si el correo existe en la base de datos
-        /*Usuario existeusuario = usuariosRepository.findByEmail(usuario.getEmail());
+        Usuario existeusuario = usuariosRepository.findByEmail(usuario.getEmail());
 
         //Si no existe el usuario, lo creamos
         if (existeusuario == null) {
@@ -73,7 +73,7 @@ public class UsuarioService {
 
         //retornamos la variable error con lo que este adentro
         return error;
-    }*/
+    }
 
     public boolean validarUsuario(String email, String password) {
         boolean error = true;

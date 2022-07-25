@@ -1,39 +1,30 @@
+//Instalar express y nodemon
+
 const express = require('express')
-const cors = require('cors')
-const mysql = require('mysql')
-const bodyParser = require('body-parser')
-const app = express()
-app.use(cors())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json({ limit: '10mb' }))
 
 
-const credentials = {
-	host: 'localhost',
-	user: 'mich',
-	password: 'Pizza144*',
-	database: 'semillitaDB'
-}
+app.listen(3002, () =>{
 
-app.post('/api/login', (req, res) => {
-	const { username, password } = req.values
-	const values = [username, password]
-	var connection = mysql.createConnection(credentials)
-	connection.query("SELECT * FROM login WHERE username = ? AND password = ?", values, (err, result) => {
-		if (err) {
-			res.status(500).send(err)
-		} else {
-			if (result.length > 0) {
-				res.status(200).send({
-					"id": result[0].id,
-					"user": result[0].nombre,
-					"username": result[0].username
-				})
-			} else {
-				res.status(400).send('Usuario no existe')
-			}
+    console.log("Servidor corriendo")
+});
+
+app.post('http://localhost:3000/login', (req, res) => {
+	const username = req.body.username;
+    const password = req.body.password;
+
+	semillitaDB.query(
+        "SELECT * FROM login WHERE username = ? AND password = ?",
+        [username, password],
+        (err, result) => {
+		    if (err) {
+			res.send({err: err})
+		    } else{
+                if(result.length > 0){
+                    res.send(result)
+                }else{
+                    res.send({message: "Usuario o Contraseña incorrecta"})
+                }
 		}
 	})
-	connection.end()
 })
 

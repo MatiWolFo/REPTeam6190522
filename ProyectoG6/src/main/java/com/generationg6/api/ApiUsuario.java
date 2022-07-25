@@ -48,7 +48,7 @@ public class ApiUsuario {
         usuarioService.GuardarUsuario(usuario);
 
 
-        return new ResponseEntity<Usuario>(usuario, HttpStatus.CREATED);
+        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
     }
 
     @PutMapping("/usuario/actualizar/{id}")

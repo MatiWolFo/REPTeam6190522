@@ -2,42 +2,29 @@ import React, {useState} from "react";
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
-const initialValues =[
-  {
-    username:'',
-    password:'',
-  }
-]
-
 
 
 const LoginComponent = () =>{
 
-  const [values, setValues] = useState(initialValues);
-  const {username, password}= values;
 
-  
-  const inputChange = (e) => {
-    
-    const changedFormValue ={
-      ...values, 
-      [e.target.name]:e.target.value
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-    }
-    setValues(changedFormValue)
-  }
+  const[statusLogin, setStatusLogin] = useState("")
+
 
   const onSubmit = () => {
-      axios.post('http://localhost:9089/api/login', values)
-          .then(({ data }) => {
-              localStorage.setItem('auth', '"yes"')
-              
-          })
-          .catch(({ response }) => {
-              console.log(response.data)
-          })
+      axios.post('http://localhost:3000/login',{
+      username: username,
+      password: password
+    }).then((response) => {
+     if(response.data.message){
+      setStatusLogin(response.data.message) 
+     }else{ setStatusLogin(response.data[0].username)
+     }
+     
+    });
   }
-
   return(
   <div className="container" align="center">
     <div className="row justify-content-center ">
@@ -52,7 +39,7 @@ const LoginComponent = () =>{
                 type="text"
                 className="form-control"
                 placeholder="Ingrese su Usuario"
-                onChange={inputChange}
+                onChange ={(e) =>{setUsername(e.target.value)}}
                 value={username}
                 name="username" 
                 id="username" 
@@ -63,7 +50,7 @@ const LoginComponent = () =>{
                 type="password"
                 className="form-control"
                 placeholder="Ingrese su Contraseña"
-                onChange={inputChange}
+                onChange ={(e) =>{setPassword(e.target.value)}}
                 value={password}
                 name="password" 
                 id="password" 
@@ -89,6 +76,7 @@ const LoginComponent = () =>{
                   REGISTRARSE
                 </Link>
               </span>
+              <h1>{onSubmit}</h1>
             </div>
             <br />
             <br />
@@ -99,5 +87,5 @@ const LoginComponent = () =>{
   </div>
   )};
 
-
+  
 export default LoginComponent;
