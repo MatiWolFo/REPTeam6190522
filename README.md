@@ -1,19 +1,17 @@
 # REPTeam6190522
 Hola Equipo 6
 
-<<<<<<< HEAD
-### FECHA 03/06/22
-- Agregadas carpetas para cada integrante
-- Commit MATIAS a su carpeta
-
+# CHANGELOG
+### FECHA 25/07/22
+- Restauracion main usando>
+    git reset --hard HEAD
+    git clean -df
+    git pull && git push
+    git gc --prune=now
 
 ### FECHA 15/06/22
-
 - Actualizacion a base de datos
 - Agregadas todas las tablas y columnas que se necesitan por ahora
-## END COMMENTS
-=======
-# CHANGELOG
 ### Fecha 14/07/22
 - UPDATED carpeta frontend y rama AV
 ### Fecha 14/07/22
