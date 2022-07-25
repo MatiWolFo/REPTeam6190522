@@ -21,4 +21,12 @@ public class ScoreUsuarioService {
 		
 		return scoreUsuarioRepository.findAll();
 	}
+
+    public void guardarScoreUsuario(ScoreUsuario score) {
+        scoreUsuarioRepository.save(score);
+    }
+
+    public ScoreUsuario getScoreUsuarioById(Long idScoreUsuario) {
+        return scoreUsuarioRepository.findById(idScoreUsuario).get();
+    }
 }
