@@ -29,8 +29,4 @@ public class ScoreUsuarioService {
     public ScoreUsuario getScoreUsuarioById(Long idScoreUsuario) {
         return scoreUsuarioRepository.findById(idScoreUsuario).get();
     }
-
-    public List<ScoreUsuario> getScoreAll() {
-        return scoreUsuarioRepository.findAll();
-    }
 }
