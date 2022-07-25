@@ -9,8 +9,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /* CREAR ENTIDAD */
+//UniqueConstrain deja solo datos unicos entras a la base de datos
 @Entity
-@Table(name = "usuarios")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
+@Table(name = "usuarios", uniqueConstraints = {@UniqueConstraint(columnNames = {"username", "email"})})
 public class Usuario {
 
     /* OBJETO Y ATRIBUTO */
@@ -20,12 +22,10 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private Integer edad;
-    @JsonIgnore
-    private String rut;
+
     private String username;
 
     @NotNull
-
     private String password;
     @Transient
     @JsonIgnore
@@ -40,15 +40,15 @@ public class Usuario {
     @JsonIgnore
     private Date fechaEdicion;
 
-    //ManyToMany
-    @JsonManagedReference
-    @ManyToMany(fetch=FetchType.EAGER)//join
-    @JoinTable(
-            name="roles_usuarios",
-            joinColumns= @JoinColumn(name="usuario_id"),
-            inverseJoinColumns=@JoinColumn(name="rol_id")
-    )
-    private List<Rol> roles;
+    //ManyToOne
+    //Muchos usuarios a 1 solo rol
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_rol")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Rol roles;
+
+
 
     /* 1 USUARIO TIENE VARIAS RESPUESTAS DE JUEGOS */
     @JsonIgnore
@@ -67,14 +67,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nombre, String apellido, Integer edad, String username, String password, String rut, String email, List<ScoreUsuario> listaScoreUsuario, List<EtapaUsuario> listaEtapaUsuario) {
+    public Usuario(Long id, String nombre, String apellido, Integer edad, String username, String password, String email, List<ScoreUsuario> listaScoreUsuario, List<EtapaUsuario> listaEtapaUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.username = username;
         this.password = password;
-        this.rut = rut;
         this.email = email;
 
 
@@ -132,13 +131,6 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getRut() {
-        return rut;
-    }
-
-    public void setRut(String rut) {
-        this.rut = rut;
-    }
 
     public String getEmail() {
         return email;
@@ -148,14 +140,14 @@ public class Usuario {
         this.email = email;
     }
 
-
-    public List<Rol> getRoles() {
+    public Rol getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Rol> roles) {
+    public void setRoles(Rol roles) {
         this.roles = roles;
     }
+
     public String getPasswordConfirm() {
         return passwordConfirm;
     }

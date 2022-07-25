@@ -2,17 +2,18 @@ package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 
 /* CREAR ENTIDAD */
 @Entity
 @Table(name = "roles")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Rol {
     /* OBJETO Y ATRIBUTO */
     @Id
@@ -28,9 +29,11 @@ public class Rol {
     @JsonIgnore
     private Date fechaEdicion;
 
-    @JsonBackReference
-    @ManyToMany(mappedBy ="roles",fetch=FetchType.LAZY)
-    private List<Usuario> usuarios;
+
+    //OneToMany
+    //1 solo rol para muchos usuarios
+    @OneToMany(mappedBy = "roles", cascade = CascadeType.ALL)
+    private Set<Usuario> usuarios = new HashSet<>();
 
 
     /* CONSTRUCTORES */
@@ -70,12 +73,16 @@ public class Rol {
         this.descripcion = descripcion;
     }
 
-    public List<Usuario> getUsuarios() {
+    public Set<Usuario> getUsuarios() {
         return usuarios;
+
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
+    public void setUsuarios(Set<Usuario> usuarios) {
         this.usuarios = usuarios;
+        for(Usuario usuario: usuarios){
+            usuario.setRoles(this);
+        }
     }
 
     public Date getFechaCreacion() {
