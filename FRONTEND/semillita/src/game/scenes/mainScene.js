@@ -1,14 +1,9 @@
-import { Scene } from "phaser";
-
+import { Scene } from "phaser";//importando libreria phaser en particular {scene} npm i phaser
 import Phaser from "phaser";
-import { getJuegoById, guardarScoreUsuario } from "../../services/JuegoService";
+import { getJuegoById, guardarScoreUsuario } from "../../services/JuegoService";//importando desde JuegoService en particular {getJuegoById y guardarScoreUsuario}
 
-export default class MainScene extends Scene {
-  constructor() {
-    super({ key: "MainScene" });
-
-  }
-
+export default class MainScene extends Scene {//Aqui extiendo la clase MainScene de la clase Scene para ocupar los metodos de Scene(preload,create,update) y exporto MainScene para que pueda ser ocupada en otro lugar 
+  //Inicio de variables
   fondoWinner = {}
   fondoGameOver = {}
   botonStart = {}
@@ -37,9 +32,10 @@ export default class MainScene extends Scene {
   puntajeParaPasarNivel;
   huevoTocaPiso = false;
   ENTER = null;
-
   juego = {};
+  //Fin de variables
 
+  //Objeto ScoreUsuario con atributos iguales a la bd y al backend (La idea es ocuparlo para Json api)
   scoreUsuario = {
     id:0,
     scoreRealizado:0,
@@ -51,17 +47,18 @@ export default class MainScene extends Scene {
       id:1
     }
   }
+//PRIMER METODO DE SCENE
+  preload() {//Aquí voy a precargar todas mis imagenes del juego
 
-  preload() {
+    this.juego = getJuegoById(1).then((juego) => {//Aqui ocupo la funcion del servicejuego "getJuegoById" la cual obtiene el objeto juego, pasandole el id del juego. en este caso 1.
+      console.log(juego)//comprobación de juego
+      this.juego = juego;//seteo la variable global juego con el objeto juego que obtuve del servicio
 
-    this.juego = getJuegoById(1).then((data) => {
-      console.log(data)
-      this.juego = data;
-
-      this.vidas = data.listaConfiguracionJuego[0].vidas
-      this.puntajeParaPasarNivel = data.listaConfiguracionJuego[0].scoreMinimo
+      this.vidas = juego.listaConfiguracionJuego[0].vidas//seteo la variable global vidas con la primera configuracion del juego que tengo en base de datos
+      this.puntajeParaPasarNivel = juego.listaConfiguracionJuego[0].scoreMinimo//seteo la variable global puntajeParaPasarNivel con la primera configuracion del juego que tengo en base de datos
       
     });
+    //Precarga de imagenes con su id para poder ocuparlo despues
     this.load.image("fondoboton", "assets/img/fondoboton.png");
       this.load.image("fondo", "assets/img/fondojuego1.png");
       this.load.image("body", "assets/img/body.png");
@@ -77,7 +74,7 @@ export default class MainScene extends Scene {
       this.load.image('fondoWinner', 'assets/img/winner.png');
       this.load.image('fondoGameOver', 'assets/img/game-over.png');
 
-      this.load.spritesheet("huevo", "assets/img/TAMA-RD.png", {
+      this.load.spritesheet("huevo", "assets/img/semillita_logo.png", {
         frameWidth: 629,
         frameHeight: 369,
       });
@@ -88,45 +85,43 @@ export default class MainScene extends Scene {
 
 
   }
-
-  create() {
-    this.fondoStart = this.add.image(1024 / 2, 720 / 2, "fondoboton").setScale(0.85);
-    this.botonStart = this.add
-      .sprite(1024 / 2, 650, "boton")
+//SEGUNDO METODO DE SCENE
+  create() {//aqui vamos a crear las imagenes precargadas y las llamamos con su id
+    this.fondoStart = this.add.image(1024 / 2, 720 / 2, "fondoboton").setScale(0.85);//aqui agrego y ajusto la imagen en el centro de la pantalla al dividirla por 2  y la referencio con el id de la foto.
+    this.botonStart = this.add//aqui agrego y ajusto la imagen boton y cuando es apretado llamo a la funcion play(), cuando este es clickeado
+      .sprite(1024 / 2, 650, "boton")//es por esto que esta la accion .on(pointerdown)
       .setInteractive()
       .on("pointerdown", () => this.play());
 
-    this.ENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-
+    this.ENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);//aqui agrego la tecla enter para ser ocupada más adelante
 
   }
 
-  colisionPlatform(objeto, platform) {
+  colisionPlatform(objeto, platform) {//colision de objeto y plataforma(suelo)
     //console.log(objeto.texture)
-    if (objeto.texture.key !== "bicho" && this.puntajeInt > 0) {
+    if (objeto.texture.key !== "bicho" && this.puntajeInt > 0) {//si objeto.texture.key(imagenesprecargadas(texturas) segun id) es distinto de "bicho" y el puntaje es mayor que 0 entonces voy a restar del puntaje -10 puntos
 
-      this.puntajeInt -= 10;
-      this.puntajeText.setText("puntaje: " + this.puntajeInt);
+      this.puntajeInt -= 5;//resto -10 puntos
+      this.puntajeText.setText("puntaje: " + this.puntajeInt);//seteo el puntaje actual 
     }
-    objeto.destroy()
+    objeto.destroy()//cuando colisiona los taghtml(imagen) con la plataforma destruyo el objeto para que desaparezca 
   }
-
-  update() {
-    if (this.juagando && !this.gameOver && !this.win && this.huevoTocaPiso) {
-      this.cursors = this.input.keyboard.createCursorKeys();
-      if (this.cursors.left.isDown) {
-        this.vIzquierda += 20;
-        this.huevo?.setVelocityX(this.vIzquierda * -1);
-      } else if (this.cursors.right.isDown) {
-        this.vDerecha += 20;
-        this.huevo?.setVelocityX(this.vDerecha);
+//TERCER METODO DE SCENE
+  update() {//Aqui se va a ejecutar todo el juego, en si el update esta en constante actualizacion
+    if (this.juagando && !this.gameOver && !this.win && this.huevoTocaPiso) {//si jugando es verdadero y gameover es falso y win es falso y huevo es verdadero entonces
+      this.cursors = this.input.keyboard.createCursorKeys();//creo los cursores de flecha para jugar
+      if (this.cursors.left.isDown) {//si apreto el cursor flecha izquierda entonces
+        this.vIzquierda += 20;//le voy aumentando en 20 la velocidad
+        this.huevo.setVelocityX(this.vIzquierda * -1);//Lo multiplico por -1, ya que al irse hacia la izquierda queda con valores negativos, entonces asi puedo tener el valor en positivo
+      } else if (this.cursors.right.isDown) {//Lo mismo pero hacia la derecha
+        this.vDerecha += 20;//Lo mismo pero hacia la derecha
+        this.huevo.setVelocityX(this.vDerecha);//Lo mismo pero hacia la derecha
       } else {
-        this.vDerecha = 800;
-        this.vIzquierda = 800;
-        if (this.huevo) {
+        this.vDerecha = 800;//reinicio la velocidad a la inicial
+        this.vIzquierda = 800;//reinicio la velocidad a la inicial
+
           this.huevo.setVelocityX(0);
 
-        }
       }
       this.tiempoTerminoLetra = new Date();
       if (this.tiempoTerminoLetra.getTime() - this.tiempoInicioLetra.getTime() >= this.tiempoEsperaLetra) {

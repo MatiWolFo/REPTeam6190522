@@ -99,6 +99,10 @@ return(
                 onChange={handleInputChange}
                 />
                 
+                {/*INYECTADO LINK AL BOTON*/}
+                <a href="asignaturas.html">
+                  <input id="btn1" type="submit" defaultValue="Registrarse"/>
+                </a>
               </div>
               <div className="columna2 col text-dark">
                 <div className="btn-selector">
@@ -110,12 +114,6 @@ return(
                   </div>
                 </div>
               </div>
-            <div className="asdf">
-                    {/*INYECTADO LINK AL BOTON*/}
-                    <a href="asignaturas.html">
-                  <input id="btn1" type="submit" defaultValue="Registrarse" />
-                </a>  
-            </div>
             </div>
           </div>
         </div></section>
