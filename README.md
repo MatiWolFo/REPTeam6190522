@@ -8,6 +8,8 @@ Hola Equipo 6
     git clean -df
     git pull && git push
     git gc --prune=now
+- Se subieron las ultimas modificaciones hasta el momento de React.
+-se eliminaron carpetas innecesarias
 
 ### FECHA 15/06/22
 - Actualizacion a base de datos
