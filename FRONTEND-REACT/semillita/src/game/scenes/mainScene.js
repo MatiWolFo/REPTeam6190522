@@ -69,7 +69,7 @@ export default class MainScene extends Scene {//Aqui extiendo la clase MainScene
       this.load.image("html2", "assets/img/html2.png");
 
       this.load.image('piso', 'assets/img/platform.png');
-      this.load.image('corazon', 'assets/img/corazon.png');
+      this.load.image('corazon', 'assets/img/sol.png');
       this.load.image('bicho', 'assets/img/bicho.png');
       this.load.image('fondoWinner', 'assets/img/winner.png');
       this.load.image('fondoGameOver', 'assets/img/game-over.png');
