@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ProyectoG6Application<grupo6>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.generationg6.ProyectoG6Application",
+            "projectName": "grupo6",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
