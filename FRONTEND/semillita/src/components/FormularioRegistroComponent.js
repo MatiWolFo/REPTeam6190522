@@ -23,7 +23,14 @@ const FormularioRegistroComponent = () =>{
 
 
 
-const [registrado, setRegistrado] = useState(false);
+/*const handleClick =(e) => {
+
+  const changedFormValue ={
+    ...values, 
+        [e.target.name]: {"id" :e.target.value}
+  }
+  setValues(changedFormValue)
+}*/
 
 
 const handleInputChange=(e)=>{
@@ -31,7 +38,6 @@ const handleInputChange=(e)=>{
       const changedFormValue ={
         ...values, 
             [e.target.name]: {"id" :e.target.value}
-      
       }
       setValues(changedFormValue)
     }else{
@@ -54,7 +60,7 @@ const handleSubmit = (e) =>{
   e.preventDefault();
   console.log(values)
   guardarUser(values);
-  setRegistrado(true)
+
   
 }
 
@@ -66,11 +72,14 @@ return(
         <h3 className="subtitulo">Regístrate. ¿Quién eres?...</h3>
         <section className="cuerpoPagina">
           <div className="wrapper">
+          <form name="myForm" onSubmit={handleSubmit}>
             <div className="container1">
+            
               <div className="tabla1 row">
+              
                 <div className="columna1 col text-dark ">
-                <form onSubmit={handleSubmit}>
-                  {registrado ? <div className="registro_excito">Gracias por registrarte!</div>: null}
+                
+                  
                 <label>Nombres</label> 
                   <input 
                   type="text" 
@@ -133,31 +142,21 @@ return(
                   placeholder="Reingrese su clave"
                   onChange={handleInputChange}
                   />
-                  <label>ID ROL (1 a 3)</label> 
-                  <input 
-                  type="numeric" 
-                  name="roles" 
-                  id="roles" 
-                  value={roles} 
-                  placeholder="Id rol"
-                  onChange={handleInputChange}
-                  />
                   <input id="btn1" type="submit" defaultValue="Registrarse" />
-                  </form>
+                  
                 </div>
                 <div className="columna2 col text-dark">
-                  
                   <div className="btn-selector">
                     <div className="grupobtn btn-group" role="group" aria-label="Basic example">
-                      <button type="radio" name = "rol_id" value = {1} className="btn btn-secondary" style={{fontSize: 'small'}}>Alumno</button>
-                      {/* <button type="button" class="btn btn-secondary"
-                                        style="font-size: x-small;">Profesor</button> */}
-                      <button type="radio" name = "rol_id" value = {3} className="btn btn-secondary" style={{fontSize: 'small'}}>Profesor</button>
+                      <button type="radio" name = "roles" value = {roles} className="btn btn-secondary" style={{fontSize: 'small'}}>Alumno</button>
+                      <button type="radio" name = "roles" value = {roles} className="btn btn-secondary" style={{fontSize: 'small'}}>Profesor</button>
                     </div>
+
                   </div>
                 </div>
               </div>
             </div>
+            </form>
           </div></section>
       </main>
       </div>

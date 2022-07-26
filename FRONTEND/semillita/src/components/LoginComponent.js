@@ -1,19 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import { Link } from 'react-router-dom';
-import axios from "axios";
+
 
 
 
 const LoginComponent = () =>{
 
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const[statusLogin, setStatusLogin] = useState("")
+ 
 
 
-  const onSubmit = () => {
+  /*const onSubmit = () => {
       axios.post('http://localhost:3000/login',{
       username: username,
       password: password
@@ -24,7 +21,7 @@ const LoginComponent = () =>{
      }
      
     });
-  }
+  }*/
   return(
   <div className="container" align="center">
     <div className="row justify-content-center ">
@@ -39,8 +36,8 @@ const LoginComponent = () =>{
                 type="text"
                 className="form-control"
                 placeholder="Ingrese su Usuario"
-                onChange ={(e) =>{setUsername(e.target.value)}}
-                value={username}
+
+
                 name="username" 
                 id="username" 
               />
@@ -50,8 +47,8 @@ const LoginComponent = () =>{
                 type="password"
                 className="form-control"
                 placeholder="Ingrese su Contraseña"
-                onChange ={(e) =>{setPassword(e.target.value)}}
-                value={password}
+
+
                 name="password" 
                 id="password" 
               />
@@ -61,7 +58,7 @@ const LoginComponent = () =>{
             <br />
             <div className="form-group mx-sm-4 pb-2">
               <span>
-              <input className="olvide1" type="submit" defaultValue="INGRESAR" onClick={onSubmit}/>
+              <input className="olvide1" type="submit" defaultValue="INGRESAR" />
               </span>
               {/*<input type="submit" class="btn btn-block ingresar" value="INGRESAR">*/}
             </div>
@@ -76,7 +73,7 @@ const LoginComponent = () =>{
                   REGISTRARSE
                 </Link>
               </span>
-              <h1>{onSubmit}</h1>
+
             </div>
             <br />
             <br />

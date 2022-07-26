@@ -11,7 +11,6 @@ const guardarScoreUsuario = async(score)=>{
     //peticion con valor desde body
     const res = await axios.post(baseUrl+"/guardar/score", score);
     return res.data;
-
 }
 
 
