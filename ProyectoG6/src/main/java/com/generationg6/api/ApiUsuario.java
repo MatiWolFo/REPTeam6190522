@@ -6,15 +6,10 @@ import com.generationg6.services.RolService;
 import com.generationg6.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-<<<<<<< HEAD
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-=======
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
->>>>>>> fb06d24b4183010271fa5f71beab52584c2ed250
 
 import javax.servlet.http.HttpServletRequest;
 import javax.swing.text.html.Option;
@@ -31,7 +26,6 @@ public class ApiUsuario {
     @Autowired //Inyeccion de dependencias, traer una clase para ser usada internamente
     UsuarioService usuarioService;
 
-<<<<<<< HEAD
     @Autowired
     RolService rolService;
 
@@ -99,31 +93,6 @@ public class ApiUsuario {
 
         return ResponseEntity.ok(usuarioOptional.get());
     }
-=======
-        @RequestMapping("/usuario/obtener")
-        public List<Usuario> obtenerListaUsuario(){
-
-            List<Usuario> listaUsuarios = usuarioService.findAll();
-            return listaUsuarios;
-        }
-
-        @PostMapping("/guardar/usuario")
-        public ResponseEntity<Usuario> guardarUsuario(@RequestBody Usuario usuario){
-            usuarioService.GuardarUsuario(usuario);
-            return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
-        }
-
-       @PostMapping(value = "/eliminar/{id}")
-       public ResponseEntity<Usuario> eliminarUsuario(@PathVariable Long id) {
-        try {
-            usuarioService.eliminarUsuario(id);
-            return new ResponseEntity<Usuario>(HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<Usuario>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
->>>>>>> fb06d24b4183010271fa5f71beab52584c2ed250
 }
 
     /*@PostMapping(value = "/guardar/usuario")
