@@ -2,17 +2,18 @@ package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /* CREAR ENTIDAD */
-//UniqueConstrain deja solo datos unicos entras a la base de datos
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
-@Table(name = "usuarios", uniqueConstraints = {@UniqueConstraint(columnNames = {"username", "email"})})
+@Table(name = "usuarios")
 public class Usuario {
 
     /* OBJETO Y ATRIBUTO */
@@ -22,42 +23,33 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private Integer edad;
-
+    private String rut;
     private String username;
 
     @NotNull
+
     private String password;
     @Transient
-    @JsonIgnore
     private String passwordConfirm;
 
     private String email;
     /* COLUMNAS CREATED N UPDATED */
     @Column(updatable = false)
-    @JsonIgnore
     private Date fechaCreacion;
-
-    @JsonIgnore
     private Date fechaEdicion;
 
-    //ManyToOne
-    //Muchos usuarios a 1 solo rol
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_rol")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Rol roles;
-
-
+    /* VARIOS USUARIOS TIENEN 1 ROL MANY TO ONE */
+    @JsonIgnore /*De la lista no regresa al padre (contenido) o sino se genera un loop*/
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /* ATRIBUTO FK COLABORATIVO */
+    private Rol rol;
 
     /* 1 USUARIO TIENE VARIAS RESPUESTAS DE JUEGOS */
-    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
     private List<ScoreUsuario> listaScoreUsuario;
 
     /* ETAPAUSUARIO */
-    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
     private List<EtapaUsuario> listaEtapaUsuario;
@@ -67,16 +59,16 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nombre, String apellido, Integer edad, String username, String password, String email, List<ScoreUsuario> listaScoreUsuario, List<EtapaUsuario> listaEtapaUsuario) {
+    public Usuario(Long id, String nombre, String apellido, Integer edad, String username, String password, String rut, String email, Rol rol, List<ScoreUsuario> listaScoreUsuario, List<EtapaUsuario> listaEtapaUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.username = username;
         this.password = password;
+        this.rut = rut;
         this.email = email;
-
-
+        this.rol = rol;
         this.listaScoreUsuario = listaScoreUsuario;
         this.listaEtapaUsuario = listaEtapaUsuario;
     }
@@ -131,6 +123,13 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
 
     public String getEmail() {
         return email;
@@ -140,14 +139,13 @@ public class Usuario {
         this.email = email;
     }
 
-    public Rol getRoles() {
-        return roles;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setRoles(Rol roles) {
-        this.roles = roles;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
-
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
@@ -188,8 +186,6 @@ public class Usuario {
     public void setFechaEdicion(Date fechaEdicion) {
         this.fechaEdicion = fechaEdicion;
     }
-
-
 
     /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
     @PrePersist

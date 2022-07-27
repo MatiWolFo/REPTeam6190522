@@ -2,18 +2,14 @@ package com.generationg6.models;
 
 /* IMPORTAR LIBRERIAS */
 
-import com.fasterxml.jackson.annotation.*;
-
-
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+
 import javax.persistence.*;
 
 /* CREAR ENTIDAD */
 @Entity
 @Table(name = "roles")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Rol {
     /* OBJETO Y ATRIBUTO */
     @Id
@@ -23,22 +19,19 @@ public class Rol {
     private String nombre;
     private String descripcion;
     /* COLUMNAS CREATED N UPDATED */
-    @JsonIgnore
     @Column(updatable = false)
     private Date fechaCreacion;
-    @JsonIgnore
     private Date fechaEdicion;
 
-
-    //OneToMany
-    //1 solo rol para muchos usuarios
-    @OneToMany(mappedBy = "roles", cascade = CascadeType.ALL)
-    private Set<Usuario> usuarios = new HashSet<>();
-
+    /* 1 ROL TIENE solo un usuario */
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name ="rol_id")
+    /* LISTA DE VARIOS OBJETOS COLABORATIVOS */
+    private Usuario usuario;
 
     /* CONSTRUCTORES */
     public Rol() {
-
+        super();
     }
 
     public Rol(Long id, String nombre, String descripcion) {
@@ -73,17 +66,7 @@ public class Rol {
         this.descripcion = descripcion;
     }
 
-    public Set<Usuario> getUsuarios() {
-        return usuarios;
 
-    }
-
-    public void setUsuarios(Set<Usuario> usuarios) {
-        this.usuarios = usuarios;
-        for(Usuario usuario: usuarios){
-            usuario.setRoles(this);
-        }
-    }
 
     public Date getFechaCreacion() {
         return fechaCreacion;
@@ -101,7 +84,13 @@ public class Rol {
         this.fechaEdicion = fechaEdicion;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     /* ASIGNA LA FECHA ACTUAL ANTES DE INSERTAR REGISTROS A LA DB */
     @PrePersist

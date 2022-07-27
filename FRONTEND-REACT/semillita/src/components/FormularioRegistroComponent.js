@@ -113,6 +113,10 @@ return(
                     <button type="button" className="btn btn-secondary" style={{fontSize: 'small'}}>Profesor</button>
                   </div>
                 </div>
+                <div className ="imagen_registro"></div>
+                <div className = "texto_login">
+                  <label>Si ya tienes cuenta haz click <a href = "/login" >aqui!</a></label>
+                </div>
               </div>
             </div>
           </div>
