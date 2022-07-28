@@ -11,7 +11,7 @@ Hola Equipo 6
 - Se subieron las ultimas modificaciones hasta el momento de React.
 -se eliminaron carpetas innecesarias
 
-### FECHA 15/06/22
+### FECHA 15/07/22
 - Actualizacion a base de datos
 - Agregadas todas las tablas y columnas que se necesitan por ahora.
 ### Fecha 14/07/22
@@ -46,4 +46,3 @@ Hola Equipo 6
 - Carpetas eliminadas de main
   
 ## END OF COMMENTS
->>>>>>> 8965fd0905a909c8a14eeef2be3b63ba9458bf46
