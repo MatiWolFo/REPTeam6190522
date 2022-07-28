@@ -7,11 +7,10 @@ function EtapaComponent() {
             <div className="container">
                 <div className="contenidos">
                     <h4 className="subtitulo">
-                        1. HTML: Tus primeros pasos - Supera los niveles.
+                        1. HTML: Tus primeros pasos - <br/>ATRAPA LOS "TAGS HTML".
                     </h4>
                 </div>
-                <div class="h4center">
-                    <h4 class="nivel1 justify-content-center">ATRAPA LOS "TAGS HTML"</h4>
+                <div class="h4center justify-content-center">
                     <h5 class="descCont">¡Intenta atrapar las etiquetas que caen desde el cielo!</h5>
                 </div>
                 <Link className="hyperlinksub" to="/video">

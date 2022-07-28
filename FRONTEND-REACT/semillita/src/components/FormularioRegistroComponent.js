@@ -117,7 +117,7 @@ return(
                 <div className = "texto_login">
                   <label>Si ya tienes cuenta haz click <a href = "/login" >aqui!</a></label>
                 </div>
-              </div>
+                </div>
             </div>
           </div>
         </div></section>
