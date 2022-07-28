@@ -16,7 +16,7 @@ import VideoComponent from './components/VideoComponent';
 import PreguntasComponent from './components/PreguntasComponent';
 const App = () => {
   return (
-    
+  
     <BrowserRouter>
     <HeaderNavComponent/>
       <Routes>
@@ -28,10 +28,9 @@ const App = () => {
       <Route path='asignatura' element={<AsignaturaComponent/>}></Route>
       <Route path='modulo' element={<ModuloComponent/>}></Route>
       <Route path='etapa' element={<EtapaComponent/>}></Route>
-      <Route path="juego-html" element={<JuegoHtmlComponent/>}></Route>
-      <Route path="video" element={<VideoComponent/>}></Route>
-      <Route path="preguntas" element={<PreguntasComponent/>}></Route>
-
+      <Route path='video' element={<VideoComponent/>}></Route>
+      <Route path='preguntas' element={<PreguntasComponent/>}></Route>
+      <Route path='juego-html' element={<JuegoHtmlComponent/>}></Route>
       </Routes>
       <FooterComponent/>
     </BrowserRouter>

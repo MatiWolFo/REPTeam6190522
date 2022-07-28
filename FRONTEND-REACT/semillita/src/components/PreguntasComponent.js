@@ -54,6 +54,7 @@ export default function PreguntasComponent() {
 			{showScore ? (
 				<div className='score-section'>
 					Acertaste {score} de {questions.length}
+					
 					<div className="botonn">
                 <span>
                     <Link to="/juego-html" className="siguiente">

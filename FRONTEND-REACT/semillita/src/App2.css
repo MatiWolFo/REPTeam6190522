@@ -270,6 +270,7 @@
 .botonn{
     display: grid;
     place-items: end;
+    margin: 30px;
 }
 .siguiente{
     color: white;
@@ -277,7 +278,7 @@
     text-decoration-line: none;
     font-size: 20px;
     font-weight: 700 !important;
-    /* border: 2px solid white; */
+     border: 2px solid white; 
     padding: 10px;
     border-radius: 10px;
     background: rgba(113, 62, 5, 0.5);
@@ -296,13 +297,14 @@
 
 /*Preguntas*/
 .app {
-    background-color: #252d4a;
+    background-color: #509e38;
     height: min-content;
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 42px 0px rgba(45, 44, 44, 0.75);
     display: flex;
     justify-content: space-evenly;
+    opacity: 0.95;
 }
 
 .score-section {
@@ -351,13 +353,13 @@ button {
     width: 100%;
     font-size: 16px;
     color: #ffffff;
-    background-color: #252d4a;
+    background-color: #4a7b43;
     border-radius: 15px;
     display: flex;
     padding: 5px;
     justify-content: flex-start;
     align-items: center;
-    border: 5px solid #234668;
+    border: 5px solid #236824;
     cursor: pointer;
 }
 
@@ -370,7 +372,7 @@ button {
 }
 
 button:hover {
-    background-color: #555e7d;
+    background-color: #677d55;
 }
 
 button:focus {
